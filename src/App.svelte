@@ -2,6 +2,11 @@
 	This is the skeleton code provided by Prof. Minsuk Kahng.
 	Please feel free to revise the existing code.
 -->
+
+<svelte:head>
+	<meta charset="utf-8">
+</svelte:head>
+
 <script>
 	import { onMount } from "svelte";
 	import { scaleLinear, scaleOrdinal } from "d3-scale";
@@ -98,12 +103,115 @@
 		</div>
 
 		<div id="main-section" style="width: 1000px;">
-			<div id="score-distributions-view" class="view-panel">
-				<div class="view-title">Score Distributions</div>
-				<svg >
+			<div id="score-distributions-view" class="view-panel" style="height:700px;">
+				<div class="view-title" >Score Distributions</div>
+				
+				<svg id="squares" width="1300" height="510"></svg>
+				
+				<script type="text/javascript">
+					var num_class = 10;
+					var num_bin = 10;
+					var num_bin_in_each_col = 4;
+					var num_max_boxes_in_each_row = 11;
+					var bin_size = 11; // in px
+
+					// color (i.e., color(i) will give a hex value)
+					var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+					d3.json("static/prediction_results.json").then(function(data){ 
+						console.log("DDDD: ", data)
+
+						// transform data into a nested structure
+						var data_nested = [];
+						for (var k = 0; k < num_class; ++k) {
+							var inner_nested = [];
+							for (var b = 0; b < num_bin; ++b) {
+								inner_nested.push({ "class": k, "bin_no": b, "instances": [] });
+							}
+							data_nested.push({ "class": k, "bins": inner_nested });
+						}
+
+						// sort instances so that incorrect instances moved to the top
+						data.test_instances.sort((a, b) => (Math.abs(a.true_label - a.predicted_label) > (Math.abs(b.true_label - b.predicted_label))) ? -1 : 1)
+
+						// place data into the nested structure
+						data.test_instances.forEach(d => {
+							d.predicted_score = d.predicted_scores[d.predicted_label];
+							var bin_no = Math.floor(d.predicted_score * num_bin);
+							if (bin_no >= num_bin) {
+								bin_no = num_bin - 1;
+							}
+							data_nested[d.predicted_label].bins[bin_no].instances.push(d);
+						});
+
+						// print out the nested structure
+						console.log('data nested: ', data_nested);
 
 
-				</svg>
+						// create a column for each class
+						var classes = d3.select("svg#squares")
+							.selectAll("g.class_column")
+							.data(data_nested)
+							.enter()
+							.append("g")
+							.attr("class", "class_column")
+							.attr("transform", (d, i) =>
+								`translate(${i * (num_max_boxes_in_each_row * bin_size + 8) + 10}, 20)`);
+
+						// title at the top
+						classes.append("text")
+							.attr("class", "class_title")
+							.text((d, i) => `Class ${i}`)
+							.attr("transform", "translate(0, -10)")
+							.style("fill", (d, i) => color(i));
+
+						// vertical line
+						classes.append("line")
+							.attr("x1", 0)
+							.attr("y1", -2)
+							.attr("x2", 0)
+							.attr("y2", (bin_size + 1) * num_bin_in_each_col * num_bin)
+
+						// for each column, create 10 bins
+						var bins = classes.selectAll("g.bin")
+							.data(d => d.bins)
+							.enter()
+							.append("g")
+							.attr("class", "bin")
+							.attr("transform", (d, i) =>
+								`translate(2, ${(bin_size + 1) * num_bin_in_each_col * (num_bin - i - 1)})`);
+
+						// very short horizontal line
+						bins.append("line")
+							.attr("x1", -3)
+							.attr("y1", -2)
+							.attr("x2", 0)
+							.attr("y2", -2)
+
+						bins.append("text")
+							.attr("transform", "translate(-11, 1)")
+							.style("fill", "#999")
+							.text((d, i) => (i < 9 ? `.${i + 1}` : "1."));
+
+						// for each bin, place boxes
+						var instances = bins.selectAll("g")
+							.data(d => d.instances)
+							.enter()
+							.append("g")
+							.attr("id", d => `instance_box_${d.id}`)
+							.attr("class", "instance_box")
+							.attr("transform", (d, i) => `translate(${bin_size * Math.floor(i / num_bin_in_each_col)}, ${bin_size * (i % num_bin_in_each_col)})`);
+
+						// square box using rect
+						instances.append("rect")
+							.attr("x", 0)
+							.attr("y", 0)
+							.attr("width", bin_size - 1)
+							.attr("height", bin_size - 1)
+							.style("fill", d => color(d.true_label));
+
+					});
+				</script>
 			</div>
 		</div>
 	</div>

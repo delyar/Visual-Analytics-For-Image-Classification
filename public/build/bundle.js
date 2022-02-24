@@ -1,5 +1,5 @@
 
-(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35730/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
 var app = (function () {
     'use strict';
 
@@ -1755,7 +1755,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (60:5) {#if instances !== undefined}
+    // (65:5) {#if instances !== undefined}
     function create_if_block_1(ctx) {
     	let g;
     	let each_value = /*instances*/ ctx[1];
@@ -1776,7 +1776,7 @@ var app = (function () {
 
     			attr_dev(g, "id", "scatterplotData");
     			attr_dev(g, "transform", "translate(" + 50 + ", " + 20 + ")");
-    			add_location(g, file, 60, 6, 1620);
+    			add_location(g, file, 65, 6, 1680);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -1820,14 +1820,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(60:5) {#if instances !== undefined}",
+    		source: "(65:5) {#if instances !== undefined}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (62:7) {#each instances as record}
+    // (67:7) {#each instances as record}
     function create_each_block(ctx) {
     	let circle;
     	let title;
@@ -1849,7 +1849,7 @@ var app = (function () {
     			circle = svg_element("circle");
     			title = svg_element("title");
     			t = text(t_value);
-    			add_location(title, file, 77, 10, 2562);
+    			add_location(title, file, 82, 10, 2622);
     			attr_dev(circle, "id", circle_id_value = "datapoint-" + /*record*/ ctx[9].id);
 
     			attr_dev(circle, "class", circle_class_value = "point " + (/*selectedPoint*/ ctx[2] == /*record*/ ctx[9]["id"]
@@ -1861,7 +1861,7 @@ var app = (function () {
     			attr_dev(circle, "r", "4");
     			set_style(circle, "fill", /*colorScale*/ ctx[0](/*record*/ ctx[9]["true_label"]));
     			set_style(circle, "stroke", /*colorScale*/ ctx[0](/*record*/ ctx[9]["predicted_label"]));
-    			add_location(circle, file, 63, 8, 1791);
+    			add_location(circle, file, 68, 8, 1851);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, circle, anchor);
@@ -1914,14 +1914,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(62:7) {#each instances as record}",
+    		source: "(67:7) {#each instances as record}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (90:6) {#if selectedPoint !== undefined}
+    // (95:6) {#if selectedPoint !== undefined}
     function create_if_block(ctx) {
     	let p0;
     	let t0;
@@ -1954,9 +1954,9 @@ var app = (function () {
     			t8 = text(" (Confidence: ");
     			t9 = text(/*selectedConfidence*/ ctx[6]);
     			t10 = text(")");
-    			add_location(p0, file, 90, 7, 3001);
-    			add_location(p1, file, 91, 7, 3036);
-    			add_location(p2, file, 92, 7, 3081);
+    			add_location(p0, file, 95, 7, 3061);
+    			add_location(p1, file, 96, 7, 3096);
+    			add_location(p2, file, 97, 7, 3141);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p0, anchor);
@@ -1993,7 +1993,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(90:6) {#if selectedPoint !== undefined}",
+    		source: "(95:6) {#if selectedPoint !== undefined}",
     		ctx
     	});
 
@@ -2001,139 +2001,160 @@ var app = (function () {
     }
 
     function create_fragment(ctx) {
+    	let meta;
+    	let t0;
     	let main;
     	let h1;
-    	let t1;
+    	let t2;
     	let div10;
     	let div6;
     	let div1;
     	let div0;
-    	let t3;
-    	let svg0;
     	let t4;
+    	let svg0;
+    	let t5;
     	let div5;
     	let div2;
-    	let t6;
+    	let t7;
     	let div4;
     	let img;
     	let img_src_value;
-    	let t7;
-    	let div3;
     	let t8;
+    	let div3;
+    	let t9;
     	let div9;
     	let div8;
     	let div7;
-    	let t10;
+    	let t11;
     	let svg1;
+    	let t12;
+    	let script;
     	let if_block0 = /*instances*/ ctx[1] !== undefined && create_if_block_1(ctx);
     	let if_block1 = /*selectedPoint*/ ctx[2] !== undefined && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
+    			meta = element("meta");
+    			t0 = space();
     			main = element("main");
     			h1 = element("h1");
     			h1.textContent = "Visual Analytics HW 3 - Delyar Tabatabai";
-    			t1 = space();
+    			t2 = space();
     			div10 = element("div");
     			div6 = element("div");
     			div1 = element("div");
     			div0 = element("div");
     			div0.textContent = "Projection View";
-    			t3 = space();
+    			t4 = space();
     			svg0 = svg_element("svg");
     			if (if_block0) if_block0.c();
-    			t4 = space();
+    			t5 = space();
     			div5 = element("div");
     			div2 = element("div");
     			div2.textContent = "Selected Image";
-    			t6 = space();
+    			t7 = space();
     			div4 = element("div");
     			img = element("img");
-    			t7 = space();
+    			t8 = space();
     			div3 = element("div");
     			if (if_block1) if_block1.c();
-    			t8 = space();
+    			t9 = space();
     			div9 = element("div");
     			div8 = element("div");
     			div7 = element("div");
     			div7.textContent = "Score Distributions";
-    			t10 = space();
+    			t11 = space();
     			svg1 = svg_element("svg");
+    			t12 = space();
+    			script = element("script");
+    			script.textContent = "var num_class = 10;\r\n\t\t\t\t\tvar num_bin = 10;\r\n\t\t\t\t\tvar num_bin_in_each_col = 4;\r\n\t\t\t\t\tvar num_max_boxes_in_each_row = 11;\r\n\t\t\t\t\tvar bin_size = 11; // in px\r\n\r\n\t\t\t\t\t// color (i.e., color(i) will give a hex value)\r\n\t\t\t\t\tvar color = d3.scaleOrdinal(d3.schemeCategory10);\r\n\r\n\t\t\t\t\td3.json(\"static/prediction_results.json\").then(function(data){ \r\n\t\t\t\t\t\tconsole.log(\"DDDD: \", data)\r\n\r\n\t\t\t\t\t\t// transform data into a nested structure\r\n\t\t\t\t\t\tvar data_nested = [];\r\n\t\t\t\t\t\tfor (var k = 0; k < num_class; ++k) {\r\n\t\t\t\t\t\t\tvar inner_nested = [];\r\n\t\t\t\t\t\t\tfor (var b = 0; b < num_bin; ++b) {\r\n\t\t\t\t\t\t\t\tinner_nested.push({ \"class\": k, \"bin_no\": b, \"instances\": [] });\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tdata_nested.push({ \"class\": k, \"bins\": inner_nested });\r\n\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\t// sort instances so that incorrect instances moved to the top\r\n\t\t\t\t\t\tdata.test_instances.sort((a, b) => (Math.abs(a.true_label - a.predicted_label) > (Math.abs(b.true_label - b.predicted_label))) ? -1 : 1)\r\n\r\n\t\t\t\t\t\t// place data into the nested structure\r\n\t\t\t\t\t\tdata.test_instances.forEach(d => {\r\n\t\t\t\t\t\t\td.predicted_score = d.predicted_scores[d.predicted_label];\r\n\t\t\t\t\t\t\tvar bin_no = Math.floor(d.predicted_score * num_bin);\r\n\t\t\t\t\t\t\tif (bin_no >= num_bin) {\r\n\t\t\t\t\t\t\t\tbin_no = num_bin - 1;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tdata_nested[d.predicted_label].bins[bin_no].instances.push(d);\r\n\t\t\t\t\t\t});\r\n\r\n\t\t\t\t\t\t// print out the nested structure\r\n\t\t\t\t\t\tconsole.log('data nested: ', data_nested);\r\n\r\n\r\n\t\t\t\t\t\t// create a column for each class\r\n\t\t\t\t\t\tvar classes = d3.select(\"svg#squares\")\r\n\t\t\t\t\t\t\t.selectAll(\"g.class_column\")\r\n\t\t\t\t\t\t\t.data(data_nested)\r\n\t\t\t\t\t\t\t.enter()\r\n\t\t\t\t\t\t\t.append(\"g\")\r\n\t\t\t\t\t\t\t.attr(\"class\", \"class_column\")\r\n\t\t\t\t\t\t\t.attr(\"transform\", (d, i) =>\r\n\t\t\t\t\t\t\t\t`translate(${i * (num_max_boxes_in_each_row * bin_size + 8) + 10}, 20)`);\r\n\r\n\t\t\t\t\t\t// title at the top\r\n\t\t\t\t\t\tclasses.append(\"text\")\r\n\t\t\t\t\t\t\t.attr(\"class\", \"class_title\")\r\n\t\t\t\t\t\t\t.text((d, i) => `Class ${i}`)\r\n\t\t\t\t\t\t\t.attr(\"transform\", \"translate(0, -10)\")\r\n\t\t\t\t\t\t\t.style(\"fill\", (d, i) => color(i));\r\n\r\n\t\t\t\t\t\t// vertical line\r\n\t\t\t\t\t\tclasses.append(\"line\")\r\n\t\t\t\t\t\t\t.attr(\"x1\", 0)\r\n\t\t\t\t\t\t\t.attr(\"y1\", -2)\r\n\t\t\t\t\t\t\t.attr(\"x2\", 0)\r\n\t\t\t\t\t\t\t.attr(\"y2\", (bin_size + 1) * num_bin_in_each_col * num_bin)\r\n\r\n\t\t\t\t\t\t// for each column, create 10 bins\r\n\t\t\t\t\t\tvar bins = classes.selectAll(\"g.bin\")\r\n\t\t\t\t\t\t\t.data(d => d.bins)\r\n\t\t\t\t\t\t\t.enter()\r\n\t\t\t\t\t\t\t.append(\"g\")\r\n\t\t\t\t\t\t\t.attr(\"class\", \"bin\")\r\n\t\t\t\t\t\t\t.attr(\"transform\", (d, i) =>\r\n\t\t\t\t\t\t\t\t`translate(2, ${(bin_size + 1) * num_bin_in_each_col * (num_bin - i - 1)})`);\r\n\r\n\t\t\t\t\t\t// very short horizontal line\r\n\t\t\t\t\t\tbins.append(\"line\")\r\n\t\t\t\t\t\t\t.attr(\"x1\", -3)\r\n\t\t\t\t\t\t\t.attr(\"y1\", -2)\r\n\t\t\t\t\t\t\t.attr(\"x2\", 0)\r\n\t\t\t\t\t\t\t.attr(\"y2\", -2)\r\n\r\n\t\t\t\t\t\tbins.append(\"text\")\r\n\t\t\t\t\t\t\t.attr(\"transform\", \"translate(-11, 1)\")\r\n\t\t\t\t\t\t\t.style(\"fill\", \"#999\")\r\n\t\t\t\t\t\t\t.text((d, i) => (i < 9 ? `.${i + 1}` : \"1.\"));\r\n\r\n\t\t\t\t\t\t// for each bin, place boxes\r\n\t\t\t\t\t\tvar instances = bins.selectAll(\"g\")\r\n\t\t\t\t\t\t\t.data(d => d.instances)\r\n\t\t\t\t\t\t\t.enter()\r\n\t\t\t\t\t\t\t.append(\"g\")\r\n\t\t\t\t\t\t\t.attr(\"id\", d => `instance_box_${d.id}`)\r\n\t\t\t\t\t\t\t.attr(\"class\", \"instance_box\")\r\n\t\t\t\t\t\t\t.attr(\"transform\", (d, i) => `translate(${bin_size * Math.floor(i / num_bin_in_each_col)}, ${bin_size * (i % num_bin_in_each_col)})`);\r\n\r\n\t\t\t\t\t\t// square box using rect\r\n\t\t\t\t\t\tinstances.append(\"rect\")\r\n\t\t\t\t\t\t\t.attr(\"x\", 0)\r\n\t\t\t\t\t\t\t.attr(\"y\", 0)\r\n\t\t\t\t\t\t\t.attr(\"width\", bin_size - 1)\r\n\t\t\t\t\t\t\t.attr(\"height\", bin_size - 1)\r\n\t\t\t\t\t\t\t.style(\"fill\", d => color(d.true_label));\r\n\r\n\t\t\t\t\t});";
+    			attr_dev(meta, "charset", "utf-8");
+    			add_location(meta, file, 6, 1, 138);
     			attr_dev(h1, "class", "svelte-1d2jenv");
-    			add_location(h1, file, 52, 1, 1318);
+    			add_location(h1, file, 57, 1, 1378);
     			attr_dev(div0, "class", "view-title svelte-1d2jenv");
-    			add_location(div0, file, 57, 4, 1492);
+    			add_location(div0, file, 62, 4, 1552);
     			attr_dev(svg0, "id", "scatterplot-container");
     			attr_dev(svg0, "class", "svelte-1d2jenv");
-    			add_location(svg0, file, 58, 4, 1543);
+    			add_location(svg0, file, 63, 4, 1603);
     			attr_dev(div1, "id", "projection-view");
     			attr_dev(div1, "class", "view-panel svelte-1d2jenv");
-    			add_location(div1, file, 56, 3, 1441);
+    			add_location(div1, file, 61, 3, 1501);
     			attr_dev(div2, "class", "view-title svelte-1d2jenv");
-    			add_location(div2, file, 85, 4, 2733);
+    			add_location(div2, file, 90, 4, 2793);
     			set_style(img, "height", "90px");
     			set_style(img, "width", "90px");
     			set_style(img, "float", "left");
     			if (!src_url_equal(img.src, img_src_value = /*imgPath*/ ctx[3])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "No points selected");
-    			add_location(img, file, 87, 5, 2828);
+    			add_location(img, file, 92, 5, 2888);
     			set_style(div3, "float", "right");
-    			add_location(div3, file, 88, 5, 2925);
+    			add_location(div3, file, 93, 5, 2985);
     			attr_dev(div4, "id", "selected-image-view-content");
     			attr_dev(div4, "class", "svelte-1d2jenv");
-    			add_location(div4, file, 86, 4, 2783);
+    			add_location(div4, file, 91, 4, 2843);
     			attr_dev(div5, "id", "selected-image-view");
     			attr_dev(div5, "class", "view-panel svelte-1d2jenv");
-    			add_location(div5, file, 84, 3, 2678);
+    			add_location(div5, file, 89, 3, 2738);
     			attr_dev(div6, "id", "sidebar");
     			set_style(div6, "width", "450px");
     			attr_dev(div6, "class", "svelte-1d2jenv");
-    			add_location(div6, file, 55, 2, 1396);
+    			add_location(div6, file, 60, 2, 1456);
     			attr_dev(div7, "class", "view-title svelte-1d2jenv");
-    			add_location(div7, file, 101, 4, 3332);
+    			add_location(div7, file, 106, 4, 3414);
+    			attr_dev(svg1, "id", "squares");
+    			attr_dev(svg1, "width", "1300");
+    			attr_dev(svg1, "height", "510");
     			attr_dev(svg1, "class", "svelte-1d2jenv");
-    			add_location(svg1, file, 102, 4, 3387);
+    			add_location(svg1, file, 108, 4, 3476);
+    			attr_dev(script, "type", "text/javascript");
+    			add_location(script, file, 110, 4, 3538);
     			attr_dev(div8, "id", "score-distributions-view");
     			attr_dev(div8, "class", "view-panel svelte-1d2jenv");
-    			add_location(div8, file, 100, 3, 3272);
+    			set_style(div8, "height", "700px");
+    			add_location(div8, file, 105, 3, 3332);
     			attr_dev(div9, "id", "main-section");
     			set_style(div9, "width", "1000px");
     			attr_dev(div9, "class", "svelte-1d2jenv");
-    			add_location(div9, file, 99, 2, 3221);
+    			add_location(div9, file, 104, 2, 3281);
     			attr_dev(div10, "id", "container");
     			attr_dev(div10, "class", "svelte-1d2jenv");
-    			add_location(div10, file, 54, 1, 1372);
-    			add_location(main, file, 51, 0, 1309);
+    			add_location(div10, file, 59, 1, 1432);
+    			add_location(main, file, 56, 0, 1369);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
+    			append_dev(document.head, meta);
+    			insert_dev(target, t0, anchor);
     			insert_dev(target, main, anchor);
     			append_dev(main, h1);
-    			append_dev(main, t1);
+    			append_dev(main, t2);
     			append_dev(main, div10);
     			append_dev(div10, div6);
     			append_dev(div6, div1);
     			append_dev(div1, div0);
-    			append_dev(div1, t3);
+    			append_dev(div1, t4);
     			append_dev(div1, svg0);
     			if (if_block0) if_block0.m(svg0, null);
-    			append_dev(div6, t4);
+    			append_dev(div6, t5);
     			append_dev(div6, div5);
     			append_dev(div5, div2);
-    			append_dev(div5, t6);
+    			append_dev(div5, t7);
     			append_dev(div5, div4);
     			append_dev(div4, img);
-    			append_dev(div4, t7);
+    			append_dev(div4, t8);
     			append_dev(div4, div3);
     			if (if_block1) if_block1.m(div3, null);
-    			append_dev(div10, t8);
+    			append_dev(div10, t9);
     			append_dev(div10, div9);
     			append_dev(div9, div8);
     			append_dev(div8, div7);
-    			append_dev(div8, t10);
+    			append_dev(div8, t11);
     			append_dev(div8, svg1);
+    			append_dev(div8, t12);
+    			append_dev(div8, script);
     		},
     		p: function update(ctx, [dirty]) {
     			if (/*instances*/ ctx[1] !== undefined) {
@@ -2169,6 +2190,8 @@ var app = (function () {
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
+    			detach_dev(meta);
+    			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(main);
     			if (if_block0) if_block0.d();
     			if (if_block1) if_block1.d();
