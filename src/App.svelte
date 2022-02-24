@@ -103,115 +103,49 @@
 		</div>
 
 		<div id="main-section" style="width: 1000px;">
-			<div id="score-distributions-view" class="view-panel" style="height:700px;">
+			<div id="score-distributions-view" class="view-panel" style="height:650px;background-color:green;">
 				<div class="view-title" >Score Distributions</div>
 				
-				<svg id="squares" width="1300" height="510"></svg>
+				<div style="float: left; width:10%;height:100%;padding-top:15px;">
+					{#if instances !== undefined}	
+						{#each binsByClasses as bin}
+							<div style="background-color: darkkhaki; height:10%;width:100%; margin-top:5px;">
+								<b style="margin:0">Class {bin.class}</b>
+								<p style="margin:0;font-size: 12px">Labeled as {bin.class}</p>
+								<p style="margin:0;font-size: 12px">Predicted as {bin.class}</p>
+							</div>
+						{/each}
+					{/if}
+
+				</div>
 				
-				<script type="text/javascript">
-					var num_class = 10;
-					var num_bin = 10;
-					var num_bin_in_each_col = 4;
-					var num_max_boxes_in_each_row = 11;
-					var bin_size = 11; // in px
-
-					// color (i.e., color(i) will give a hex value)
-					var color = d3.scaleOrdinal(d3.schemeCategory10);
-
-					d3.json("static/prediction_results.json").then(function(data){ 
-						console.log("DDDD: ", data)
-
-						// transform data into a nested structure
-						var data_nested = [];
-						for (var k = 0; k < num_class; ++k) {
-							var inner_nested = [];
-							for (var b = 0; b < num_bin; ++b) {
-								inner_nested.push({ "class": k, "bin_no": b, "instances": [] });
-							}
-							data_nested.push({ "class": k, "bins": inner_nested });
-						}
-
-						// sort instances so that incorrect instances moved to the top
-						data.test_instances.sort((a, b) => (Math.abs(a.true_label - a.predicted_label) > (Math.abs(b.true_label - b.predicted_label))) ? -1 : 1)
-
-						// place data into the nested structure
-						data.test_instances.forEach(d => {
-							d.predicted_score = d.predicted_scores[d.predicted_label];
-							var bin_no = Math.floor(d.predicted_score * num_bin);
-							if (bin_no >= num_bin) {
-								bin_no = num_bin - 1;
-							}
-							data_nested[d.predicted_label].bins[bin_no].instances.push(d);
-						});
-
-						// print out the nested structure
-						console.log('data nested: ', data_nested);
-
-
-						// create a column for each class
-						var classes = d3.select("svg#squares")
-							.selectAll("g.class_column")
-							.data(data_nested)
-							.enter()
-							.append("g")
-							.attr("class", "class_column")
-							.attr("transform", (d, i) =>
-								`translate(${i * (num_max_boxes_in_each_row * bin_size + 8) + 10}, 20)`);
-
-						// title at the top
-						classes.append("text")
-							.attr("class", "class_title")
-							.text((d, i) => `Class ${i}`)
-							.attr("transform", "translate(0, -10)")
-							.style("fill", (d, i) => color(i));
-
-						// vertical line
-						classes.append("line")
-							.attr("x1", 0)
-							.attr("y1", -2)
-							.attr("x2", 0)
-							.attr("y2", (bin_size + 1) * num_bin_in_each_col * num_bin)
-
-						// for each column, create 10 bins
-						var bins = classes.selectAll("g.bin")
-							.data(d => d.bins)
-							.enter()
-							.append("g")
-							.attr("class", "bin")
-							.attr("transform", (d, i) =>
-								`translate(2, ${(bin_size + 1) * num_bin_in_each_col * (num_bin - i - 1)})`);
-
-						// very short horizontal line
-						bins.append("line")
-							.attr("x1", -3)
-							.attr("y1", -2)
-							.attr("x2", 0)
-							.attr("y2", -2)
-
-						bins.append("text")
-							.attr("transform", "translate(-11, 1)")
-							.style("fill", "#999")
-							.text((d, i) => (i < 9 ? `.${i + 1}` : "1."));
-
-						// for each bin, place boxes
-						var instances = bins.selectAll("g")
-							.data(d => d.instances)
-							.enter()
-							.append("g")
-							.attr("id", d => `instance_box_${d.id}`)
-							.attr("class", "instance_box")
-							.attr("transform", (d, i) => `translate(${bin_size * Math.floor(i / num_bin_in_each_col)}, ${bin_size * (i % num_bin_in_each_col)})`);
-
-						// square box using rect
-						instances.append("rect")
-							.attr("x", 0)
-							.attr("y", 0)
-							.attr("width", bin_size - 1)
-							.attr("height", bin_size - 1)
-							.style("fill", d => color(d.true_label));
-
-					});
-				</script>
+				<div style="float: right; width:90%; background-color:blue; height:100%;">
+					<div id="main-axis" style="height: 20px; width:100%;background-color:pink;padding-left:20px">
+						<script type="text/javascript">
+							var width = 900,height = 20;
+	
+							var data = [0.0, 0.1, 0.2, 0.3, 1.0];
+							
+							// Append SVG 
+							var svg = d3.select("#main-axis")
+										.append("svg")
+										.attr("width", width)
+										.attr("height", height);
+	
+							// Create scale
+							var scale = d3.scaleLinear()
+										.domain([d3.min(data), d3.max(data)])
+										.range([0, width - 100]);
+	
+							// Add scales to axis
+							var x_axis = d3.axisBottom()
+										.scale(scale);
+	
+							//Append group and insert axis
+							svg.append("g").call(x_axis);
+						</script>
+					</div>
+				</div> 
 			</div>
 		</div>
 	</div>

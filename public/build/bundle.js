@@ -62,6 +62,9 @@ var app = (function () {
     function space() {
         return text(' ');
     }
+    function empty() {
+        return text('');
+    }
     function listen(node, event, handler, options) {
         node.addEventListener(event, handler, options);
         return () => node.removeEventListener(event, handler, options);
@@ -1755,15 +1758,21 @@ var app = (function () {
     	return child_ctx;
     }
 
+    function get_each_context_1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[12] = list[i];
+    	return child_ctx;
+    }
+
     // (65:5) {#if instances !== undefined}
-    function create_if_block_1(ctx) {
+    function create_if_block_2(ctx) {
     	let g;
-    	let each_value = /*instances*/ ctx[1];
-    	validate_each_argument(each_value);
+    	let each_value_1 = /*instances*/ ctx[1];
+    	validate_each_argument(each_value_1);
     	let each_blocks = [];
 
-    	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    	for (let i = 0; i < each_value_1.length; i += 1) {
+    		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
     	}
 
     	const block = {
@@ -1787,17 +1796,17 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*instances, selectedPoint, colorScale, imgPath, selectedTrueLabel, selectedPrediction, selectedConfidence*/ 127) {
-    				each_value = /*instances*/ ctx[1];
-    				validate_each_argument(each_value);
+    				each_value_1 = /*instances*/ ctx[1];
+    				validate_each_argument(each_value_1);
     				let i;
 
-    				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context(ctx, each_value, i);
+    				for (i = 0; i < each_value_1.length; i += 1) {
+    					const child_ctx = get_each_context_1(ctx, each_value_1, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     					} else {
-    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i] = create_each_block_1(child_ctx);
     						each_blocks[i].c();
     						each_blocks[i].m(g, null);
     					}
@@ -1807,7 +1816,7 @@ var app = (function () {
     					each_blocks[i].d(1);
     				}
 
-    				each_blocks.length = each_value.length;
+    				each_blocks.length = each_value_1.length;
     			}
     		},
     		d: function destroy(detaching) {
@@ -1818,7 +1827,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1.name,
+    		id: create_if_block_2.name,
     		type: "if",
     		source: "(65:5) {#if instances !== undefined}",
     		ctx
@@ -1828,10 +1837,10 @@ var app = (function () {
     }
 
     // (67:7) {#each instances as record}
-    function create_each_block(ctx) {
+    function create_each_block_1(ctx) {
     	let circle;
     	let title;
-    	let t_value = /*record*/ ctx[9]["true_label"] + "";
+    	let t_value = /*record*/ ctx[12]["true_label"] + "";
     	let t;
     	let circle_id_value;
     	let circle_class_value;
@@ -1841,7 +1850,7 @@ var app = (function () {
     	let dispose;
 
     	function click_handler() {
-    		return /*click_handler*/ ctx[7](/*record*/ ctx[9]);
+    		return /*click_handler*/ ctx[8](/*record*/ ctx[12]);
     	}
 
     	const block = {
@@ -1850,17 +1859,17 @@ var app = (function () {
     			title = svg_element("title");
     			t = text(t_value);
     			add_location(title, file, 82, 10, 2622);
-    			attr_dev(circle, "id", circle_id_value = "datapoint-" + /*record*/ ctx[9].id);
+    			attr_dev(circle, "id", circle_id_value = "datapoint-" + /*record*/ ctx[12].id);
 
-    			attr_dev(circle, "class", circle_class_value = "point " + (/*selectedPoint*/ ctx[2] == /*record*/ ctx[9]["id"]
+    			attr_dev(circle, "class", circle_class_value = "point " + (/*selectedPoint*/ ctx[2] == /*record*/ ctx[12]["id"]
     			? 'this-one-is-selected-new-version'
     			: "unselected-circle") + " svelte-1d2jenv");
 
-    			attr_dev(circle, "cx", circle_cx_value = /*record*/ ctx[9].projection[0] * 4.5 + 100);
-    			attr_dev(circle, "cy", circle_cy_value = /*record*/ ctx[9].projection[1] * 3.5 + 62);
+    			attr_dev(circle, "cx", circle_cx_value = /*record*/ ctx[12].projection[0] * 4.5 + 100);
+    			attr_dev(circle, "cy", circle_cy_value = /*record*/ ctx[12].projection[1] * 3.5 + 62);
     			attr_dev(circle, "r", "4");
-    			set_style(circle, "fill", /*colorScale*/ ctx[0](/*record*/ ctx[9]["true_label"]));
-    			set_style(circle, "stroke", /*colorScale*/ ctx[0](/*record*/ ctx[9]["predicted_label"]));
+    			set_style(circle, "fill", /*colorScale*/ ctx[0](/*record*/ ctx[12]["true_label"]));
+    			set_style(circle, "stroke", /*colorScale*/ ctx[0](/*record*/ ctx[12]["predicted_label"]));
     			add_location(circle, file, 68, 8, 1851);
     		},
     		m: function mount(target, anchor) {
@@ -1875,32 +1884,32 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if (dirty & /*instances*/ 2 && t_value !== (t_value = /*record*/ ctx[9]["true_label"] + "")) set_data_dev(t, t_value);
+    			if (dirty & /*instances*/ 2 && t_value !== (t_value = /*record*/ ctx[12]["true_label"] + "")) set_data_dev(t, t_value);
 
-    			if (dirty & /*instances*/ 2 && circle_id_value !== (circle_id_value = "datapoint-" + /*record*/ ctx[9].id)) {
+    			if (dirty & /*instances*/ 2 && circle_id_value !== (circle_id_value = "datapoint-" + /*record*/ ctx[12].id)) {
     				attr_dev(circle, "id", circle_id_value);
     			}
 
-    			if (dirty & /*selectedPoint, instances*/ 6 && circle_class_value !== (circle_class_value = "point " + (/*selectedPoint*/ ctx[2] == /*record*/ ctx[9]["id"]
+    			if (dirty & /*selectedPoint, instances*/ 6 && circle_class_value !== (circle_class_value = "point " + (/*selectedPoint*/ ctx[2] == /*record*/ ctx[12]["id"]
     			? 'this-one-is-selected-new-version'
     			: "unselected-circle") + " svelte-1d2jenv")) {
     				attr_dev(circle, "class", circle_class_value);
     			}
 
-    			if (dirty & /*instances*/ 2 && circle_cx_value !== (circle_cx_value = /*record*/ ctx[9].projection[0] * 4.5 + 100)) {
+    			if (dirty & /*instances*/ 2 && circle_cx_value !== (circle_cx_value = /*record*/ ctx[12].projection[0] * 4.5 + 100)) {
     				attr_dev(circle, "cx", circle_cx_value);
     			}
 
-    			if (dirty & /*instances*/ 2 && circle_cy_value !== (circle_cy_value = /*record*/ ctx[9].projection[1] * 3.5 + 62)) {
+    			if (dirty & /*instances*/ 2 && circle_cy_value !== (circle_cy_value = /*record*/ ctx[12].projection[1] * 3.5 + 62)) {
     				attr_dev(circle, "cy", circle_cy_value);
     			}
 
     			if (dirty & /*colorScale, instances*/ 3) {
-    				set_style(circle, "fill", /*colorScale*/ ctx[0](/*record*/ ctx[9]["true_label"]));
+    				set_style(circle, "fill", /*colorScale*/ ctx[0](/*record*/ ctx[12]["true_label"]));
     			}
 
     			if (dirty & /*colorScale, instances*/ 3) {
-    				set_style(circle, "stroke", /*colorScale*/ ctx[0](/*record*/ ctx[9]["predicted_label"]));
+    				set_style(circle, "stroke", /*colorScale*/ ctx[0](/*record*/ ctx[12]["predicted_label"]));
     			}
     		},
     		d: function destroy(detaching) {
@@ -1912,7 +1921,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block.name,
+    		id: create_each_block_1.name,
     		type: "each",
     		source: "(67:7) {#each instances as record}",
     		ctx
@@ -1922,7 +1931,7 @@ var app = (function () {
     }
 
     // (95:6) {#if selectedPoint !== undefined}
-    function create_if_block(ctx) {
+    function create_if_block_1(ctx) {
     	let p0;
     	let t0;
     	let t1;
@@ -1991,9 +2000,157 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block.name,
+    		id: create_if_block_1.name,
     		type: "if",
     		source: "(95:6) {#if selectedPoint !== undefined}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (110:5) {#if instances !== undefined}
+    function create_if_block(ctx) {
+    	let each_1_anchor;
+    	let each_value = /*binsByClasses*/ ctx[7];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			each_1_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(target, anchor);
+    			}
+
+    			insert_dev(target, each_1_anchor, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*binsByClasses*/ 128) {
+    				each_value = /*binsByClasses*/ ctx[7];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			destroy_each(each_blocks, detaching);
+    			if (detaching) detach_dev(each_1_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(110:5) {#if instances !== undefined}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (111:6) {#each binsByClasses as bin}
+    function create_each_block(ctx) {
+    	let div;
+    	let b;
+    	let t0;
+    	let t1_value = /*bin*/ ctx[9].class + "";
+    	let t1;
+    	let t2;
+    	let p0;
+    	let t3;
+    	let t4_value = /*bin*/ ctx[9].class + "";
+    	let t4;
+    	let t5;
+    	let p1;
+    	let t6;
+    	let t7_value = /*bin*/ ctx[9].class + "";
+    	let t7;
+    	let t8;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			b = element("b");
+    			t0 = text("Class ");
+    			t1 = text(t1_value);
+    			t2 = space();
+    			p0 = element("p");
+    			t3 = text("Labeled as ");
+    			t4 = text(t4_value);
+    			t5 = space();
+    			p1 = element("p");
+    			t6 = text("Predicted as ");
+    			t7 = text(t7_value);
+    			t8 = space();
+    			set_style(b, "margin", "0");
+    			add_location(b, file, 112, 8, 3738);
+    			set_style(p0, "margin", "0");
+    			set_style(p0, "font-size", "12px");
+    			add_location(p0, file, 113, 8, 3789);
+    			set_style(p1, "margin", "0");
+    			set_style(p1, "font-size", "12px");
+    			add_location(p1, file, 114, 8, 3861);
+    			set_style(div, "background-color", "darkkhaki");
+    			set_style(div, "height", "10%");
+    			set_style(div, "width", "100%");
+    			set_style(div, "margin-top", "5px");
+    			add_location(div, file, 111, 7, 3647);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, b);
+    			append_dev(b, t0);
+    			append_dev(b, t1);
+    			append_dev(div, t2);
+    			append_dev(div, p0);
+    			append_dev(p0, t3);
+    			append_dev(p0, t4);
+    			append_dev(div, t5);
+    			append_dev(div, p1);
+    			append_dev(p1, t6);
+    			append_dev(p1, t7);
+    			append_dev(div, t8);
+    		},
+    		p: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block.name,
+    		type: "each",
+    		source: "(111:6) {#each binsByClasses as bin}",
     		ctx
     	});
 
@@ -2006,12 +2163,12 @@ var app = (function () {
     	let main;
     	let h1;
     	let t2;
-    	let div10;
+    	let div13;
     	let div6;
     	let div1;
     	let div0;
     	let t4;
-    	let svg0;
+    	let svg;
     	let t5;
     	let div5;
     	let div2;
@@ -2022,15 +2179,18 @@ var app = (function () {
     	let t8;
     	let div3;
     	let t9;
-    	let div9;
-    	let div8;
+    	let div12;
+    	let div11;
     	let div7;
     	let t11;
-    	let svg1;
+    	let div8;
     	let t12;
+    	let div10;
+    	let div9;
     	let script;
-    	let if_block0 = /*instances*/ ctx[1] !== undefined && create_if_block_1(ctx);
-    	let if_block1 = /*selectedPoint*/ ctx[2] !== undefined && create_if_block(ctx);
+    	let if_block0 = /*instances*/ ctx[1] !== undefined && create_if_block_2(ctx);
+    	let if_block1 = /*selectedPoint*/ ctx[2] !== undefined && create_if_block_1(ctx);
+    	let if_block2 = /*instances*/ ctx[1] !== undefined && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
@@ -2040,13 +2200,13 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "Visual Analytics HW 3 - Delyar Tabatabai";
     			t2 = space();
-    			div10 = element("div");
+    			div13 = element("div");
     			div6 = element("div");
     			div1 = element("div");
     			div0 = element("div");
     			div0.textContent = "Projection View";
     			t4 = space();
-    			svg0 = svg_element("svg");
+    			svg = svg_element("svg");
     			if (if_block0) if_block0.c();
     			t5 = space();
     			div5 = element("div");
@@ -2059,24 +2219,27 @@ var app = (function () {
     			div3 = element("div");
     			if (if_block1) if_block1.c();
     			t9 = space();
-    			div9 = element("div");
-    			div8 = element("div");
+    			div12 = element("div");
+    			div11 = element("div");
     			div7 = element("div");
     			div7.textContent = "Score Distributions";
     			t11 = space();
-    			svg1 = svg_element("svg");
+    			div8 = element("div");
+    			if (if_block2) if_block2.c();
     			t12 = space();
+    			div10 = element("div");
+    			div9 = element("div");
     			script = element("script");
-    			script.textContent = "var num_class = 10;\r\n\t\t\t\t\tvar num_bin = 10;\r\n\t\t\t\t\tvar num_bin_in_each_col = 4;\r\n\t\t\t\t\tvar num_max_boxes_in_each_row = 11;\r\n\t\t\t\t\tvar bin_size = 11; // in px\r\n\r\n\t\t\t\t\t// color (i.e., color(i) will give a hex value)\r\n\t\t\t\t\tvar color = d3.scaleOrdinal(d3.schemeCategory10);\r\n\r\n\t\t\t\t\td3.json(\"static/prediction_results.json\").then(function(data){ \r\n\t\t\t\t\t\tconsole.log(\"DDDD: \", data)\r\n\r\n\t\t\t\t\t\t// transform data into a nested structure\r\n\t\t\t\t\t\tvar data_nested = [];\r\n\t\t\t\t\t\tfor (var k = 0; k < num_class; ++k) {\r\n\t\t\t\t\t\t\tvar inner_nested = [];\r\n\t\t\t\t\t\t\tfor (var b = 0; b < num_bin; ++b) {\r\n\t\t\t\t\t\t\t\tinner_nested.push({ \"class\": k, \"bin_no\": b, \"instances\": [] });\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tdata_nested.push({ \"class\": k, \"bins\": inner_nested });\r\n\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\t// sort instances so that incorrect instances moved to the top\r\n\t\t\t\t\t\tdata.test_instances.sort((a, b) => (Math.abs(a.true_label - a.predicted_label) > (Math.abs(b.true_label - b.predicted_label))) ? -1 : 1)\r\n\r\n\t\t\t\t\t\t// place data into the nested structure\r\n\t\t\t\t\t\tdata.test_instances.forEach(d => {\r\n\t\t\t\t\t\t\td.predicted_score = d.predicted_scores[d.predicted_label];\r\n\t\t\t\t\t\t\tvar bin_no = Math.floor(d.predicted_score * num_bin);\r\n\t\t\t\t\t\t\tif (bin_no >= num_bin) {\r\n\t\t\t\t\t\t\t\tbin_no = num_bin - 1;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tdata_nested[d.predicted_label].bins[bin_no].instances.push(d);\r\n\t\t\t\t\t\t});\r\n\r\n\t\t\t\t\t\t// print out the nested structure\r\n\t\t\t\t\t\tconsole.log('data nested: ', data_nested);\r\n\r\n\r\n\t\t\t\t\t\t// create a column for each class\r\n\t\t\t\t\t\tvar classes = d3.select(\"svg#squares\")\r\n\t\t\t\t\t\t\t.selectAll(\"g.class_column\")\r\n\t\t\t\t\t\t\t.data(data_nested)\r\n\t\t\t\t\t\t\t.enter()\r\n\t\t\t\t\t\t\t.append(\"g\")\r\n\t\t\t\t\t\t\t.attr(\"class\", \"class_column\")\r\n\t\t\t\t\t\t\t.attr(\"transform\", (d, i) =>\r\n\t\t\t\t\t\t\t\t`translate(${i * (num_max_boxes_in_each_row * bin_size + 8) + 10}, 20)`);\r\n\r\n\t\t\t\t\t\t// title at the top\r\n\t\t\t\t\t\tclasses.append(\"text\")\r\n\t\t\t\t\t\t\t.attr(\"class\", \"class_title\")\r\n\t\t\t\t\t\t\t.text((d, i) => `Class ${i}`)\r\n\t\t\t\t\t\t\t.attr(\"transform\", \"translate(0, -10)\")\r\n\t\t\t\t\t\t\t.style(\"fill\", (d, i) => color(i));\r\n\r\n\t\t\t\t\t\t// vertical line\r\n\t\t\t\t\t\tclasses.append(\"line\")\r\n\t\t\t\t\t\t\t.attr(\"x1\", 0)\r\n\t\t\t\t\t\t\t.attr(\"y1\", -2)\r\n\t\t\t\t\t\t\t.attr(\"x2\", 0)\r\n\t\t\t\t\t\t\t.attr(\"y2\", (bin_size + 1) * num_bin_in_each_col * num_bin)\r\n\r\n\t\t\t\t\t\t// for each column, create 10 bins\r\n\t\t\t\t\t\tvar bins = classes.selectAll(\"g.bin\")\r\n\t\t\t\t\t\t\t.data(d => d.bins)\r\n\t\t\t\t\t\t\t.enter()\r\n\t\t\t\t\t\t\t.append(\"g\")\r\n\t\t\t\t\t\t\t.attr(\"class\", \"bin\")\r\n\t\t\t\t\t\t\t.attr(\"transform\", (d, i) =>\r\n\t\t\t\t\t\t\t\t`translate(2, ${(bin_size + 1) * num_bin_in_each_col * (num_bin - i - 1)})`);\r\n\r\n\t\t\t\t\t\t// very short horizontal line\r\n\t\t\t\t\t\tbins.append(\"line\")\r\n\t\t\t\t\t\t\t.attr(\"x1\", -3)\r\n\t\t\t\t\t\t\t.attr(\"y1\", -2)\r\n\t\t\t\t\t\t\t.attr(\"x2\", 0)\r\n\t\t\t\t\t\t\t.attr(\"y2\", -2)\r\n\r\n\t\t\t\t\t\tbins.append(\"text\")\r\n\t\t\t\t\t\t\t.attr(\"transform\", \"translate(-11, 1)\")\r\n\t\t\t\t\t\t\t.style(\"fill\", \"#999\")\r\n\t\t\t\t\t\t\t.text((d, i) => (i < 9 ? `.${i + 1}` : \"1.\"));\r\n\r\n\t\t\t\t\t\t// for each bin, place boxes\r\n\t\t\t\t\t\tvar instances = bins.selectAll(\"g\")\r\n\t\t\t\t\t\t\t.data(d => d.instances)\r\n\t\t\t\t\t\t\t.enter()\r\n\t\t\t\t\t\t\t.append(\"g\")\r\n\t\t\t\t\t\t\t.attr(\"id\", d => `instance_box_${d.id}`)\r\n\t\t\t\t\t\t\t.attr(\"class\", \"instance_box\")\r\n\t\t\t\t\t\t\t.attr(\"transform\", (d, i) => `translate(${bin_size * Math.floor(i / num_bin_in_each_col)}, ${bin_size * (i % num_bin_in_each_col)})`);\r\n\r\n\t\t\t\t\t\t// square box using rect\r\n\t\t\t\t\t\tinstances.append(\"rect\")\r\n\t\t\t\t\t\t\t.attr(\"x\", 0)\r\n\t\t\t\t\t\t\t.attr(\"y\", 0)\r\n\t\t\t\t\t\t\t.attr(\"width\", bin_size - 1)\r\n\t\t\t\t\t\t\t.attr(\"height\", bin_size - 1)\r\n\t\t\t\t\t\t\t.style(\"fill\", d => color(d.true_label));\r\n\r\n\t\t\t\t\t});";
+    			script.textContent = "var width = 900,height = 20;\r\n\t\r\n\t\t\t\t\t\t\tvar data = [0.0, 0.1, 0.2, 0.3, 1.0];\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t// Append SVG \r\n\t\t\t\t\t\t\tvar svg = d3.select(\"#main-axis\")\r\n\t\t\t\t\t\t\t\t\t\t.append(\"svg\")\r\n\t\t\t\t\t\t\t\t\t\t.attr(\"width\", width)\r\n\t\t\t\t\t\t\t\t\t\t.attr(\"height\", height);\r\n\t\r\n\t\t\t\t\t\t\t// Create scale\r\n\t\t\t\t\t\t\tvar scale = d3.scaleLinear()\r\n\t\t\t\t\t\t\t\t\t\t.domain([d3.min(data), d3.max(data)])\r\n\t\t\t\t\t\t\t\t\t\t.range([0, width - 100]);\r\n\t\r\n\t\t\t\t\t\t\t// Add scales to axis\r\n\t\t\t\t\t\t\tvar x_axis = d3.axisBottom()\r\n\t\t\t\t\t\t\t\t\t\t.scale(scale);\r\n\t\r\n\t\t\t\t\t\t\t//Append group and insert axis\r\n\t\t\t\t\t\t\tsvg.append(\"g\").call(x_axis);";
     			attr_dev(meta, "charset", "utf-8");
     			add_location(meta, file, 6, 1, 138);
     			attr_dev(h1, "class", "svelte-1d2jenv");
     			add_location(h1, file, 57, 1, 1378);
     			attr_dev(div0, "class", "view-title svelte-1d2jenv");
     			add_location(div0, file, 62, 4, 1552);
-    			attr_dev(svg0, "id", "scatterplot-container");
-    			attr_dev(svg0, "class", "svelte-1d2jenv");
-    			add_location(svg0, file, 63, 4, 1603);
+    			attr_dev(svg, "id", "scatterplot-container");
+    			attr_dev(svg, "class", "svelte-1d2jenv");
+    			add_location(svg, file, 63, 4, 1603);
     			attr_dev(div1, "id", "projection-view");
     			attr_dev(div1, "class", "view-panel svelte-1d2jenv");
     			add_location(div1, file, 61, 3, 1501);
@@ -2101,25 +2264,37 @@ var app = (function () {
     			attr_dev(div6, "class", "svelte-1d2jenv");
     			add_location(div6, file, 60, 2, 1456);
     			attr_dev(div7, "class", "view-title svelte-1d2jenv");
-    			add_location(div7, file, 106, 4, 3414);
-    			attr_dev(svg1, "id", "squares");
-    			attr_dev(svg1, "width", "1300");
-    			attr_dev(svg1, "height", "510");
-    			attr_dev(svg1, "class", "svelte-1d2jenv");
-    			add_location(svg1, file, 108, 4, 3476);
+    			add_location(div7, file, 106, 4, 3437);
+    			set_style(div8, "float", "left");
+    			set_style(div8, "width", "10%");
+    			set_style(div8, "height", "100%");
+    			set_style(div8, "padding-top", "15px");
+    			add_location(div8, file, 108, 4, 3499);
     			attr_dev(script, "type", "text/javascript");
-    			add_location(script, file, 110, 4, 3538);
-    			attr_dev(div8, "id", "score-distributions-view");
-    			attr_dev(div8, "class", "view-panel svelte-1d2jenv");
-    			set_style(div8, "height", "700px");
-    			add_location(div8, file, 105, 3, 3332);
-    			attr_dev(div9, "id", "main-section");
-    			set_style(div9, "width", "1000px");
-    			attr_dev(div9, "class", "svelte-1d2jenv");
-    			add_location(div9, file, 104, 2, 3281);
-    			attr_dev(div10, "id", "container");
-    			attr_dev(div10, "class", "svelte-1d2jenv");
-    			add_location(div10, file, 59, 1, 1432);
+    			add_location(script, file, 123, 6, 4175);
+    			attr_dev(div9, "id", "main-axis");
+    			set_style(div9, "height", "20px");
+    			set_style(div9, "width", "100%");
+    			set_style(div9, "background-color", "pink");
+    			set_style(div9, "padding-left", "20px");
+    			add_location(div9, file, 122, 5, 4074);
+    			set_style(div10, "float", "right");
+    			set_style(div10, "width", "90%");
+    			set_style(div10, "background-color", "blue");
+    			set_style(div10, "height", "100%");
+    			add_location(div10, file, 121, 4, 3993);
+    			attr_dev(div11, "id", "score-distributions-view");
+    			attr_dev(div11, "class", "view-panel svelte-1d2jenv");
+    			set_style(div11, "height", "650px");
+    			set_style(div11, "background-color", "green");
+    			add_location(div11, file, 105, 3, 3332);
+    			attr_dev(div12, "id", "main-section");
+    			set_style(div12, "width", "1000px");
+    			attr_dev(div12, "class", "svelte-1d2jenv");
+    			add_location(div12, file, 104, 2, 3281);
+    			attr_dev(div13, "id", "container");
+    			attr_dev(div13, "class", "svelte-1d2jenv");
+    			add_location(div13, file, 59, 1, 1432);
     			add_location(main, file, 56, 0, 1369);
     		},
     		l: function claim(nodes) {
@@ -2131,13 +2306,13 @@ var app = (function () {
     			insert_dev(target, main, anchor);
     			append_dev(main, h1);
     			append_dev(main, t2);
-    			append_dev(main, div10);
-    			append_dev(div10, div6);
+    			append_dev(main, div13);
+    			append_dev(div13, div6);
     			append_dev(div6, div1);
     			append_dev(div1, div0);
     			append_dev(div1, t4);
-    			append_dev(div1, svg0);
-    			if (if_block0) if_block0.m(svg0, null);
+    			append_dev(div1, svg);
+    			if (if_block0) if_block0.m(svg, null);
     			append_dev(div6, t5);
     			append_dev(div6, div5);
     			append_dev(div5, div2);
@@ -2147,23 +2322,26 @@ var app = (function () {
     			append_dev(div4, t8);
     			append_dev(div4, div3);
     			if (if_block1) if_block1.m(div3, null);
-    			append_dev(div10, t9);
+    			append_dev(div13, t9);
+    			append_dev(div13, div12);
+    			append_dev(div12, div11);
+    			append_dev(div11, div7);
+    			append_dev(div11, t11);
+    			append_dev(div11, div8);
+    			if (if_block2) if_block2.m(div8, null);
+    			append_dev(div11, t12);
+    			append_dev(div11, div10);
     			append_dev(div10, div9);
-    			append_dev(div9, div8);
-    			append_dev(div8, div7);
-    			append_dev(div8, t11);
-    			append_dev(div8, svg1);
-    			append_dev(div8, t12);
-    			append_dev(div8, script);
+    			append_dev(div9, script);
     		},
     		p: function update(ctx, [dirty]) {
     			if (/*instances*/ ctx[1] !== undefined) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
     				} else {
-    					if_block0 = create_if_block_1(ctx);
+    					if_block0 = create_if_block_2(ctx);
     					if_block0.c();
-    					if_block0.m(svg0, null);
+    					if_block0.m(svg, null);
     				}
     			} else if (if_block0) {
     				if_block0.d(1);
@@ -2178,13 +2356,26 @@ var app = (function () {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
     				} else {
-    					if_block1 = create_if_block(ctx);
+    					if_block1 = create_if_block_1(ctx);
     					if_block1.c();
     					if_block1.m(div3, null);
     				}
     			} else if (if_block1) {
     				if_block1.d(1);
     				if_block1 = null;
+    			}
+
+    			if (/*instances*/ ctx[1] !== undefined) {
+    				if (if_block2) {
+    					if_block2.p(ctx, dirty);
+    				} else {
+    					if_block2 = create_if_block(ctx);
+    					if_block2.c();
+    					if_block2.m(div8, null);
+    				}
+    			} else if (if_block2) {
+    				if_block2.d(1);
+    				if_block2 = null;
     			}
     		},
     		i: noop,
@@ -2195,6 +2386,7 @@ var app = (function () {
     			if (detaching) detach_dev(main);
     			if (if_block0) if_block0.d();
     			if (if_block1) if_block1.d();
+    			if (if_block2) if_block2.d();
     		}
     	};
 
@@ -2282,7 +2474,7 @@ var app = (function () {
     	$$self.$inject_state = $$props => {
     		if ('colorScale' in $$props) $$invalidate(0, colorScale = $$props.colorScale);
     		if ('instances' in $$props) $$invalidate(1, instances = $$props.instances);
-    		if ('binsByClasses' in $$props) binsByClasses = $$props.binsByClasses;
+    		if ('binsByClasses' in $$props) $$invalidate(7, binsByClasses = $$props.binsByClasses);
     		if ('selectedPoint' in $$props) $$invalidate(2, selectedPoint = $$props.selectedPoint);
     		if ('imgPath' in $$props) $$invalidate(3, imgPath = $$props.imgPath);
     		if ('selectedTrueLabel' in $$props) $$invalidate(4, selectedTrueLabel = $$props.selectedTrueLabel);
@@ -2302,6 +2494,7 @@ var app = (function () {
     		selectedTrueLabel,
     		selectedPrediction,
     		selectedConfidence,
+    		binsByClasses,
     		click_handler
     	];
     }
