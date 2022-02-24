@@ -2036,7 +2036,7 @@ var app = (function () {
     			insert_dev(target, each_1_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*binsByClasses*/ 128) {
+    			if (dirty & /*binsByClasses, colorScale*/ 129) {
     				each_value = /*binsByClasses*/ ctx[7];
     				validate_each_argument(each_value);
     				let i;
@@ -2079,70 +2079,86 @@ var app = (function () {
 
     // (111:6) {#each binsByClasses as bin}
     function create_each_block(ctx) {
-    	let div;
-    	let b;
-    	let t0;
-    	let t1_value = /*bin*/ ctx[9].class + "";
+    	let div1;
+    	let div0;
+    	let b0;
     	let t1;
+    	let b1;
+    	let t2_value = /*bin*/ ctx[9].class + "";
     	let t2;
-    	let p0;
     	let t3;
-    	let t4_value = /*bin*/ ctx[9].class + "";
+    	let p0;
     	let t4;
+    	let t5_value = /*bin*/ ctx[9].class + "";
     	let t5;
-    	let p1;
     	let t6;
-    	let t7_value = /*bin*/ ctx[9].class + "";
+    	let p1;
     	let t7;
+    	let t8_value = /*bin*/ ctx[9].class + "";
     	let t8;
+    	let t9;
 
     	const block = {
     		c: function create() {
-    			div = element("div");
-    			b = element("b");
-    			t0 = text("Class ");
-    			t1 = text(t1_value);
-    			t2 = space();
+    			div1 = element("div");
+    			div0 = element("div");
+    			b0 = element("b");
+    			b0.textContent = "Class";
+    			t1 = space();
+    			b1 = element("b");
+    			t2 = text(t2_value);
+    			t3 = space();
     			p0 = element("p");
-    			t3 = text("Labeled as ");
-    			t4 = text(t4_value);
-    			t5 = space();
+    			t4 = text("Labeled as ");
+    			t5 = text(t5_value);
+    			t6 = space();
     			p1 = element("p");
-    			t6 = text("Predicted as ");
-    			t7 = text(t7_value);
-    			t8 = space();
-    			set_style(b, "margin", "0");
-    			add_location(b, file, 112, 8, 3738);
+    			t7 = text("Predicted as ");
+    			t8 = text(t8_value);
+    			t9 = space();
+    			set_style(b0, "margin", "0");
+    			set_style(b0, "float", "left");
+    			set_style(b0, "color", "#565656 ");
+    			add_location(b0, file, 113, 9, 3702);
+    			set_style(b1, "background-color", /*colorScale*/ ctx[0](/*bin*/ ctx[9].class));
+    			set_style(b1, "width", "15px");
+    			add_location(b1, file, 114, 9, 3772);
+    			add_location(div0, file, 112, 8, 3686);
     			set_style(p0, "margin", "0");
     			set_style(p0, "font-size", "12px");
-    			add_location(p0, file, 113, 8, 3789);
+    			add_location(p0, file, 116, 8, 3880);
     			set_style(p1, "margin", "0");
     			set_style(p1, "font-size", "12px");
-    			add_location(p1, file, 114, 8, 3861);
-    			set_style(div, "background-color", "darkkhaki");
-    			set_style(div, "height", "10%");
-    			set_style(div, "width", "100%");
-    			set_style(div, "margin-top", "5px");
-    			add_location(div, file, 111, 7, 3647);
+    			add_location(p1, file, 117, 8, 3952);
+    			set_style(div1, "height", "10%");
+    			set_style(div1, "width", "100%");
+    			set_style(div1, "margin-top", "5px");
+    			add_location(div1, file, 111, 7, 3624);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, b);
-    			append_dev(b, t0);
-    			append_dev(b, t1);
-    			append_dev(div, t2);
-    			append_dev(div, p0);
-    			append_dev(p0, t3);
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, div0);
+    			append_dev(div0, b0);
+    			append_dev(div0, t1);
+    			append_dev(div0, b1);
+    			append_dev(b1, t2);
+    			append_dev(div1, t3);
+    			append_dev(div1, p0);
     			append_dev(p0, t4);
-    			append_dev(div, t5);
-    			append_dev(div, p1);
-    			append_dev(p1, t6);
+    			append_dev(p0, t5);
+    			append_dev(div1, t6);
+    			append_dev(div1, p1);
     			append_dev(p1, t7);
-    			append_dev(div, t8);
+    			append_dev(p1, t8);
+    			append_dev(div1, t9);
     		},
-    		p: noop,
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*colorScale*/ 1) {
+    				set_style(b1, "background-color", /*colorScale*/ ctx[0](/*bin*/ ctx[9].class));
+    			}
+    		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(div1);
     		}
     	};
 
@@ -2264,29 +2280,28 @@ var app = (function () {
     			attr_dev(div6, "class", "svelte-1d2jenv");
     			add_location(div6, file, 60, 2, 1456);
     			attr_dev(div7, "class", "view-title svelte-1d2jenv");
-    			add_location(div7, file, 106, 4, 3437);
+    			add_location(div7, file, 106, 4, 3414);
     			set_style(div8, "float", "left");
     			set_style(div8, "width", "10%");
     			set_style(div8, "height", "100%");
     			set_style(div8, "padding-top", "15px");
-    			add_location(div8, file, 108, 4, 3499);
+    			add_location(div8, file, 108, 4, 3476);
     			attr_dev(script, "type", "text/javascript");
-    			add_location(script, file, 123, 6, 4175);
+    			add_location(script, file, 126, 6, 4266);
     			attr_dev(div9, "id", "main-axis");
     			set_style(div9, "height", "20px");
     			set_style(div9, "width", "100%");
     			set_style(div9, "background-color", "pink");
     			set_style(div9, "padding-left", "20px");
-    			add_location(div9, file, 122, 5, 4074);
+    			add_location(div9, file, 125, 5, 4165);
     			set_style(div10, "float", "right");
     			set_style(div10, "width", "90%");
     			set_style(div10, "background-color", "blue");
     			set_style(div10, "height", "100%");
-    			add_location(div10, file, 121, 4, 3993);
+    			add_location(div10, file, 124, 4, 4084);
     			attr_dev(div11, "id", "score-distributions-view");
     			attr_dev(div11, "class", "view-panel svelte-1d2jenv");
     			set_style(div11, "height", "650px");
-    			set_style(div11, "background-color", "green");
     			add_location(div11, file, 105, 3, 3332);
     			attr_dev(div12, "id", "main-section");
     			set_style(div12, "width", "1000px");

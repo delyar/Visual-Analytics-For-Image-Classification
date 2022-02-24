@@ -103,14 +103,17 @@
 		</div>
 
 		<div id="main-section" style="width: 1000px;">
-			<div id="score-distributions-view" class="view-panel" style="height:650px;background-color:green;">
+			<div id="score-distributions-view" class="view-panel" style="height:650px;">
 				<div class="view-title" >Score Distributions</div>
 				
 				<div style="float: left; width:10%;height:100%;padding-top:15px;">
 					{#if instances !== undefined}	
 						{#each binsByClasses as bin}
-							<div style="background-color: darkkhaki; height:10%;width:100%; margin-top:5px;">
-								<b style="margin:0">Class {bin.class}</b>
+							<div style="height:10%;width:100%; margin-top:5px;">
+								<div>
+									<b style="margin:0; float: left; color:#565656 ">Class </b>
+									<b style="background-color: {colorScale(bin.class)}; width:15px;"> {bin.class}</b>
+								</div>
 								<p style="margin:0;font-size: 12px">Labeled as {bin.class}</p>
 								<p style="margin:0;font-size: 12px">Predicted as {bin.class}</p>
 							</div>
