@@ -16,7 +16,7 @@
 	let binsByClasses = [];
 
 	let selectedPoint;
-	let imgPath = "";
+	let imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
 	let selectedTrueLabel = ""
 	let selectedPrediction = ""
 	let selectedConfidence = 0
@@ -58,12 +58,12 @@
 				<div class="view-title">Projection View</div>
 				<svg id="scatterplot-container">
 					{#if instances !== undefined}	
-						<g id="scatterplotData" transform="translate({50}, {20})">
+						<g id="scatterplotData" transform="translate({50}, {20})" >
 							{#each instances as record}
 								<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 								<circle 
 									id="datapoint-{record.id}"
-									class="unselected-circle"
+									class="point {selectedPoint == record["id"] ? 'this-one-is-selected-new-version': "unselected-circle"}"
 									cx={record.projection[0]*4.5 + 100}
 									cy={record.projection[1]*3.5 + 62} 
 									r="4"
@@ -73,6 +73,7 @@
 										imgPath = "static/images/" + instances[record["id"]].filename
 										selectedTrueLabel = instances[record["id"]].true_label
 										selectedPrediction = instances[record["id"]].predicted_label
+										selectedConfidence = instances[record["id"]].predicted_scores[selectedPrediction]
 									}}
 								> <title>{record["true_label"]}</title></circle>
 							{/each}
@@ -86,9 +87,11 @@
 				<div id="selected-image-view-content">
 					<img style="height:90px; width: 90px; float: left" src={imgPath} alt="No points selected">
 					<div style="float: right">
-						<p>ID: {selectedPoint}</p>
-						<p>Labled as {selectedTrueLabel}</p>
-						<p>Predicted as {selectedPrediction} (Confidence: {selectedConfidence})</p>
+						{#if selectedPoint !== undefined}
+							<p>ID: {selectedPoint}</p>
+							<p>Labled as {selectedTrueLabel}</p>
+							<p>Predicted as {selectedPrediction} (Confidence: {selectedConfidence})</p>
+						{/if}
 					</div>
 				</div>
 			</div>
@@ -124,15 +127,11 @@
 		margin-bottom: 10px;
 		margin-right: 10px;
 	}
-	.unselected-circle {
-		stroke-width: 1;
-		fill-opacity: 0.3;
-	}
 	.view-title {
 		background-color: #f3f3f3;
 		font-size: 1.0rem;
 		margin-bottom: 8px;
-		padding: 3px 8px 5px 12px;
+		padding: 3px 8px 5px 10px;
 	}
 	#selected-image-view-content {
 		height: 100px;
@@ -141,7 +140,18 @@
 	svg {
 		margin: 5px;
 	}
+	circle.this-one-is-selected-new-version {
+		stroke-width: 3;
+		fill-opacity: 0.9;
+		stroke-opacity: 1;
+		r: 12
+	}
 
+	circle.unselected-circle {
+		stroke-width: 1;
+		fill-opacity: 0.3;
+		stroke-opacity: 0.4;
+	}
 
 
 </style>
