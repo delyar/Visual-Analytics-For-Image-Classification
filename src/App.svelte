@@ -29,7 +29,6 @@
 	onMount(async () => {
 		const fetched = await fetch("static/prediction_results.json");
 		instances = (await fetched.json()).test_instances;
-		console.log(instances);
 
 		// Transform data
 		for (let k = 0; k < numClasses; ++k) {
@@ -39,15 +38,19 @@
 			}
 			binsByClasses.push({"class": k, "bins": binsForClass});
 		}
-		console.log('Bins By Classes', binsByClasses);
-
-		colorScale = scaleOrdinal(schemeCategory10)
-			.domain(instances.map(row => row["true_label"]));
-
+		
+		colorScale = scaleOrdinal(schemeCategory10).domain(instances.map(row => row["true_label"]));
+		
 		instances.forEach(instance => {
-			// console.log('projection x', instance.projection[0])
-
+			instance.predicted_score = instance.predicted_scores[instance.predicted_label];
+				var bin_no = Math.floor(instance.predicted_score * numBins);
+				if (bin_no >= numBins) {
+					bin_no = numBins - 1;
+				}
+				binsByClasses[instance.predicted_label].bins[bin_no].instances.push(instance);
 		});
+		
+		console.log('Bins By Classes', binsByClasses);
 	});
 
 	
@@ -150,13 +153,14 @@
 					</div>
 					<svg id="container" style=" width:100%; height:100%;">
 						{#if instances !== undefined}	
-							{#each binsByClasses as bin,i}
-								<rect x="15" y="{(i+1)*63}" width="94%" height="0.5" fill='black'></rect>
-								{#each {length:11} as _,j}
-									<rect x="{15 + (j*80)}" y="{(i+1)*63}" width="1" height="4" fill='black'></rect>
+							{#each binsByClasses as row,i}
+								<rect x="15" y="{(i+1)*63}" width="94%" height="0.5" fill='#565656'></rect>
+								{#each {length:10} as _,j}
+									<text x="{40 + (j*30)}" y="{35 + (i*65)}">{row.bins[j]["binNo"]}</text>
+									<text x="{15 + (j*80)}" y="{((i+1)*63) - 15}" width="9" height="9" fill='red'></text>
+									<rect x="{15 + (j*80)}" y="{(i+1)*63}" width="1" height="4" fill='green'></rect> 
+									<rect x="{815}" y="{(i+1)*63}" width="1" height="4" fill='green'></rect> 
 								{/each}
-
-								<text x="0" y="15*{i}" fill="green">I love SVG!</text>
 							{/each}
 						{/if}
 					</svg>
