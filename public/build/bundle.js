@@ -2266,7 +2266,7 @@ var app = (function () {
     // (158:8) {#each {length:10} as _,j}
     function create_each_block_1(ctx) {
     	let text0;
-    	let t_value = /*row*/ ctx[9].bins[/*j*/ ctx[14]]["binNo"] + "";
+    	let t_value = /*row*/ ctx[9].bins[/*j*/ ctx[14]]["instances"].length + "";
     	let t;
     	let text1;
     	let rect0;
@@ -2279,7 +2279,7 @@ var app = (function () {
     			text1 = svg_element("text");
     			rect0 = svg_element("rect");
     			rect1 = svg_element("rect");
-    			attr_dev(text0, "x", 40 + /*j*/ ctx[14] * 30);
+    			attr_dev(text0, "x", 40 + /*j*/ ctx[14] * 80);
     			attr_dev(text0, "y", 35 + /*i*/ ctx[11] * 65);
     			add_location(text0, file, 158, 9, 5480);
     			attr_dev(text1, "x", 15 + /*j*/ ctx[14] * 80);
@@ -2287,19 +2287,19 @@ var app = (function () {
     			attr_dev(text1, "width", "9");
     			attr_dev(text1, "height", "9");
     			attr_dev(text1, "fill", "red");
-    			add_location(text1, file, 159, 9, 5562);
+    			add_location(text1, file, 159, 9, 5573);
     			attr_dev(rect0, "x", 15 + /*j*/ ctx[14] * 80);
     			attr_dev(rect0, "y", (/*i*/ ctx[11] + 1) * 63);
     			attr_dev(rect0, "width", "1");
     			attr_dev(rect0, "height", "4");
     			attr_dev(rect0, "fill", "green");
-    			add_location(rect0, file, 160, 9, 5658);
+    			add_location(rect0, file, 160, 9, 5669);
     			attr_dev(rect1, "x", 815);
     			attr_dev(rect1, "y", (/*i*/ ctx[11] + 1) * 63);
     			attr_dev(rect1, "width", "1");
     			attr_dev(rect1, "height", "4");
     			attr_dev(rect1, "fill", "green");
-    			add_location(rect1, file, 161, 9, 5750);
+    			add_location(rect1, file, 161, 9, 5761);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, text0, anchor);
