@@ -48,6 +48,11 @@
 					bin_no = numBins - 1;
 				}
 				binsByClasses[instance.predicted_label].bins[bin_no].instances.push(instance);
+			if (instance.predicted_score < 1) {
+				instance.binToBelong = parseInt(instance.predicted_score*10)
+			} else {
+				instance.binToBelong = 9
+			}
 		});
 		
 		console.log('Bins By Classes', binsByClasses);
@@ -157,11 +162,27 @@
 								<rect x="15" y="{(i+1)*63}" width="94%" height="0.5" fill='#565656'></rect>
 								{#each {length:10} as _,j}
 									{#each row.bins[j]["instances"] as binInstance,z}
-										<image href="{"static/images/" + binInstance.filename}" x="{10 + binInstance.predicted_score*800}" y="{(i)*63 + 50}" width="9" height="9"/>
-										<rect x="{10 + binInstance.predicted_score*800}" y="{(i)*63 + 50}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+										{#if z < 8}
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*63 + 50}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*63 + 50}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+										{:else if z> 7 && z<16}
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*63 + 42}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*63 + 42}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+										{:else if z>15 && z<24}
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*63 + 34}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*63 + 34}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+										{:else if z>23 && z<32}
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*63 + 26}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*63 + 26}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+										{:else if z>31 && z<40}
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*63 + 18}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*63 + 18}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+										{:else}
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*63 + 10}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*63 + 10}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+										{/if}
 									{/each}
-									<!-- <rect x="{15 + (j*80)}" y="{(i)*63 + 4}" width="79" height="50" fill='pink'></rect>  -->
-									<text x="{40 + (j*80)}" y="{35 + (i*65)}">{row.bins[j]["instances"].length}</text>
+									<!-- <text x="{40 + (j*80)}" y="{35 + (i*65)}">{row.bins[j]["instances"].length}</text> -->
 									<rect x="{15 + (j*80)}" y="{(i+1)*63}" width="1" height="4" fill='black'></rect> 
 									<rect x="{815}" y="{(i+1)*63}" width="1" height="4" fill='green'></rect> 
 								{/each}
