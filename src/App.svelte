@@ -152,6 +152,10 @@
 						{#if instances !== undefined}	
 							{#each binsByClasses as bin,i}
 								<rect x="15" y="{(i+1)*63}" width="94%" height="0.5" fill='black'></rect>
+								{#each {length:11} as _,j}
+									<rect x="{15 + (j*80)}" y="{(i+1)*63}" width="1" height="4" fill='black'></rect>
+								{/each}
+
 								<text x="0" y="15*{i}" fill="green">I love SVG!</text>
 							{/each}
 						{/if}
