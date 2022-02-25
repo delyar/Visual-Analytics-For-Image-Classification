@@ -157,9 +157,9 @@
 								<rect x="15" y="{(i+1)*63}" width="94%" height="0.5" fill='#565656'></rect>
 								{#each {length:10} as _,j}
 									{#each row.bins[j]["instances"] as binInstance,z}
-										<rect x="{15 + (z*10)}" y="{(i)*63 + 4}" width="9" height="9" fill='purple'></rect>
+										<rect x="{15 + binInstance.predicted_score*800}" y="{(i)*63 + 50}" width="9" height="9" fill='purple'></rect>
 									{/each}
-									<rect x="{15 + (j*80)}" y="{(i)*63 + 4}" width="79" height="50" fill='pink'></rect> 
+									<!-- <rect x="{15 + (j*80)}" y="{(i)*63 + 4}" width="79" height="50" fill='pink'></rect>  -->
 									<text x="{40 + (j*80)}" y="{35 + (i*65)}">{row.bins[j]["instances"].length}</text>
 									<rect x="{15 + (j*80)}" y="{(i+1)*63}" width="1" height="4" fill='black'></rect> 
 									<rect x="{815}" y="{(i+1)*63}" width="1" height="4" fill='green'></rect> 

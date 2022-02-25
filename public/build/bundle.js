@@ -2277,8 +2277,8 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			rect = svg_element("rect");
-    			attr_dev(rect, "x", 15 + /*z*/ ctx[17] * 10);
-    			attr_dev(rect, "y", /*i*/ ctx[11] * 63 + 4);
+    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[15].predicted_score * 800);
+    			attr_dev(rect, "y", /*i*/ ctx[11] * 63 + 50);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", "purple");
@@ -2287,6 +2287,7 @@ var app = (function () {
     		m: function mount(target, anchor) {
     			insert_dev(target, rect, anchor);
     		},
+    		p: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(rect);
     		}
@@ -2305,12 +2306,11 @@ var app = (function () {
 
     // (158:8) {#each {length:10} as _,j}
     function create_each_block_1(ctx) {
-    	let rect0;
     	let text_1;
     	let t_value = /*row*/ ctx[9].bins[/*j*/ ctx[14]]["instances"].length + "";
     	let t;
+    	let rect0;
     	let rect1;
-    	let rect2;
     	let each_value_2 = /*row*/ ctx[9].bins[/*j*/ ctx[14]]["instances"];
     	validate_each_argument(each_value_2);
     	let each_blocks = [];
@@ -2325,51 +2325,66 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			rect0 = svg_element("rect");
     			text_1 = svg_element("text");
     			t = text(t_value);
+    			rect0 = svg_element("rect");
     			rect1 = svg_element("rect");
-    			rect2 = svg_element("rect");
-    			attr_dev(rect0, "x", 15 + /*j*/ ctx[14] * 80);
-    			attr_dev(rect0, "y", /*i*/ ctx[11] * 63 + 4);
-    			attr_dev(rect0, "width", "79");
-    			attr_dev(rect0, "height", "50");
-    			attr_dev(rect0, "fill", "pink");
-    			add_location(rect0, file, 161, 9, 5653);
     			attr_dev(text_1, "x", 40 + /*j*/ ctx[14] * 80);
     			attr_dev(text_1, "y", 35 + /*i*/ ctx[11] * 65);
-    			add_location(text_1, file, 162, 9, 5748);
-    			attr_dev(rect1, "x", 15 + /*j*/ ctx[14] * 80);
+    			add_location(text_1, file, 162, 9, 5783);
+    			attr_dev(rect0, "x", 15 + /*j*/ ctx[14] * 80);
+    			attr_dev(rect0, "y", (/*i*/ ctx[11] + 1) * 63);
+    			attr_dev(rect0, "width", "1");
+    			attr_dev(rect0, "height", "4");
+    			attr_dev(rect0, "fill", "black");
+    			add_location(rect0, file, 163, 9, 5876);
+    			attr_dev(rect1, "x", 815);
     			attr_dev(rect1, "y", (/*i*/ ctx[11] + 1) * 63);
     			attr_dev(rect1, "width", "1");
     			attr_dev(rect1, "height", "4");
-    			attr_dev(rect1, "fill", "black");
-    			add_location(rect1, file, 163, 9, 5841);
-    			attr_dev(rect2, "x", 815);
-    			attr_dev(rect2, "y", (/*i*/ ctx[11] + 1) * 63);
-    			attr_dev(rect2, "width", "1");
-    			attr_dev(rect2, "height", "4");
-    			attr_dev(rect2, "fill", "green");
-    			add_location(rect2, file, 164, 9, 5933);
+    			attr_dev(rect1, "fill", "green");
+    			add_location(rect1, file, 164, 9, 5968);
     		},
     		m: function mount(target, anchor) {
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(target, anchor);
     			}
 
-    			insert_dev(target, rect0, anchor);
     			insert_dev(target, text_1, anchor);
     			append_dev(text_1, t);
+    			insert_dev(target, rect0, anchor);
     			insert_dev(target, rect1, anchor);
-    			insert_dev(target, rect2, anchor);
     		},
-    		p: noop,
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*binsByClasses*/ 128) {
+    				each_value_2 = /*row*/ ctx[9].bins[/*j*/ ctx[14]]["instances"];
+    				validate_each_argument(each_value_2);
+    				let i;
+
+    				for (i = 0; i < each_value_2.length; i += 1) {
+    					const child_ctx = get_each_context_2(ctx, each_value_2, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block_2(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(text_1.parentNode, text_1);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value_2.length;
+    			}
+    		},
     		d: function destroy(detaching) {
     			destroy_each(each_blocks, detaching);
-    			if (detaching) detach_dev(rect0);
     			if (detaching) detach_dev(text_1);
+    			if (detaching) detach_dev(rect0);
     			if (detaching) detach_dev(rect1);
-    			if (detaching) detach_dev(rect2);
     		}
     	};
 
