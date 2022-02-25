@@ -70,7 +70,7 @@
 									id="datapoint-{record.id}"
 									class="point {selectedPoint == record["id"] ? 'this-one-is-selected-new-version': "unselected-circle"}"
 									cx={record.projection[0]*4.5 + 100}
-									cy={record.projection[1]*3.5 + 62} 
+									cy={record.projection[1]*3.5 + 62}
 									r="4"
 									style="fill: {colorScale(record["true_label"])}; stroke: {colorScale(record["predicted_label"])}"
 									on:click={()=>{
@@ -103,27 +103,27 @@
 		</div>
 
 		<div id="main-section" style="width: 1000px;">
-			<div id="score-distributions-view" class="view-panel" style="height:650px;">
+			<div id="score-distributions-view" class="view-panel" style="height:760px;">
 				<div class="view-title" >Score Distributions</div>
 				
-				<div style="float: left; width:10%;height:100%;padding-top:15px;">
+				<div style="float: left; width:10%;height:100%;padding-top:25px;">
 					{#if instances !== undefined}	
 						{#each binsByClasses as bin}
-							<div style="height:10%;width:100%; margin-top:5px;">
-								<div>
-									<b style="margin:0; float: left; color:#565656 ">Class </b>
-									<b style="background-color: {colorScale(bin.class)}; width:15px;"> {bin.class}</b>
+							<div style="height:6.3%;width:100%; margin-top:15px;">
+								<div style="text-align: right; display:inline;float:right">
+									<b style="margin:0; float: left; color:#565656;text-align: right; ">Class </b>
+									<b style="background-color: {colorScale(bin.class)}; width:5px;"> {bin.class}</b>
 								</div>
-								<p style="margin:0;font-size: 12px">Labeled as {bin.class}</p>
-								<p style="margin:0;font-size: 12px">Predicted as {bin.class}</p>
+								<p style="margin:0;font-size: 12px;text-align: right;float:right">Labeled as {bin.class}</p>
+								<p style="margin:0;font-size: 12px;text-align: right;float:right">Predicted as {bin.class}</p>
 							</div>
 						{/each}
 					{/if}
 
 				</div>
 				
-				<div style="float: right; width:90%; background-color:blue; height:100%;">
-					<div id="main-axis" style="height: 20px; width:100%;background-color:pink;padding-left:20px">
+				<div style="float: right; width:90%; height:100%;">
+					<div id="main-axis" style="height: 20px; width:100%;padding-left:20px">
 						<script type="text/javascript">
 							var width = 900,height = 20;
 	
@@ -148,6 +148,14 @@
 							svg.append("g").call(x_axis);
 						</script>
 					</div>
+					<svg id="container" style=" width:100%; height:100%;">
+						{#if instances !== undefined}	
+							{#each binsByClasses as bin,i}
+								<rect x="15" y="{(i+1)*63}" width="94%" height="0.5" fill='black'></rect>
+								<text x="0" y="15*{i}" fill="green">I love SVG!</text>
+							{/each}
+						{/if}
+					</svg>
 				</div> 
 			</div>
 		</div>
