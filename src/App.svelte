@@ -83,7 +83,7 @@
 									style="fill: {colorScale(record["true_label"])}; stroke: {colorScale(record["predicted_label"])}"
 									on:click={()=>{
 										selectedPoint = record["id"];
-										imgPath = "static/images/" + instances[record["id"]].filename
+										imgPath = "static/images/" + record.filename
 										selectedTrueLabel = instances[record["id"]].true_label
 										selectedPrediction = instances[record["id"]].predicted_label
 										selectedConfidence = instances[record["id"]].predicted_scores[selectedPrediction]

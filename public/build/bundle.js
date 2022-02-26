@@ -1879,7 +1879,7 @@ var app = (function () {
     			circle = svg_element("circle");
     			title = svg_element("title");
     			t = text(t_value);
-    			add_location(title, file, 90, 10, 2990);
+    			add_location(title, file, 90, 10, 2973);
     			attr_dev(circle, "id", circle_id_value = "datapoint-" + /*record*/ ctx[21].id);
 
     			attr_dev(circle, "class", circle_class_value = "point " + (/*selectedPoint*/ ctx[2] == /*record*/ ctx[21]["id"]
@@ -1984,9 +1984,9 @@ var app = (function () {
     			t8 = text(" (Confidence: ");
     			t9 = text(/*selectedConfidence*/ ctx[6]);
     			t10 = text(")");
-    			add_location(p0, file, 103, 7, 3429);
-    			add_location(p1, file, 104, 7, 3464);
-    			add_location(p2, file, 105, 7, 3509);
+    			add_location(p0, file, 103, 7, 3412);
+    			add_location(p1, file, 104, 7, 3447);
+    			add_location(p2, file, 105, 7, 3492);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p0, anchor);
@@ -2141,28 +2141,28 @@ var app = (function () {
     			set_style(b0, "float", "left");
     			set_style(b0, "color", "#565656");
     			set_style(b0, "text-align", "right");
-    			add_location(b0, file, 121, 9, 4126);
+    			add_location(b0, file, 121, 9, 4109);
     			set_style(b1, "background-color", /*colorScale*/ ctx[0](/*bin*/ ctx[18].class));
     			set_style(b1, "width", "5px");
-    			add_location(b1, file, 122, 9, 4215);
+    			add_location(b1, file, 122, 9, 4198);
     			set_style(div0, "text-align", "right");
     			set_style(div0, "display", "inline");
     			set_style(div0, "float", "right");
-    			add_location(div0, file, 120, 8, 4056);
+    			add_location(div0, file, 120, 8, 4039);
     			set_style(p0, "margin", "0");
     			set_style(p0, "font-size", "12px");
     			set_style(p0, "text-align", "right");
     			set_style(p0, "float", "right");
-    			add_location(p0, file, 124, 8, 4322);
+    			add_location(p0, file, 124, 8, 4305);
     			set_style(p1, "margin", "0");
     			set_style(p1, "font-size", "12px");
     			set_style(p1, "text-align", "right");
     			set_style(p1, "float", "right");
-    			add_location(p1, file, 125, 8, 4424);
+    			add_location(p1, file, 125, 8, 4407);
     			set_style(div1, "height", "6.3%");
     			set_style(div1, "width", "100%");
     			set_style(div1, "margin-top", "15px");
-    			add_location(div1, file, 119, 7, 3992);
+    			add_location(div1, file, 119, 7, 3975);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -2285,14 +2285,14 @@ var app = (function () {
     			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[15].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 180, 11, 7662);
+    			add_location(image, file, 180, 11, 7645);
     			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[15].binToBelong / 10 * 800 + (/*z*/ ctx[17] - 40) * 9);
     			attr_dev(rect, "y", /*i*/ ctx[11] * 63 + 10);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[15]["predicted_label"]));
     			attr_dev(rect, "opacity", "0.6");
-    			add_location(rect, file, 181, 11, 7831);
+    			add_location(rect, file, 181, 11, 7814);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2335,14 +2335,14 @@ var app = (function () {
     			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[15].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 177, 11, 7284);
+    			add_location(image, file, 177, 11, 7267);
     			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[15].binToBelong / 10 * 800 + (/*z*/ ctx[17] - 32) * 9);
     			attr_dev(rect, "y", /*i*/ ctx[11] * 63 + 18);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[15]["predicted_label"]));
     			attr_dev(rect, "opacity", "0.6");
-    			add_location(rect, file, 178, 11, 7453);
+    			add_location(rect, file, 178, 11, 7436);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2385,14 +2385,14 @@ var app = (function () {
     			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[15].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 174, 11, 6890);
+    			add_location(image, file, 174, 11, 6873);
     			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[15].binToBelong / 10 * 800 + (/*z*/ ctx[17] - 24) * 9);
     			attr_dev(rect, "y", /*i*/ ctx[11] * 63 + 26);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[15]["predicted_label"]));
     			attr_dev(rect, "opacity", "0.6");
-    			add_location(rect, file, 175, 11, 7059);
+    			add_location(rect, file, 175, 11, 7042);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2435,14 +2435,14 @@ var app = (function () {
     			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[15].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 171, 11, 6496);
+    			add_location(image, file, 171, 11, 6479);
     			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[15].binToBelong / 10 * 800 + (/*z*/ ctx[17] - 16) * 9);
     			attr_dev(rect, "y", /*i*/ ctx[11] * 63 + 34);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[15]["predicted_label"]));
     			attr_dev(rect, "opacity", "0.6");
-    			add_location(rect, file, 172, 11, 6665);
+    			add_location(rect, file, 172, 11, 6648);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2485,14 +2485,14 @@ var app = (function () {
     			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[15].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 168, 11, 6104);
+    			add_location(image, file, 168, 11, 6087);
     			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[15].binToBelong / 10 * 800 + (/*z*/ ctx[17] - 8) * 9);
     			attr_dev(rect, "y", /*i*/ ctx[11] * 63 + 42);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[15]["predicted_label"]));
     			attr_dev(rect, "opacity", "0.6");
-    			add_location(rect, file, 169, 11, 6272);
+    			add_location(rect, file, 169, 11, 6255);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2535,14 +2535,14 @@ var app = (function () {
     			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[15].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 165, 11, 5720);
+    			add_location(image, file, 165, 11, 5703);
     			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[15].binToBelong / 10 * 800 + /*z*/ ctx[17] * 9);
     			attr_dev(rect, "y", /*i*/ ctx[11] * 63 + 50);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[15]["predicted_label"]));
     			attr_dev(rect, "opacity", "0.6");
-    			add_location(rect, file, 166, 11, 5884);
+    			add_location(rect, file, 166, 11, 5867);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2640,13 +2640,13 @@ var app = (function () {
     			attr_dev(rect0, "width", "1");
     			attr_dev(rect0, "height", "4");
     			attr_dev(rect0, "fill", "black");
-    			add_location(rect0, file, 185, 9, 8156);
+    			add_location(rect0, file, 185, 9, 8139);
     			attr_dev(rect1, "x", 815);
     			attr_dev(rect1, "y", (/*i*/ ctx[11] + 1) * 63);
     			attr_dev(rect1, "width", "1");
     			attr_dev(rect1, "height", "4");
     			attr_dev(rect1, "fill", "green");
-    			add_location(rect1, file, 186, 9, 8248);
+    			add_location(rect1, file, 186, 9, 8231);
     		},
     		m: function mount(target, anchor) {
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -2725,7 +2725,7 @@ var app = (function () {
     			attr_dev(rect, "width", "94%");
     			attr_dev(rect, "height", "0.5");
     			attr_dev(rect, "fill", "#565656");
-    			add_location(rect, file, 161, 8, 5513);
+    			add_location(rect, file, 161, 8, 5496);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, rect, anchor);
@@ -2872,56 +2872,56 @@ var app = (function () {
     			attr_dev(div1, "class", "view-panel svelte-1d2jenv");
     			add_location(div1, file, 69, 3, 1870);
     			attr_dev(div2, "class", "view-title svelte-1d2jenv");
-    			add_location(div2, file, 98, 4, 3161);
+    			add_location(div2, file, 98, 4, 3144);
     			set_style(img, "height", "90px");
     			set_style(img, "width", "90px");
     			set_style(img, "float", "left");
     			if (!src_url_equal(img.src, img_src_value = /*imgPath*/ ctx[3])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "No points selected");
-    			add_location(img, file, 100, 5, 3256);
+    			add_location(img, file, 100, 5, 3239);
     			set_style(div3, "float", "right");
-    			add_location(div3, file, 101, 5, 3353);
+    			add_location(div3, file, 101, 5, 3336);
     			attr_dev(div4, "id", "selected-image-view-content");
     			attr_dev(div4, "class", "svelte-1d2jenv");
-    			add_location(div4, file, 99, 4, 3211);
+    			add_location(div4, file, 99, 4, 3194);
     			attr_dev(div5, "id", "selected-image-view");
     			attr_dev(div5, "class", "view-panel svelte-1d2jenv");
-    			add_location(div5, file, 97, 3, 3106);
+    			add_location(div5, file, 97, 3, 3089);
     			attr_dev(div6, "id", "sidebar");
     			set_style(div6, "width", "450px");
     			attr_dev(div6, "class", "svelte-1d2jenv");
     			add_location(div6, file, 68, 2, 1825);
     			attr_dev(div7, "class", "view-title svelte-1d2jenv");
-    			add_location(div7, file, 114, 4, 3782);
+    			add_location(div7, file, 114, 4, 3765);
     			set_style(div8, "float", "left");
     			set_style(div8, "width", "10%");
     			set_style(div8, "height", "100%");
     			set_style(div8, "padding-top", "25px");
-    			add_location(div8, file, 116, 4, 3844);
+    			add_location(div8, file, 116, 4, 3827);
     			attr_dev(script, "type", "text/javascript");
-    			add_location(script, file, 134, 6, 4723);
+    			add_location(script, file, 134, 6, 4706);
     			attr_dev(div9, "id", "main-axis");
     			set_style(div9, "height", "20px");
     			set_style(div9, "width", "100%");
     			set_style(div9, "padding-left", "20px");
-    			add_location(div9, file, 133, 5, 4644);
+    			add_location(div9, file, 133, 5, 4627);
     			attr_dev(svg1, "id", "container");
     			set_style(svg1, "width", "100%");
     			set_style(svg1, "height", "100%");
     			attr_dev(svg1, "class", "svelte-1d2jenv");
-    			add_location(svg1, file, 158, 5, 5372);
+    			add_location(svg1, file, 158, 5, 5355);
     			set_style(div10, "float", "right");
     			set_style(div10, "width", "90%");
     			set_style(div10, "height", "100%");
-    			add_location(div10, file, 132, 4, 4586);
+    			add_location(div10, file, 132, 4, 4569);
     			attr_dev(div11, "id", "score-distributions-view");
     			attr_dev(div11, "class", "view-panel svelte-1d2jenv");
     			set_style(div11, "height", "760px");
-    			add_location(div11, file, 113, 3, 3700);
+    			add_location(div11, file, 113, 3, 3683);
     			attr_dev(div12, "id", "main-section");
     			set_style(div12, "width", "1000px");
     			attr_dev(div12, "class", "svelte-1d2jenv");
-    			add_location(div12, file, 112, 2, 3649);
+    			add_location(div12, file, 112, 2, 3632);
     			attr_dev(div13, "id", "container");
     			attr_dev(div13, "class", "svelte-1d2jenv");
     			add_location(div13, file, 67, 1, 1801);
@@ -3108,7 +3108,7 @@ var app = (function () {
 
     	const click_handler = record => {
     		$$invalidate(2, selectedPoint = record["id"]);
-    		$$invalidate(3, imgPath = "static/images/" + instances[record["id"]].filename);
+    		$$invalidate(3, imgPath = "static/images/" + record.filename);
     		$$invalidate(4, selectedTrueLabel = instances[record["id"]].true_label);
     		$$invalidate(5, selectedPrediction = instances[record["id"]].predicted_label);
     		$$invalidate(6, selectedConfidence = instances[record["id"]].predicted_scores[selectedPrediction]);
