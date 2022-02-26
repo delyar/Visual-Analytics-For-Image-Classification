@@ -28,7 +28,7 @@
 	let axisWidth = 800
 	let verticalSpace = 63
 	let svgDistributionPath; 
-	let highlightedPredictedGroup;
+	let highlightedlabeldAsGroup;
 
 	function handleMouseEnter(record) {
 		selectedPoint = record["id"];
@@ -93,7 +93,7 @@
 								<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 								<circle 
 									id="datapoint-{record.id}"
-									class="point {selectedPoint == undefined ? 'regular': (selectedPoint == record.id ? 'this-one-is-selected-new-version' : 'unselected-circle')}"
+									class="point {selectedPoint == undefined && record.true_label ==  highlightedlabeldAsGroup? 'regular': (selectedPoint == record.id || record.true_label ==  highlightedlabeldAsGroup? 'regular' : 'unselected-circle')}"
 									cx={record.projection[0]*4.5 + 100}
 									cy={record.projection[1]*3.5 + 62}
 									r="4"
@@ -139,12 +139,12 @@
 									<b style="margin:0; float: left; color:#565656;text-align: right; ">Class </b>
 									<b style="background-color: {colorScale(bin.class)}; width:5px;"> {bin.class}</b>
 								</div>
-								<p class="{highlightedPredictedGroup==bin.class? "selected_button" : "unselected_button"}"
+								<p class="{highlightedlabeldAsGroup==bin.class? "selected_button" : "unselected_button"}"
 									on:click={()=>{
-										if (highlightedPredictedGroup == undefined) {
-											highlightedPredictedGroup = bin.class
+										if (highlightedlabeldAsGroup == undefined) {
+											highlightedlabeldAsGroup = bin.class
 										} else {
-											highlightedPredictedGroup = undefined
+											highlightedlabeldAsGroup = undefined
 										}
 									}}
 								>Labeled as {bin.class}</p>
@@ -295,24 +295,17 @@
 	svg {
 		margin: 5px;
 	}
-	circle.this-one-is-selected-new-version {
+	circle.regular {
 		stroke-width: 3;
 		fill-opacity: 0.9;
-		stroke-opacity: 1;
-		r: 12
+		stroke-opacity: 0.9;
+		r: 6
 	}
 
 	circle.unselected-circle {
 		stroke-width: 1;
 		fill-opacity: 0.3;
 		stroke-opacity: 0.1;
-		r:2
-	}
-
-	circle.regular {
-		stroke-width: 1;
-		fill-opacity: 0.4;
-		stroke-opacity: 0.4;
 		r:2
 	}
 
