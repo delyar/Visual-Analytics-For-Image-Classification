@@ -25,6 +25,7 @@
 	let selectedTrueLabel = ""
 	let selectedPrediction = ""
 	let selectedConfidence = 0
+	let selectedPredictedScoresArray;
 
 	onMount(async () => {
 		const fetched = await fetch("static/prediction_results.json");
@@ -77,7 +78,7 @@
 								<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 								<circle 
 									id="datapoint-{record.id}"
-									class="point {selectedPoint == record["id"] ? 'this-one-is-selected-new-version': "unselected-circle"}"
+									class="point {selectedPoint == undefined ? 'regular': (selectedPoint == record.id ? 'this-one-is-selected-new-version' : 'unselected-circle')}"
 									cx={record.projection[0]*4.5 + 100}
 									cy={record.projection[1]*3.5 + 62}
 									r="4"
@@ -88,6 +89,10 @@
 										selectedTrueLabel = record.true_label
 										selectedPrediction = record.predicted_label
 										selectedConfidence = record.predicted_scores[selectedPrediction]
+									}}
+
+									on:mouseleave={()=>{
+										selectedPoint=undefined
 									}}
 								> <title>{record["true_label"]}</title></circle>
 							{/each}
@@ -244,7 +249,15 @@
 	circle.unselected-circle {
 		stroke-width: 1;
 		fill-opacity: 0.3;
+		stroke-opacity: 0.1;
+		r:2
+	}
+
+	circle.regular {
+		stroke-width: 1;
+		fill-opacity: 0.4;
 		stroke-opacity: 0.4;
+		r:2
 	}
 
 
