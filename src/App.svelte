@@ -84,9 +84,9 @@
 									on:click={()=>{
 										selectedPoint = record["id"];
 										imgPath = "static/images/" + record.filename
-										selectedTrueLabel = instances[record["id"]].true_label
-										selectedPrediction = instances[record["id"]].predicted_label
-										selectedConfidence = instances[record["id"]].predicted_scores[selectedPrediction]
+										selectedTrueLabel = record.true_label
+										selectedPrediction = record.predicted_label
+										selectedConfidence = record.predicted_scores[selectedPrediction]
 									}}
 								> <title>{record["true_label"]}</title></circle>
 							{/each}
