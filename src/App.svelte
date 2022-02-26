@@ -28,6 +28,7 @@
 	let axisWidth = 800
 	let verticalSpace = 63
 	let svgDistributionPath; 
+	let highlightedPredictedGroup;
 
 	function handleMouseEnter(record) {
 		selectedPoint = record["id"];
@@ -138,8 +139,16 @@
 									<b style="margin:0; float: left; color:#565656;text-align: right; ">Class </b>
 									<b style="background-color: {colorScale(bin.class)}; width:5px;"> {bin.class}</b>
 								</div>
-								<p style="margin:0;font-size: 12px;text-align: right;float:right">Labeled as {bin.class}</p>
-								<p style="margin:0;font-size: 12px;text-align: right;float:right">Predicted as {bin.class}</p>
+								<p class="{highlightedPredictedGroup==bin.class? "selected_button" : "unselected_button"}"
+									on:click={()=>{
+										if (highlightedPredictedGroup == undefined) {
+											highlightedPredictedGroup = bin.class
+										} else {
+											highlightedPredictedGroup = undefined
+										}
+									}}
+								>Labeled as {bin.class}</p>
+								<p class="unselected_button">Predicted as {bin.class}</p>
 							</div>
 						{/each}
 					{/if}
@@ -181,7 +190,7 @@
 									{#each row.bins[j]["instances"] as binInstance,z}
 										{#if z < 8}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*verticalSpace + 50}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*verticalSpace + 50}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6" 
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*verticalSpace + 50}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined? "highlighted_box": (selectedPoint == binInstance.id? "highlighted_box" : "unhighlighted_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
 											}}
@@ -192,7 +201,7 @@
 											></rect>
 										{:else if z> 7 && z<16}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*verticalSpace + 42}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*verticalSpace + 42}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*verticalSpace + 42}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined? "highlighted_box": (selectedPoint == binInstance.id? "highlighted_box" : "unhighlighted_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
 											}}
@@ -202,7 +211,7 @@
 											}}></rect>
 										{:else if z>15 && z<24}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*verticalSpace + 34}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*verticalSpace + 34}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*verticalSpace + 34}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined? "highlighted_box": (selectedPoint == binInstance.id? "highlighted_box" : "unhighlighted_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
 											}}
@@ -212,7 +221,7 @@
 											}}></rect>
 										{:else if z>23 && z<32}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*verticalSpace + 26}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*verticalSpace + 26}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*verticalSpace + 26}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined? "highlighted_box": (selectedPoint == binInstance.id? "highlighted_box" : "unhighlighted_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
 											}}
@@ -222,7 +231,7 @@
 											}}></rect>
 										{:else if z>31 && z<40}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*verticalSpace + 18}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*verticalSpace + 18}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*verticalSpace + 18}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined? "highlighted_box": (selectedPoint == binInstance.id? "highlighted_box" : "unhighlighted_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
 											}}
@@ -232,7 +241,7 @@
 											}}></rect>
 										{:else}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*verticalSpace + 10}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*verticalSpace + 10}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*verticalSpace + 10}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined? "highlighted_box": (selectedPoint == binInstance.id? "highlighted_box" : "unhighlighted_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
 											}}
@@ -242,7 +251,7 @@
 											}}></rect>
 										{/if}
 									{/each}
-									<!-- <text x="{40 + (j*80)}" y="{35 + (i*65)}">{row.bins[j]["instances"].length}</text> -->
+
 									<rect x="{15 + (j*80)}" y="{(i+1)*verticalSpace}" width="1" height="4" fill='black'></rect> 
 									<rect x="{815}" y="{(i+1)*verticalSpace}" width="1" height="4" fill='black'></rect> 
 								{/each}
@@ -307,5 +316,27 @@
 		r:2
 	}
 
+	p.unselected_button {
+		margin:0;
+		font-size: 12px;
+		text-align: right;
+		float:right;
+	}
+
+	p.selected_button {
+		margin:0;
+		font-size: 12px;
+		text-align: right;
+		float:right;
+		text-decoration: underline black;
+	}
+
+	.highlighted_box {
+		opacity: 0.7;
+	}
+
+	.unhighlighted_box {
+		opacity: 0.3;
+	}
 
 </style>
