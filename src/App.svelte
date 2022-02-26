@@ -26,6 +26,9 @@
 	let selectedPrediction = ""
 	let selectedConfidence = 0
 	let selectedPredictedScoresArray;
+	let axisWidth = 800
+	let verticalSpace = 63
+	let svgDistributionPath = "M" + "15,0 L400,50 L600,300 L800,550 L1000,300"
 
 	onMount(async () => {
 		const fetched = await fetch("static/prediction_results.json");
@@ -164,13 +167,14 @@
 					</div>
 					<svg id="container" style=" width:100%; height:100%;">
 						{#if instances !== undefined}	
+							<path d="{svgDistributionPath}" fill="none" stroke="gray" stroke-width="{selectedPoint == undefined? 0 : 1}" />
 							{#each binsByClasses as row,i}
-								<rect x="15" y="{(i+1)*63}" width="94%" height="0.5" fill='#565656'></rect>
+								<rect x="15" y="{(i+1)*verticalSpace}" width="94%" height="0.5" fill='#565656'></rect>
 								{#each {length:10} as _,j}
 									{#each row.bins[j]["instances"] as binInstance,z}
 										{#if z < 8}
-											<image x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*63 + 50}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*63 + 50}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6" 
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*verticalSpace + 50}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*verticalSpace + 50}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6" 
 											on:mouseenter={()=>{
 												selectedPoint = binInstance["id"];
 												imgPath = "static/images/" + binInstance.filename
@@ -179,25 +183,25 @@
 												selectedConfidence = binInstance.predicted_score
 											}}></rect>
 										{:else if z> 7 && z<16}
-											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*63 + 42}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*63 + 42}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*verticalSpace + 42}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*verticalSpace + 42}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
 										{:else if z>15 && z<24}
-											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*63 + 34}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*63 + 34}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*verticalSpace + 34}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*verticalSpace + 34}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
 										{:else if z>23 && z<32}
-											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*63 + 26}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*63 + 26}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*verticalSpace + 26}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*verticalSpace + 26}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
 										{:else if z>31 && z<40}
-											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*63 + 18}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*63 + 18}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*verticalSpace + 18}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*verticalSpace + 18}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
 										{:else}
-											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*63 + 10}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*63 + 10}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*verticalSpace + 10}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*verticalSpace + 10}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
 										{/if}
 									{/each}
 									<!-- <text x="{40 + (j*80)}" y="{35 + (i*65)}">{row.bins[j]["instances"].length}</text> -->
-									<rect x="{15 + (j*80)}" y="{(i+1)*63}" width="1" height="4" fill='black'></rect> 
-									<rect x="{815}" y="{(i+1)*63}" width="1" height="4" fill='black'></rect> 
+									<rect x="{15 + (j*80)}" y="{(i+1)*verticalSpace}" width="1" height="4" fill='black'></rect> 
+									<rect x="{815}" y="{(i+1)*verticalSpace}" width="1" height="4" fill='black'></rect> 
 								{/each}
 							{/each}
 						{/if}
