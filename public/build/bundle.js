@@ -1754,38 +1754,38 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[14] = list[i];
-    	child_ctx[16] = i;
+    	child_ctx[26] = list[i];
+    	child_ctx[28] = i;
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[17] = list[i];
-    	child_ctx[19] = i;
+    	child_ctx[29] = list[i];
+    	child_ctx[31] = i;
     	return child_ctx;
     }
 
     function get_each_context_2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[20] = list[i];
-    	child_ctx[22] = i;
+    	child_ctx[32] = list[i];
+    	child_ctx[34] = i;
     	return child_ctx;
     }
 
     function get_each_context_3(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[23] = list[i];
+    	child_ctx[35] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_4(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[26] = list[i];
+    	child_ctx[38] = list[i];
     	return child_ctx;
     }
 
-    // (77:5) {#if instances !== undefined}
+    // (89:5) {#if instances !== undefined}
     function create_if_block_8(ctx) {
     	let g;
     	let each_value_4 = /*instances*/ ctx[1];
@@ -1806,7 +1806,7 @@ var app = (function () {
 
     			attr_dev(g, "id", "scatterplotData");
     			attr_dev(g, "transform", "translate(" + 50 + ", " + 20 + ")");
-    			add_location(g, file, 77, 6, 2126);
+    			add_location(g, file, 89, 6, 2620);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -1816,7 +1816,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*instances, selectedPoint, undefined, colorScale, imgPath, selectedTrueLabel, selectedPrediction, selectedConfidence, svgDistributionPath, axisWidth, verticalSpace*/ 1791) {
+    			if (dirty[0] & /*instances, selectedPoint, colorScale, handleMouseEnter, imgPath*/ 1039) {
     				each_value_4 = /*instances*/ ctx[1];
     				validate_each_argument(each_value_4);
     				let i;
@@ -1850,18 +1850,18 @@ var app = (function () {
     		block,
     		id: create_if_block_8.name,
     		type: "if",
-    		source: "(77:5) {#if instances !== undefined}",
+    		source: "(89:5) {#if instances !== undefined}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (79:7) {#each instances as record}
+    // (91:7) {#each instances as record}
     function create_each_block_4(ctx) {
     	let circle;
     	let title;
-    	let t_value = /*record*/ ctx[26]["true_label"] + "";
+    	let t_value = /*record*/ ctx[38]["true_label"] + "";
     	let t;
     	let circle_id_value;
     	let circle_class_value;
@@ -1871,7 +1871,7 @@ var app = (function () {
     	let dispose;
 
     	function mouseenter_handler() {
-    		return /*mouseenter_handler*/ ctx[11](/*record*/ ctx[26]);
+    		return /*mouseenter_handler*/ ctx[11](/*record*/ ctx[38]);
     	}
 
     	const block = {
@@ -1879,21 +1879,21 @@ var app = (function () {
     			circle = svg_element("circle");
     			title = svg_element("title");
     			t = text(t_value);
-    			add_location(title, file, 103, 10, 3440);
-    			attr_dev(circle, "id", circle_id_value = "datapoint-" + /*record*/ ctx[26].id);
+    			add_location(title, file, 106, 10, 3459);
+    			attr_dev(circle, "id", circle_id_value = "datapoint-" + /*record*/ ctx[38].id);
 
     			attr_dev(circle, "class", circle_class_value = "point " + (/*selectedPoint*/ ctx[2] == undefined
     			? 'regular'
-    			: /*selectedPoint*/ ctx[2] == /*record*/ ctx[26].id
+    			: /*selectedPoint*/ ctx[2] == /*record*/ ctx[38].id
     				? 'this-one-is-selected-new-version'
     				: 'unselected-circle') + " svelte-1uze29s");
 
-    			attr_dev(circle, "cx", circle_cx_value = /*record*/ ctx[26].projection[0] * 4.5 + 100);
-    			attr_dev(circle, "cy", circle_cy_value = /*record*/ ctx[26].projection[1] * 3.5 + 62);
+    			attr_dev(circle, "cx", circle_cx_value = /*record*/ ctx[38].projection[0] * 4.5 + 100);
+    			attr_dev(circle, "cy", circle_cy_value = /*record*/ ctx[38].projection[1] * 3.5 + 62);
     			attr_dev(circle, "r", "4");
-    			set_style(circle, "fill", /*colorScale*/ ctx[0](/*record*/ ctx[26]["true_label"]));
-    			set_style(circle, "stroke", /*colorScale*/ ctx[0](/*record*/ ctx[26]["predicted_label"]));
-    			add_location(circle, file, 80, 8, 2297);
+    			set_style(circle, "fill", /*colorScale*/ ctx[0](/*record*/ ctx[38]["true_label"]));
+    			set_style(circle, "stroke", /*colorScale*/ ctx[0](/*record*/ ctx[38]["predicted_label"]));
+    			add_location(circle, file, 92, 8, 2791);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, circle, anchor);
@@ -1911,34 +1911,34 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if (dirty & /*instances*/ 2 && t_value !== (t_value = /*record*/ ctx[26]["true_label"] + "")) set_data_dev(t, t_value);
+    			if (dirty[0] & /*instances*/ 2 && t_value !== (t_value = /*record*/ ctx[38]["true_label"] + "")) set_data_dev(t, t_value);
 
-    			if (dirty & /*instances*/ 2 && circle_id_value !== (circle_id_value = "datapoint-" + /*record*/ ctx[26].id)) {
+    			if (dirty[0] & /*instances*/ 2 && circle_id_value !== (circle_id_value = "datapoint-" + /*record*/ ctx[38].id)) {
     				attr_dev(circle, "id", circle_id_value);
     			}
 
-    			if (dirty & /*selectedPoint, instances*/ 6 && circle_class_value !== (circle_class_value = "point " + (/*selectedPoint*/ ctx[2] == undefined
+    			if (dirty[0] & /*selectedPoint, instances*/ 6 && circle_class_value !== (circle_class_value = "point " + (/*selectedPoint*/ ctx[2] == undefined
     			? 'regular'
-    			: /*selectedPoint*/ ctx[2] == /*record*/ ctx[26].id
+    			: /*selectedPoint*/ ctx[2] == /*record*/ ctx[38].id
     				? 'this-one-is-selected-new-version'
     				: 'unselected-circle') + " svelte-1uze29s")) {
     				attr_dev(circle, "class", circle_class_value);
     			}
 
-    			if (dirty & /*instances*/ 2 && circle_cx_value !== (circle_cx_value = /*record*/ ctx[26].projection[0] * 4.5 + 100)) {
+    			if (dirty[0] & /*instances*/ 2 && circle_cx_value !== (circle_cx_value = /*record*/ ctx[38].projection[0] * 4.5 + 100)) {
     				attr_dev(circle, "cx", circle_cx_value);
     			}
 
-    			if (dirty & /*instances*/ 2 && circle_cy_value !== (circle_cy_value = /*record*/ ctx[26].projection[1] * 3.5 + 62)) {
+    			if (dirty[0] & /*instances*/ 2 && circle_cy_value !== (circle_cy_value = /*record*/ ctx[38].projection[1] * 3.5 + 62)) {
     				attr_dev(circle, "cy", circle_cy_value);
     			}
 
-    			if (dirty & /*colorScale, instances*/ 3) {
-    				set_style(circle, "fill", /*colorScale*/ ctx[0](/*record*/ ctx[26]["true_label"]));
+    			if (dirty[0] & /*colorScale, instances*/ 3) {
+    				set_style(circle, "fill", /*colorScale*/ ctx[0](/*record*/ ctx[38]["true_label"]));
     			}
 
-    			if (dirty & /*colorScale, instances*/ 3) {
-    				set_style(circle, "stroke", /*colorScale*/ ctx[0](/*record*/ ctx[26]["predicted_label"]));
+    			if (dirty[0] & /*colorScale, instances*/ 3) {
+    				set_style(circle, "stroke", /*colorScale*/ ctx[0](/*record*/ ctx[38]["predicted_label"]));
     			}
     		},
     		d: function destroy(detaching) {
@@ -1952,14 +1952,14 @@ var app = (function () {
     		block,
     		id: create_each_block_4.name,
     		type: "each",
-    		source: "(79:7) {#each instances as record}",
+    		source: "(91:7) {#each instances as record}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (116:6) {#if selectedPoint !== undefined}
+    // (119:6) {#if selectedPoint !== undefined}
     function create_if_block_7(ctx) {
     	let p0;
     	let t0;
@@ -1992,9 +1992,9 @@ var app = (function () {
     			t8 = text(" (Confidence: ");
     			t9 = text(/*selectedConfidence*/ ctx[6]);
     			t10 = text(")");
-    			add_location(p0, file, 116, 7, 3879);
-    			add_location(p1, file, 117, 7, 3914);
-    			add_location(p2, file, 118, 7, 3959);
+    			add_location(p0, file, 119, 7, 3898);
+    			add_location(p1, file, 120, 7, 3933);
+    			add_location(p2, file, 121, 7, 3978);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p0, anchor);
@@ -2013,10 +2013,10 @@ var app = (function () {
     			append_dev(p2, t10);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*selectedPoint*/ 4) set_data_dev(t1, /*selectedPoint*/ ctx[2]);
-    			if (dirty & /*selectedTrueLabel*/ 16) set_data_dev(t4, /*selectedTrueLabel*/ ctx[4]);
-    			if (dirty & /*selectedPrediction*/ 32) set_data_dev(t7, /*selectedPrediction*/ ctx[5]);
-    			if (dirty & /*selectedConfidence*/ 64) set_data_dev(t9, /*selectedConfidence*/ ctx[6]);
+    			if (dirty[0] & /*selectedPoint*/ 4) set_data_dev(t1, /*selectedPoint*/ ctx[2]);
+    			if (dirty[0] & /*selectedTrueLabel*/ 16) set_data_dev(t4, /*selectedTrueLabel*/ ctx[4]);
+    			if (dirty[0] & /*selectedPrediction*/ 32) set_data_dev(t7, /*selectedPrediction*/ ctx[5]);
+    			if (dirty[0] & /*selectedConfidence*/ 64) set_data_dev(t9, /*selectedConfidence*/ ctx[6]);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(p0);
@@ -2031,14 +2031,14 @@ var app = (function () {
     		block,
     		id: create_if_block_7.name,
     		type: "if",
-    		source: "(116:6) {#if selectedPoint !== undefined}",
+    		source: "(119:6) {#if selectedPoint !== undefined}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (131:5) {#if instances !== undefined}
+    // (134:5) {#if instances !== undefined}
     function create_if_block_6(ctx) {
     	let each_1_anchor;
     	let each_value_3 = /*binsByClasses*/ ctx[8];
@@ -2065,7 +2065,7 @@ var app = (function () {
     			insert_dev(target, each_1_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*binsByClasses, colorScale*/ 257) {
+    			if (dirty[0] & /*binsByClasses, colorScale*/ 257) {
     				each_value_3 = /*binsByClasses*/ ctx[8];
     				validate_each_argument(each_value_3);
     				let i;
@@ -2099,31 +2099,31 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(131:5) {#if instances !== undefined}",
+    		source: "(134:5) {#if instances !== undefined}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (132:6) {#each binsByClasses as bin}
+    // (135:6) {#each binsByClasses as bin}
     function create_each_block_3(ctx) {
     	let div1;
     	let div0;
     	let b0;
     	let t1;
     	let b1;
-    	let t2_value = /*bin*/ ctx[23].class + "";
+    	let t2_value = /*bin*/ ctx[35].class + "";
     	let t2;
     	let t3;
     	let p0;
     	let t4;
-    	let t5_value = /*bin*/ ctx[23].class + "";
+    	let t5_value = /*bin*/ ctx[35].class + "";
     	let t5;
     	let t6;
     	let p1;
     	let t7;
-    	let t8_value = /*bin*/ ctx[23].class + "";
+    	let t8_value = /*bin*/ ctx[35].class + "";
     	let t8;
     	let t9;
 
@@ -2149,28 +2149,28 @@ var app = (function () {
     			set_style(b0, "float", "left");
     			set_style(b0, "color", "#565656");
     			set_style(b0, "text-align", "right");
-    			add_location(b0, file, 134, 9, 4576);
-    			set_style(b1, "background-color", /*colorScale*/ ctx[0](/*bin*/ ctx[23].class));
+    			add_location(b0, file, 137, 9, 4595);
+    			set_style(b1, "background-color", /*colorScale*/ ctx[0](/*bin*/ ctx[35].class));
     			set_style(b1, "width", "5px");
-    			add_location(b1, file, 135, 9, 4665);
+    			add_location(b1, file, 138, 9, 4684);
     			set_style(div0, "text-align", "right");
     			set_style(div0, "display", "inline");
     			set_style(div0, "float", "right");
-    			add_location(div0, file, 133, 8, 4506);
+    			add_location(div0, file, 136, 8, 4525);
     			set_style(p0, "margin", "0");
     			set_style(p0, "font-size", "12px");
     			set_style(p0, "text-align", "right");
     			set_style(p0, "float", "right");
-    			add_location(p0, file, 137, 8, 4772);
+    			add_location(p0, file, 140, 8, 4791);
     			set_style(p1, "margin", "0");
     			set_style(p1, "font-size", "12px");
     			set_style(p1, "text-align", "right");
     			set_style(p1, "float", "right");
-    			add_location(p1, file, 138, 8, 4874);
+    			add_location(p1, file, 141, 8, 4893);
     			set_style(div1, "height", "6.3%");
     			set_style(div1, "width", "100%");
     			set_style(div1, "margin-top", "15px");
-    			add_location(div1, file, 132, 7, 4442);
+    			add_location(div1, file, 135, 7, 4461);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -2190,8 +2190,8 @@ var app = (function () {
     			append_dev(div1, t9);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*colorScale*/ 1) {
-    				set_style(b1, "background-color", /*colorScale*/ ctx[0](/*bin*/ ctx[23].class));
+    			if (dirty[0] & /*colorScale*/ 1) {
+    				set_style(b1, "background-color", /*colorScale*/ ctx[0](/*bin*/ ctx[35].class));
     			}
     		},
     		d: function destroy(detaching) {
@@ -2203,14 +2203,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(132:6) {#each binsByClasses as bin}",
+    		source: "(135:6) {#each binsByClasses as bin}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (173:6) {#if instances !== undefined}
+    // (176:6) {#if instances !== undefined}
     function create_if_block(ctx) {
     	let path;
     	let path_stroke_width_value;
@@ -2236,7 +2236,7 @@ var app = (function () {
     			attr_dev(path, "fill", "none");
     			attr_dev(path, "stroke", "gray");
     			attr_dev(path, "stroke-width", path_stroke_width_value = /*selectedPoint*/ ctx[2] == undefined ? 0 : 1);
-    			add_location(path, file, 173, 7, 5923);
+    			add_location(path, file, 176, 7, 5942);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, path, anchor);
@@ -2248,15 +2248,15 @@ var app = (function () {
     			insert_dev(target, each_1_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*svgDistributionPath*/ 128) {
+    			if (dirty[0] & /*svgDistributionPath*/ 128) {
     				attr_dev(path, "d", /*svgDistributionPath*/ ctx[7]);
     			}
 
-    			if (dirty & /*selectedPoint*/ 4 && path_stroke_width_value !== (path_stroke_width_value = /*selectedPoint*/ ctx[2] == undefined ? 0 : 1)) {
+    			if (dirty[0] & /*selectedPoint*/ 4 && path_stroke_width_value !== (path_stroke_width_value = /*selectedPoint*/ ctx[2] == undefined ? 0 : 1)) {
     				attr_dev(path, "stroke-width", path_stroke_width_value);
     			}
 
-    			if (dirty & /*verticalSpace, binsByClasses, colorScale, selectedPoint, imgPath, selectedTrueLabel, selectedPrediction, selectedConfidence*/ 1405) {
+    			if (dirty[0] & /*verticalSpace, binsByClasses, colorScale, handleMouseEnter, selectedPoint, imgPath*/ 1805) {
     				each_value = /*binsByClasses*/ ctx[8];
     				validate_each_argument(each_value);
     				let i;
@@ -2291,49 +2291,68 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(173:6) {#if instances !== undefined}",
+    		source: "(176:6) {#if instances !== undefined}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (201:10) {:else}
+    // (233:10) {:else}
     function create_else_block(ctx) {
     	let image;
     	let rect;
     	let rect_fill_value;
+    	let mounted;
+    	let dispose;
+
+    	function mouseenter_handler_6() {
+    		return /*mouseenter_handler_6*/ ctx[23](/*binInstance*/ ctx[32]);
+    	}
 
     	const block = {
     		c: function create() {
     			image = svg_element("image");
     			rect = svg_element("rect");
-    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[20].binToBelong / 10 * 800 + (/*z*/ ctx[22] - 40) * 9);
-    			attr_dev(image, "y", /*i*/ ctx[16] * /*verticalSpace*/ ctx[10] + 10);
-    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[20].filename);
+    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[32].binToBelong / 10 * 800 + (/*z*/ ctx[34] - 40) * 9);
+    			attr_dev(image, "y", /*i*/ ctx[28] * /*verticalSpace*/ ctx[9] + 10);
+    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[32].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 201, 11, 8693);
-    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[20].binToBelong / 10 * 800 + (/*z*/ ctx[22] - 40) * 9);
-    			attr_dev(rect, "y", /*i*/ ctx[16] * /*verticalSpace*/ ctx[10] + 10);
+    			add_location(image, file, 233, 11, 9691);
+    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[32].binToBelong / 10 * 800 + (/*z*/ ctx[34] - 40) * 9);
+    			attr_dev(rect, "y", /*i*/ ctx[28] * /*verticalSpace*/ ctx[9] + 10);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
-    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[20]["predicted_label"]));
+    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[32]["predicted_label"]));
     			attr_dev(rect, "opacity", "0.6");
-    			add_location(rect, file, 202, 11, 8873);
+    			add_location(rect, file, 234, 11, 9871);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
     			insert_dev(target, rect, anchor);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(rect, "mouseenter", mouseenter_handler_6, false, false, false),
+    					listen_dev(rect, "mouseleave", /*mouseleave_handler_6*/ ctx[24], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
     		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[20]["predicted_label"]))) {
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[32]["predicted_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(image);
     			if (detaching) detach_dev(rect);
+    			mounted = false;
+    			run_all(dispose);
     		}
     	};
 
@@ -2341,49 +2360,68 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(201:10) {:else}",
+    		source: "(233:10) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (198:33) 
+    // (223:33) 
     function create_if_block_5(ctx) {
     	let image;
     	let rect;
     	let rect_fill_value;
+    	let mounted;
+    	let dispose;
+
+    	function mouseenter_handler_5() {
+    		return /*mouseenter_handler_5*/ ctx[21](/*binInstance*/ ctx[32]);
+    	}
 
     	const block = {
     		c: function create() {
     			image = svg_element("image");
     			rect = svg_element("rect");
-    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[20].binToBelong / 10 * 800 + (/*z*/ ctx[22] - 32) * 9);
-    			attr_dev(image, "y", /*i*/ ctx[16] * /*verticalSpace*/ ctx[10] + 18);
-    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[20].filename);
+    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[32].binToBelong / 10 * 800 + (/*z*/ ctx[34] - 32) * 9);
+    			attr_dev(image, "y", /*i*/ ctx[28] * /*verticalSpace*/ ctx[9] + 18);
+    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[32].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 198, 11, 8293);
-    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[20].binToBelong / 10 * 800 + (/*z*/ ctx[22] - 32) * 9);
-    			attr_dev(rect, "y", /*i*/ ctx[16] * /*verticalSpace*/ ctx[10] + 18);
+    			add_location(image, file, 223, 11, 9030);
+    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[32].binToBelong / 10 * 800 + (/*z*/ ctx[34] - 32) * 9);
+    			attr_dev(rect, "y", /*i*/ ctx[28] * /*verticalSpace*/ ctx[9] + 18);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
-    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[20]["predicted_label"]));
+    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[32]["predicted_label"]));
     			attr_dev(rect, "opacity", "0.6");
-    			add_location(rect, file, 199, 11, 8473);
+    			add_location(rect, file, 224, 11, 9210);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
     			insert_dev(target, rect, anchor);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(rect, "mouseenter", mouseenter_handler_5, false, false, false),
+    					listen_dev(rect, "mouseleave", /*mouseleave_handler_5*/ ctx[22], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
     		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[20]["predicted_label"]))) {
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[32]["predicted_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(image);
     			if (detaching) detach_dev(rect);
+    			mounted = false;
+    			run_all(dispose);
     		}
     	};
 
@@ -2391,49 +2429,68 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(198:33) ",
+    		source: "(223:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (195:33) 
+    // (213:33) 
     function create_if_block_4(ctx) {
     	let image;
     	let rect;
     	let rect_fill_value;
+    	let mounted;
+    	let dispose;
+
+    	function mouseenter_handler_4() {
+    		return /*mouseenter_handler_4*/ ctx[19](/*binInstance*/ ctx[32]);
+    	}
 
     	const block = {
     		c: function create() {
     			image = svg_element("image");
     			rect = svg_element("rect");
-    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[20].binToBelong / 10 * 800 + (/*z*/ ctx[22] - 24) * 9);
-    			attr_dev(image, "y", /*i*/ ctx[16] * /*verticalSpace*/ ctx[10] + 26);
-    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[20].filename);
+    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[32].binToBelong / 10 * 800 + (/*z*/ ctx[34] - 24) * 9);
+    			attr_dev(image, "y", /*i*/ ctx[28] * /*verticalSpace*/ ctx[9] + 26);
+    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[32].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 195, 11, 7877);
-    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[20].binToBelong / 10 * 800 + (/*z*/ ctx[22] - 24) * 9);
-    			attr_dev(rect, "y", /*i*/ ctx[16] * /*verticalSpace*/ ctx[10] + 26);
+    			add_location(image, file, 213, 11, 8353);
+    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[32].binToBelong / 10 * 800 + (/*z*/ ctx[34] - 24) * 9);
+    			attr_dev(rect, "y", /*i*/ ctx[28] * /*verticalSpace*/ ctx[9] + 26);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
-    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[20]["predicted_label"]));
+    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[32]["predicted_label"]));
     			attr_dev(rect, "opacity", "0.6");
-    			add_location(rect, file, 196, 11, 8057);
+    			add_location(rect, file, 214, 11, 8533);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
     			insert_dev(target, rect, anchor);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(rect, "mouseenter", mouseenter_handler_4, false, false, false),
+    					listen_dev(rect, "mouseleave", /*mouseleave_handler_4*/ ctx[20], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
     		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[20]["predicted_label"]))) {
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[32]["predicted_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(image);
     			if (detaching) detach_dev(rect);
+    			mounted = false;
+    			run_all(dispose);
     		}
     	};
 
@@ -2441,49 +2498,68 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(195:33) ",
+    		source: "(213:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (192:33) 
+    // (203:33) 
     function create_if_block_3(ctx) {
     	let image;
     	let rect;
     	let rect_fill_value;
+    	let mounted;
+    	let dispose;
+
+    	function mouseenter_handler_3() {
+    		return /*mouseenter_handler_3*/ ctx[17](/*binInstance*/ ctx[32]);
+    	}
 
     	const block = {
     		c: function create() {
     			image = svg_element("image");
     			rect = svg_element("rect");
-    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[20].binToBelong / 10 * 800 + (/*z*/ ctx[22] - 16) * 9);
-    			attr_dev(image, "y", /*i*/ ctx[16] * /*verticalSpace*/ ctx[10] + 34);
-    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[20].filename);
+    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[32].binToBelong / 10 * 800 + (/*z*/ ctx[34] - 16) * 9);
+    			attr_dev(image, "y", /*i*/ ctx[28] * /*verticalSpace*/ ctx[9] + 34);
+    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[32].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 192, 11, 7461);
-    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[20].binToBelong / 10 * 800 + (/*z*/ ctx[22] - 16) * 9);
-    			attr_dev(rect, "y", /*i*/ ctx[16] * /*verticalSpace*/ ctx[10] + 34);
+    			add_location(image, file, 203, 11, 7676);
+    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[32].binToBelong / 10 * 800 + (/*z*/ ctx[34] - 16) * 9);
+    			attr_dev(rect, "y", /*i*/ ctx[28] * /*verticalSpace*/ ctx[9] + 34);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
-    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[20]["predicted_label"]));
+    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[32]["predicted_label"]));
     			attr_dev(rect, "opacity", "0.6");
-    			add_location(rect, file, 193, 11, 7641);
+    			add_location(rect, file, 204, 11, 7856);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
     			insert_dev(target, rect, anchor);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(rect, "mouseenter", mouseenter_handler_3, false, false, false),
+    					listen_dev(rect, "mouseleave", /*mouseleave_handler_3*/ ctx[18], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
     		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[20]["predicted_label"]))) {
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[32]["predicted_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(image);
     			if (detaching) detach_dev(rect);
+    			mounted = false;
+    			run_all(dispose);
     		}
     	};
 
@@ -2491,49 +2567,68 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(192:33) ",
+    		source: "(203:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (189:33) 
+    // (193:33) 
     function create_if_block_2(ctx) {
     	let image;
     	let rect;
     	let rect_fill_value;
+    	let mounted;
+    	let dispose;
+
+    	function mouseenter_handler_2() {
+    		return /*mouseenter_handler_2*/ ctx[15](/*binInstance*/ ctx[32]);
+    	}
 
     	const block = {
     		c: function create() {
     			image = svg_element("image");
     			rect = svg_element("rect");
-    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[20].binToBelong / 10 * 800 + (/*z*/ ctx[22] - 8) * 9);
-    			attr_dev(image, "y", /*i*/ ctx[16] * /*verticalSpace*/ ctx[10] + 42);
-    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[20].filename);
+    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[32].binToBelong / 10 * 800 + (/*z*/ ctx[34] - 8) * 9);
+    			attr_dev(image, "y", /*i*/ ctx[28] * /*verticalSpace*/ ctx[9] + 42);
+    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[32].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 189, 11, 7047);
-    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[20].binToBelong / 10 * 800 + (/*z*/ ctx[22] - 8) * 9);
-    			attr_dev(rect, "y", /*i*/ ctx[16] * /*verticalSpace*/ ctx[10] + 42);
+    			add_location(image, file, 193, 11, 7001);
+    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[32].binToBelong / 10 * 800 + (/*z*/ ctx[34] - 8) * 9);
+    			attr_dev(rect, "y", /*i*/ ctx[28] * /*verticalSpace*/ ctx[9] + 42);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
-    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[20]["predicted_label"]));
+    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[32]["predicted_label"]));
     			attr_dev(rect, "opacity", "0.6");
-    			add_location(rect, file, 190, 11, 7226);
+    			add_location(rect, file, 194, 11, 7180);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
     			insert_dev(target, rect, anchor);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(rect, "mouseenter", mouseenter_handler_2, false, false, false),
+    					listen_dev(rect, "mouseleave", /*mouseleave_handler_2*/ ctx[16], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
     		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[20]["predicted_label"]))) {
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[32]["predicted_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(image);
     			if (detaching) detach_dev(rect);
+    			mounted = false;
+    			run_all(dispose);
     		}
     	};
 
@@ -2541,14 +2636,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(189:33) ",
+    		source: "(193:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (179:10) {#if z < 8}
+    // (182:10) {#if z < 8}
     function create_if_block_1(ctx) {
     	let image;
     	let rect;
@@ -2557,40 +2652,44 @@ var app = (function () {
     	let dispose;
 
     	function mouseenter_handler_1() {
-    		return /*mouseenter_handler_1*/ ctx[13](/*binInstance*/ ctx[20]);
+    		return /*mouseenter_handler_1*/ ctx[13](/*binInstance*/ ctx[32]);
     	}
 
     	const block = {
     		c: function create() {
     			image = svg_element("image");
     			rect = svg_element("rect");
-    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[20].binToBelong / 10 * 800 + /*z*/ ctx[22] * 9);
-    			attr_dev(image, "y", /*i*/ ctx[16] * /*verticalSpace*/ ctx[10] + 50);
-    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[20].filename);
+    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[32].binToBelong / 10 * 800 + /*z*/ ctx[34] * 9);
+    			attr_dev(image, "y", /*i*/ ctx[28] * /*verticalSpace*/ ctx[9] + 50);
+    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[32].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 179, 11, 6301);
-    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[20].binToBelong / 10 * 800 + /*z*/ ctx[22] * 9);
-    			attr_dev(rect, "y", /*i*/ ctx[16] * /*verticalSpace*/ ctx[10] + 50);
+    			add_location(image, file, 182, 11, 6320);
+    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[32].binToBelong / 10 * 800 + /*z*/ ctx[34] * 9);
+    			attr_dev(rect, "y", /*i*/ ctx[28] * /*verticalSpace*/ ctx[9] + 50);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
-    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[20]["predicted_label"]));
+    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[32]["predicted_label"]));
     			attr_dev(rect, "opacity", "0.6");
-    			add_location(rect, file, 180, 11, 6476);
+    			add_location(rect, file, 183, 11, 6495);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
     			insert_dev(target, rect, anchor);
 
     			if (!mounted) {
-    				dispose = listen_dev(rect, "mouseenter", mouseenter_handler_1, false, false, false);
+    				dispose = [
+    					listen_dev(rect, "mouseenter", mouseenter_handler_1, false, false, false),
+    					listen_dev(rect, "mouseleave", /*mouseleave_handler_1*/ ctx[14], false, false, false)
+    				];
+
     				mounted = true;
     			}
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
 
-    			if (dirty & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[20]["predicted_label"]))) {
+    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[32]["predicted_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
     		},
@@ -2598,7 +2697,7 @@ var app = (function () {
     			if (detaching) detach_dev(image);
     			if (detaching) detach_dev(rect);
     			mounted = false;
-    			dispose();
+    			run_all(dispose);
     		}
     	};
 
@@ -2606,23 +2705,23 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(179:10) {#if z < 8}",
+    		source: "(182:10) {#if z < 8}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (178:9) {#each row.bins[j]["instances"] as binInstance,z}
+    // (181:9) {#each row.bins[j]["instances"] as binInstance,z}
     function create_each_block_2(ctx) {
     	let if_block_anchor;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*z*/ ctx[22] < 8) return create_if_block_1;
-    		if (/*z*/ ctx[22] > 7 && /*z*/ ctx[22] < 16) return create_if_block_2;
-    		if (/*z*/ ctx[22] > 15 && /*z*/ ctx[22] < 24) return create_if_block_3;
-    		if (/*z*/ ctx[22] > 23 && /*z*/ ctx[22] < 32) return create_if_block_4;
-    		if (/*z*/ ctx[22] > 31 && /*z*/ ctx[22] < 40) return create_if_block_5;
+    		if (/*z*/ ctx[34] < 8) return create_if_block_1;
+    		if (/*z*/ ctx[34] > 7 && /*z*/ ctx[34] < 16) return create_if_block_2;
+    		if (/*z*/ ctx[34] > 15 && /*z*/ ctx[34] < 24) return create_if_block_3;
+    		if (/*z*/ ctx[34] > 23 && /*z*/ ctx[34] < 32) return create_if_block_4;
+    		if (/*z*/ ctx[34] > 31 && /*z*/ ctx[34] < 40) return create_if_block_5;
     		return create_else_block;
     	}
 
@@ -2651,18 +2750,18 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(178:9) {#each row.bins[j][\\\"instances\\\"] as binInstance,z}",
+    		source: "(181:9) {#each row.bins[j][\\\"instances\\\"] as binInstance,z}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (177:8) {#each {length:10} as _,j}
+    // (180:8) {#each {length:10} as _,j}
     function create_each_block_1(ctx) {
     	let rect0;
     	let rect1;
-    	let each_value_2 = /*row*/ ctx[14].bins[/*j*/ ctx[19]]["instances"];
+    	let each_value_2 = /*row*/ ctx[26].bins[/*j*/ ctx[31]]["instances"];
     	validate_each_argument(each_value_2);
     	let each_blocks = [];
 
@@ -2678,18 +2777,18 @@ var app = (function () {
 
     			rect0 = svg_element("rect");
     			rect1 = svg_element("rect");
-    			attr_dev(rect0, "x", 15 + /*j*/ ctx[19] * 80);
-    			attr_dev(rect0, "y", (/*i*/ ctx[16] + 1) * /*verticalSpace*/ ctx[10]);
+    			attr_dev(rect0, "x", 15 + /*j*/ ctx[31] * 80);
+    			attr_dev(rect0, "y", (/*i*/ ctx[28] + 1) * /*verticalSpace*/ ctx[9]);
     			attr_dev(rect0, "width", "1");
     			attr_dev(rect0, "height", "4");
     			attr_dev(rect0, "fill", "black");
-    			add_location(rect0, file, 206, 9, 9209);
+    			add_location(rect0, file, 245, 9, 10468);
     			attr_dev(rect1, "x", 815);
-    			attr_dev(rect1, "y", (/*i*/ ctx[16] + 1) * /*verticalSpace*/ ctx[10]);
+    			attr_dev(rect1, "y", (/*i*/ ctx[28] + 1) * /*verticalSpace*/ ctx[9]);
     			attr_dev(rect1, "width", "1");
     			attr_dev(rect1, "height", "4");
     			attr_dev(rect1, "fill", "black");
-    			add_location(rect1, file, 207, 9, 9312);
+    			add_location(rect1, file, 246, 9, 10571);
     		},
     		m: function mount(target, anchor) {
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -2700,8 +2799,8 @@ var app = (function () {
     			insert_dev(target, rect1, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*binsByClasses, verticalSpace, colorScale, selectedPoint, imgPath, selectedTrueLabel, selectedPrediction, selectedConfidence*/ 1405) {
-    				each_value_2 = /*row*/ ctx[14].bins[/*j*/ ctx[19]]["instances"];
+    			if (dirty[0] & /*binsByClasses, verticalSpace, colorScale, handleMouseEnter, selectedPoint, imgPath*/ 1805) {
+    				each_value_2 = /*row*/ ctx[26].bins[/*j*/ ctx[31]]["instances"];
     				validate_each_argument(each_value_2);
     				let i;
 
@@ -2735,14 +2834,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(177:8) {#each {length:10} as _,j}",
+    		source: "(180:8) {#each {length:10} as _,j}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (175:7) {#each binsByClasses as row,i}
+    // (178:7) {#each binsByClasses as row,i}
     function create_each_block(ctx) {
     	let rect;
     	let each_1_anchor;
@@ -2764,11 +2863,11 @@ var app = (function () {
 
     			each_1_anchor = empty();
     			attr_dev(rect, "x", "15");
-    			attr_dev(rect, "y", (/*i*/ ctx[16] + 1) * /*verticalSpace*/ ctx[10]);
+    			attr_dev(rect, "y", (/*i*/ ctx[28] + 1) * /*verticalSpace*/ ctx[9]);
     			attr_dev(rect, "width", "94%");
     			attr_dev(rect, "height", "0.5");
     			attr_dev(rect, "fill", "#565656");
-    			add_location(rect, file, 175, 8, 6083);
+    			add_location(rect, file, 178, 8, 6102);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, rect, anchor);
@@ -2780,7 +2879,7 @@ var app = (function () {
     			insert_dev(target, each_1_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*verticalSpace, binsByClasses, colorScale, selectedPoint, imgPath, selectedTrueLabel, selectedPrediction, selectedConfidence*/ 1405) {
+    			if (dirty[0] & /*verticalSpace, binsByClasses, colorScale, handleMouseEnter, selectedPoint, imgPath*/ 1805) {
     				each_value_1 = { length: 10 };
     				validate_each_argument(each_value_1);
     				let i;
@@ -2815,7 +2914,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(175:7) {#each binsByClasses as row,i}",
+    		source: "(178:7) {#each binsByClasses as row,i}",
     		ctx
     	});
 
@@ -2905,70 +3004,70 @@ var app = (function () {
     			attr_dev(meta, "charset", "utf-8");
     			add_location(meta, file, 6, 1, 138);
     			attr_dev(h1, "class", "svelte-1uze29s");
-    			add_location(h1, file, 69, 1, 1824);
+    			add_location(h1, file, 81, 1, 2318);
     			attr_dev(div0, "class", "view-title svelte-1uze29s");
-    			add_location(div0, file, 74, 4, 1998);
+    			add_location(div0, file, 86, 4, 2492);
     			attr_dev(svg0, "id", "scatterplot-container");
     			attr_dev(svg0, "class", "svelte-1uze29s");
-    			add_location(svg0, file, 75, 4, 2049);
+    			add_location(svg0, file, 87, 4, 2543);
     			attr_dev(div1, "id", "projection-view");
     			attr_dev(div1, "class", "view-panel svelte-1uze29s");
-    			add_location(div1, file, 73, 3, 1947);
+    			add_location(div1, file, 85, 3, 2441);
     			attr_dev(div2, "class", "view-title svelte-1uze29s");
-    			add_location(div2, file, 111, 4, 3611);
+    			add_location(div2, file, 114, 4, 3630);
     			set_style(img, "height", "90px");
     			set_style(img, "width", "90px");
     			set_style(img, "float", "left");
     			if (!src_url_equal(img.src, img_src_value = /*imgPath*/ ctx[3])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "No points selected");
-    			add_location(img, file, 113, 5, 3706);
+    			add_location(img, file, 116, 5, 3725);
     			set_style(div3, "float", "right");
-    			add_location(div3, file, 114, 5, 3803);
+    			add_location(div3, file, 117, 5, 3822);
     			attr_dev(div4, "id", "selected-image-view-content");
     			attr_dev(div4, "class", "svelte-1uze29s");
-    			add_location(div4, file, 112, 4, 3661);
+    			add_location(div4, file, 115, 4, 3680);
     			attr_dev(div5, "id", "selected-image-view");
     			attr_dev(div5, "class", "view-panel svelte-1uze29s");
-    			add_location(div5, file, 110, 3, 3556);
+    			add_location(div5, file, 113, 3, 3575);
     			attr_dev(div6, "id", "sidebar");
     			set_style(div6, "width", "450px");
     			attr_dev(div6, "class", "svelte-1uze29s");
-    			add_location(div6, file, 72, 2, 1902);
+    			add_location(div6, file, 84, 2, 2396);
     			attr_dev(div7, "class", "view-title svelte-1uze29s");
-    			add_location(div7, file, 127, 4, 4232);
+    			add_location(div7, file, 130, 4, 4251);
     			set_style(div8, "float", "left");
     			set_style(div8, "width", "10%");
     			set_style(div8, "height", "100%");
     			set_style(div8, "padding-top", "25px");
-    			add_location(div8, file, 129, 4, 4294);
+    			add_location(div8, file, 132, 4, 4313);
     			attr_dev(script, "type", "text/javascript");
-    			add_location(script, file, 147, 6, 5173);
+    			add_location(script, file, 150, 6, 5192);
     			attr_dev(div9, "id", "main-axis");
     			set_style(div9, "height", "20px");
     			set_style(div9, "width", "100%");
     			set_style(div9, "padding-left", "20px");
-    			add_location(div9, file, 146, 5, 5094);
+    			add_location(div9, file, 149, 5, 5113);
     			attr_dev(svg1, "id", "container");
     			set_style(svg1, "width", "100%");
     			set_style(svg1, "height", "100%");
     			attr_dev(svg1, "class", "svelte-1uze29s");
-    			add_location(svg1, file, 171, 5, 5822);
+    			add_location(svg1, file, 174, 5, 5841);
     			set_style(div10, "float", "right");
     			set_style(div10, "width", "90%");
     			set_style(div10, "height", "100%");
-    			add_location(div10, file, 145, 4, 5036);
+    			add_location(div10, file, 148, 4, 5055);
     			attr_dev(div11, "id", "score-distributions-view");
     			attr_dev(div11, "class", "view-panel svelte-1uze29s");
     			set_style(div11, "height", "760px");
-    			add_location(div11, file, 126, 3, 4150);
+    			add_location(div11, file, 129, 3, 4169);
     			attr_dev(div12, "id", "main-section");
     			set_style(div12, "width", "1000px");
     			attr_dev(div12, "class", "svelte-1uze29s");
-    			add_location(div12, file, 125, 2, 4099);
+    			add_location(div12, file, 128, 2, 4118);
     			attr_dev(div13, "id", "container");
     			attr_dev(div13, "class", "svelte-1uze29s");
-    			add_location(div13, file, 71, 1, 1878);
-    			add_location(main, file, 68, 0, 1815);
+    			add_location(div13, file, 83, 1, 2372);
+    			add_location(main, file, 80, 0, 2309);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3010,7 +3109,7 @@ var app = (function () {
     			append_dev(div10, svg1);
     			if (if_block3) if_block3.m(svg1, null);
     		},
-    		p: function update(ctx, [dirty]) {
+    		p: function update(ctx, dirty) {
     			if (/*instances*/ ctx[1] !== undefined) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
@@ -3024,7 +3123,7 @@ var app = (function () {
     				if_block0 = null;
     			}
 
-    			if (dirty & /*imgPath*/ 8 && !src_url_equal(img.src, img_src_value = /*imgPath*/ ctx[3])) {
+    			if (dirty[0] & /*imgPath*/ 8 && !src_url_equal(img.src, img_src_value = /*imgPath*/ ctx[3])) {
     				attr_dev(img, "src", img_src_value);
     			}
 
@@ -3109,6 +3208,19 @@ var app = (function () {
     	let verticalSpace = 63;
     	let svgDistributionPath;
 
+    	function handleMouseEnter(record) {
+    		$$invalidate(2, selectedPoint = record["id"]);
+    		$$invalidate(3, imgPath = "static/images/" + record.filename);
+    		$$invalidate(4, selectedTrueLabel = record.true_label);
+    		$$invalidate(5, selectedPrediction = record.predicted_label);
+    		$$invalidate(6, selectedConfidence = record.predicted_scores[selectedPrediction]);
+    		$$invalidate(7, svgDistributionPath = "M");
+
+    		record.predicted_scores.forEach(function (score, i) {
+    			$$invalidate(7, svgDistributionPath += (score * axisWidth + 15).toString() + "," + ((i + 1) * verticalSpace).toString() + (i !== 9 ? "L" : ""));
+    		});
+    	}
+
     	onMount(async () => {
     		const fetched = await fetch("static/prediction_results.json");
     		$$invalidate(1, instances = (await fetched.json()).test_instances);
@@ -3153,16 +3265,7 @@ var app = (function () {
     	});
 
     	const mouseenter_handler = record => {
-    		$$invalidate(2, selectedPoint = record["id"]);
-    		$$invalidate(3, imgPath = "static/images/" + record.filename);
-    		$$invalidate(4, selectedTrueLabel = record.true_label);
-    		$$invalidate(5, selectedPrediction = record.predicted_label);
-    		$$invalidate(6, selectedConfidence = record.predicted_scores[selectedPrediction]);
-    		$$invalidate(7, svgDistributionPath = "M");
-
-    		record.predicted_scores.forEach(function (score, i) {
-    			$$invalidate(7, svgDistributionPath += (score * axisWidth + 15).toString() + "," + ((i + 1) * verticalSpace).toString() + " L");
-    		});
+    		handleMouseEnter(record);
     	};
 
     	const mouseleave_handler = () => {
@@ -3171,11 +3274,57 @@ var app = (function () {
     	};
 
     	const mouseenter_handler_1 = binInstance => {
-    		$$invalidate(2, selectedPoint = binInstance["id"]);
-    		$$invalidate(3, imgPath = "static/images/" + binInstance.filename);
-    		$$invalidate(4, selectedTrueLabel = binInstance.true_label);
-    		$$invalidate(5, selectedPrediction = binInstance.predicted_label);
-    		$$invalidate(6, selectedConfidence = binInstance.predicted_score);
+    		handleMouseEnter(binInstance);
+    	};
+
+    	const mouseleave_handler_1 = () => {
+    		$$invalidate(2, selectedPoint = undefined);
+    		$$invalidate(3, imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=");
+    	};
+
+    	const mouseenter_handler_2 = binInstance => {
+    		handleMouseEnter(binInstance);
+    	};
+
+    	const mouseleave_handler_2 = () => {
+    		$$invalidate(2, selectedPoint = undefined);
+    		$$invalidate(3, imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=");
+    	};
+
+    	const mouseenter_handler_3 = binInstance => {
+    		handleMouseEnter(binInstance);
+    	};
+
+    	const mouseleave_handler_3 = () => {
+    		$$invalidate(2, selectedPoint = undefined);
+    		$$invalidate(3, imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=");
+    	};
+
+    	const mouseenter_handler_4 = binInstance => {
+    		handleMouseEnter(binInstance);
+    	};
+
+    	const mouseleave_handler_4 = () => {
+    		$$invalidate(2, selectedPoint = undefined);
+    		$$invalidate(3, imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=");
+    	};
+
+    	const mouseenter_handler_5 = binInstance => {
+    		handleMouseEnter(binInstance);
+    	};
+
+    	const mouseleave_handler_5 = () => {
+    		$$invalidate(2, selectedPoint = undefined);
+    		$$invalidate(3, imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=");
+    	};
+
+    	const mouseenter_handler_6 = binInstance => {
+    		handleMouseEnter(binInstance);
+    	};
+
+    	const mouseleave_handler_6 = () => {
+    		$$invalidate(2, selectedPoint = undefined);
+    		$$invalidate(3, imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=");
     	};
 
     	$$self.$capture_state = () => ({
@@ -3195,7 +3344,8 @@ var app = (function () {
     		selectedConfidence,
     		axisWidth,
     		verticalSpace,
-    		svgDistributionPath
+    		svgDistributionPath,
+    		handleMouseEnter
     	});
 
     	$$self.$inject_state = $$props => {
@@ -3207,8 +3357,8 @@ var app = (function () {
     		if ('selectedTrueLabel' in $$props) $$invalidate(4, selectedTrueLabel = $$props.selectedTrueLabel);
     		if ('selectedPrediction' in $$props) $$invalidate(5, selectedPrediction = $$props.selectedPrediction);
     		if ('selectedConfidence' in $$props) $$invalidate(6, selectedConfidence = $$props.selectedConfidence);
-    		if ('axisWidth' in $$props) $$invalidate(9, axisWidth = $$props.axisWidth);
-    		if ('verticalSpace' in $$props) $$invalidate(10, verticalSpace = $$props.verticalSpace);
+    		if ('axisWidth' in $$props) axisWidth = $$props.axisWidth;
+    		if ('verticalSpace' in $$props) $$invalidate(9, verticalSpace = $$props.verticalSpace);
     		if ('svgDistributionPath' in $$props) $$invalidate(7, svgDistributionPath = $$props.svgDistributionPath);
     	};
 
@@ -3226,18 +3376,29 @@ var app = (function () {
     		selectedConfidence,
     		svgDistributionPath,
     		binsByClasses,
-    		axisWidth,
     		verticalSpace,
+    		handleMouseEnter,
     		mouseenter_handler,
     		mouseleave_handler,
-    		mouseenter_handler_1
+    		mouseenter_handler_1,
+    		mouseleave_handler_1,
+    		mouseenter_handler_2,
+    		mouseleave_handler_2,
+    		mouseenter_handler_3,
+    		mouseleave_handler_3,
+    		mouseenter_handler_4,
+    		mouseleave_handler_4,
+    		mouseenter_handler_5,
+    		mouseleave_handler_5,
+    		mouseenter_handler_6,
+    		mouseleave_handler_6
     	];
     }
 
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance, create_fragment, safe_not_equal, {});
+    		init(this, options, instance, create_fragment, safe_not_equal, {}, null, [-1, -1]);
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,

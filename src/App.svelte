@@ -29,6 +29,18 @@
 	let verticalSpace = 63
 	let svgDistributionPath; 
 
+	function handleMouseEnter(record) {
+		selectedPoint = record["id"];
+		imgPath = "static/images/" + record.filename
+		selectedTrueLabel = record.true_label
+		selectedPrediction = record.predicted_label
+		selectedConfidence = record.predicted_scores[selectedPrediction]
+		svgDistributionPath = "M"
+		record.predicted_scores.forEach(function (score, i) {
+			svgDistributionPath += (score*axisWidth +15).toString() + "," + ((i+1)*verticalSpace).toString() + (i!==9? "L": "")
+		});
+	}
+
 	onMount(async () => {
 		const fetched = await fetch("static/prediction_results.json");
 		instances = (await fetched.json()).test_instances;
@@ -86,17 +98,8 @@
 									r="4"
 									style="fill: {colorScale(record["true_label"])}; stroke: {colorScale(record["predicted_label"])}"
 									on:mouseenter={()=>{
-										selectedPoint = record["id"];
-										imgPath = "static/images/" + record.filename
-										selectedTrueLabel = record.true_label
-										selectedPrediction = record.predicted_label
-										selectedConfidence = record.predicted_scores[selectedPrediction]
-										svgDistributionPath = "M"
-										record.predicted_scores.forEach(function (score, i) {
-											svgDistributionPath += (score*axisWidth +15).toString() + "," + ((i+1)*verticalSpace).toString() + " L"
-										});
+										handleMouseEnter(record);
 									}}
-
 									on:mouseleave={()=>{
 										selectedPoint=undefined
 										imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
@@ -180,27 +183,63 @@
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*verticalSpace + 50}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
 											<rect x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*verticalSpace + 50}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6" 
 											on:mouseenter={()=>{
-												selectedPoint = binInstance["id"];
-												imgPath = "static/images/" + binInstance.filename
-												selectedTrueLabel = binInstance.true_label
-												selectedPrediction = binInstance.predicted_label
-												selectedConfidence = binInstance.predicted_score
-											}}></rect>
+												handleMouseEnter(binInstance);
+											}}
+											on:mouseleave={()=>{
+												selectedPoint=undefined
+												imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+											}}
+											></rect>
 										{:else if z> 7 && z<16}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*verticalSpace + 42}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*verticalSpace + 42}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*verticalSpace + 42}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"
+											on:mouseenter={()=>{
+												handleMouseEnter(binInstance);
+											}}
+											on:mouseleave={()=>{
+												selectedPoint=undefined
+												imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+											}}></rect>
 										{:else if z>15 && z<24}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*verticalSpace + 34}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*verticalSpace + 34}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*verticalSpace + 34}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"
+											on:mouseenter={()=>{
+												handleMouseEnter(binInstance);
+											}}
+											on:mouseleave={()=>{
+												selectedPoint=undefined
+												imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+											}}></rect>
 										{:else if z>23 && z<32}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*verticalSpace + 26}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*verticalSpace + 26}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*verticalSpace + 26}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"
+											on:mouseenter={()=>{
+												handleMouseEnter(binInstance);
+											}}
+											on:mouseleave={()=>{
+												selectedPoint=undefined
+												imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+											}}></rect>
 										{:else if z>31 && z<40}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*verticalSpace + 18}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*verticalSpace + 18}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*verticalSpace + 18}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"
+											on:mouseenter={()=>{
+												handleMouseEnter(binInstance);
+											}}
+											on:mouseleave={()=>{
+												selectedPoint=undefined
+												imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+											}}></rect>
 										{:else}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*verticalSpace + 10}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*verticalSpace + 10}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*verticalSpace + 10}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"
+											on:mouseenter={()=>{
+												handleMouseEnter(binInstance);
+											}}
+											on:mouseleave={()=>{
+												selectedPoint=undefined
+												imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+											}}></rect>
 										{/if}
 									{/each}
 									<!-- <text x="{40 + (j*80)}" y="{35 + (i*65)}">{row.bins[j]["instances"].length}</text> -->
