@@ -29,6 +29,7 @@
 	let verticalSpace = 63
 	let svgDistributionPath; 
 	let highlightedlabeldAsGroup;
+	let highlightedPredictedAsGroup;
 
 	function handleMouseEnter(record) {
 		selectedPoint = record["id"];
@@ -148,7 +149,15 @@
 										}
 									}}
 								>Labeled as {bin.class}</p>
-								<p class="unselected_button">Predicted as {bin.class}</p>
+								<p class="{highlightedPredictedAsGroup==bin.class? "selected_button" : "unselected_button"}"
+									on:click={()=>{
+										if (highlightedPredictedAsGroup == undefined) {
+											highlightedPredictedAsGroup = bin.class
+										} else {
+											highlightedPredictedAsGroup = undefined
+										}
+									}}
+								>Predicted as {bin.class}</p>
 							</div>
 						{/each}
 					{/if}
@@ -298,7 +307,7 @@
 	circle.regular {
 		stroke-width: 3;
 		fill-opacity: 0.9;
-		stroke-opacity: 0.9;
+		stroke-opacity: 1;
 		r: 6
 	}
 
