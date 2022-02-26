@@ -25,10 +25,9 @@
 	let selectedTrueLabel = ""
 	let selectedPrediction = ""
 	let selectedConfidence = 0
-	let selectedPredictedScoresArray;
 	let axisWidth = 800
 	let verticalSpace = 63
-	let svgDistributionPath = "M" + "15,0 L400,50 L600,300 L800,550 L1000,300"
+	let svgDistributionPath; 
 
 	onMount(async () => {
 		const fetched = await fetch("static/prediction_results.json");
@@ -92,10 +91,15 @@
 										selectedTrueLabel = record.true_label
 										selectedPrediction = record.predicted_label
 										selectedConfidence = record.predicted_scores[selectedPrediction]
+										svgDistributionPath = "M"
+										record.predicted_scores.forEach(function (score, i) {
+											svgDistributionPath += (score*axisWidth +15).toString() + "," + ((i+1)*verticalSpace).toString() + " L"
+										});
 									}}
 
 									on:mouseleave={()=>{
 										selectedPoint=undefined
+										imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
 									}}
 								> <title>{record["true_label"]}</title></circle>
 							{/each}
