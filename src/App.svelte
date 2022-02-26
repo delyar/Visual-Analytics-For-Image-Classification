@@ -56,6 +56,7 @@
 		});
 		
 		console.log('Bins By Classes', binsByClasses);
+
 	});
 
 	
@@ -81,7 +82,7 @@
 									cy={record.projection[1]*3.5 + 62}
 									r="4"
 									style="fill: {colorScale(record["true_label"])}; stroke: {colorScale(record["predicted_label"])}"
-									on:click={()=>{
+									on:mouseenter={()=>{
 										selectedPoint = record["id"];
 										imgPath = "static/images/" + record.filename
 										selectedTrueLabel = record.true_label
@@ -164,7 +165,14 @@
 									{#each row.bins[j]["instances"] as binInstance,z}
 										{#if z < 8}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*63 + 50}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*63 + 50}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*63 + 50}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6" 
+											on:mouseenter={()=>{
+												selectedPoint = binInstance["id"];
+												imgPath = "static/images/" + binInstance.filename
+												selectedTrueLabel = binInstance.true_label
+												selectedPrediction = binInstance.predicted_label
+												selectedConfidence = binInstance.predicted_score
+											}}></rect>
 										{:else if z> 7 && z<16}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*63 + 42}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
 											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*63 + 42}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' opacity="0.6"></rect>
@@ -184,7 +192,7 @@
 									{/each}
 									<!-- <text x="{40 + (j*80)}" y="{35 + (i*65)}">{row.bins[j]["instances"].length}</text> -->
 									<rect x="{15 + (j*80)}" y="{(i+1)*63}" width="1" height="4" fill='black'></rect> 
-									<rect x="{815}" y="{(i+1)*63}" width="1" height="4" fill='green'></rect> 
+									<rect x="{815}" y="{(i+1)*63}" width="1" height="4" fill='black'></rect> 
 								{/each}
 							{/each}
 						{/if}
