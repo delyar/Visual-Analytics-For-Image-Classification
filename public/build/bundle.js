@@ -1,5 +1,5 @@
 
-(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35730/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
 var app = (function () {
     'use strict';
 
@@ -1808,7 +1808,7 @@ var app = (function () {
     			}
 
     			attr_dev(g, "id", "scatterplotData");
-    			attr_dev(g, "transform", "translate(" + 50 + ", " + 20 + ")");
+    			attr_dev(g, "transform", "translate(" + 60 + ", " + 20 + ")");
     			add_location(g, file, 91, 6, 2687);
     		},
     		m: function mount(target, anchor) {
@@ -1819,7 +1819,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*instances, selectedPoint, highlightedlabeldAsGroup, colorScale, handleMouseEnter, imgPath*/ 4367) {
+    			if (dirty[0] & /*instances, selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup, colorScale, handleMouseEnter, imgPath*/ 4879) {
     				each_value_4 = /*instances*/ ctx[1];
     				validate_each_argument(each_value_4);
     				let i;
@@ -1882,14 +1882,14 @@ var app = (function () {
     			circle = svg_element("circle");
     			title = svg_element("title");
     			t = text(t_value);
-    			add_location(title, file, 108, 10, 3599);
+    			add_location(title, file, 108, 10, 3679);
     			attr_dev(circle, "id", circle_id_value = "datapoint-" + /*record*/ ctx[42].id);
 
-    			attr_dev(circle, "class", circle_class_value = "point " + (/*selectedPoint*/ ctx[2] == undefined && /*record*/ ctx[42].true_label == /*highlightedlabeldAsGroup*/ ctx[8]
-    			? 'regular'
-    			: /*selectedPoint*/ ctx[2] == /*record*/ ctx[42].id || /*record*/ ctx[42].true_label == /*highlightedlabeldAsGroup*/ ctx[8]
-    				? 'regular'
-    				: 'unselected-circle') + " svelte-1952o39");
+    			attr_dev(circle, "class", circle_class_value = "point " + (/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
+    			? "regular"
+    			: /*selectedPoint*/ ctx[2] == /*record*/ ctx[42].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*record*/ ctx[42].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*record*/ ctx[42].predicted_label
+    				? "highlight"
+    				: "unHighlight") + " svelte-yuemht");
 
     			attr_dev(circle, "cx", circle_cx_value = /*record*/ ctx[42].projection[0] * 4.5 + 100);
     			attr_dev(circle, "cy", circle_cy_value = /*record*/ ctx[42].projection[1] * 3.5 + 62);
@@ -1920,11 +1920,11 @@ var app = (function () {
     				attr_dev(circle, "id", circle_id_value);
     			}
 
-    			if (dirty[0] & /*selectedPoint, instances, highlightedlabeldAsGroup*/ 262 && circle_class_value !== (circle_class_value = "point " + (/*selectedPoint*/ ctx[2] == undefined && /*record*/ ctx[42].true_label == /*highlightedlabeldAsGroup*/ ctx[8]
-    			? 'regular'
-    			: /*selectedPoint*/ ctx[2] == /*record*/ ctx[42].id || /*record*/ ctx[42].true_label == /*highlightedlabeldAsGroup*/ ctx[8]
-    				? 'regular'
-    				: 'unselected-circle') + " svelte-1952o39")) {
+    			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup, instances*/ 774 && circle_class_value !== (circle_class_value = "point " + (/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
+    			? "regular"
+    			: /*selectedPoint*/ ctx[2] == /*record*/ ctx[42].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*record*/ ctx[42].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*record*/ ctx[42].predicted_label
+    				? "highlight"
+    				: "unHighlight") + " svelte-yuemht")) {
     				attr_dev(circle, "class", circle_class_value);
     			}
 
@@ -1995,9 +1995,9 @@ var app = (function () {
     			t8 = text(" (Confidence: ");
     			t9 = text(/*selectedConfidence*/ ctx[6]);
     			t10 = text(")");
-    			add_location(p0, file, 121, 7, 4038);
-    			add_location(p1, file, 122, 7, 4073);
-    			add_location(p2, file, 123, 7, 4118);
+    			add_location(p0, file, 121, 7, 4118);
+    			add_location(p1, file, 122, 7, 4153);
+    			add_location(p2, file, 123, 7, 4198);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p0, anchor);
@@ -2164,30 +2164,30 @@ var app = (function () {
     			set_style(b0, "float", "left");
     			set_style(b0, "color", "#565656");
     			set_style(b0, "text-align", "right");
-    			add_location(b0, file, 139, 9, 4735);
+    			add_location(b0, file, 139, 9, 4815);
     			set_style(b1, "background-color", /*colorScale*/ ctx[0](/*bin*/ ctx[39].class));
     			set_style(b1, "width", "5px");
-    			add_location(b1, file, 140, 9, 4824);
+    			add_location(b1, file, 140, 9, 4904);
     			set_style(div0, "text-align", "right");
     			set_style(div0, "display", "inline");
     			set_style(div0, "float", "right");
-    			add_location(div0, file, 138, 8, 4665);
+    			add_location(div0, file, 138, 8, 4745);
 
     			attr_dev(p0, "class", p0_class_value = "" + (null_to_empty(/*highlightedlabeldAsGroup*/ ctx[8] == /*bin*/ ctx[39].class
     			? "selected_button"
-    			: "unselected_button") + " svelte-1952o39"));
+    			: "unselected_button") + " svelte-yuemht"));
 
-    			add_location(p0, file, 142, 8, 4931);
+    			add_location(p0, file, 142, 8, 5011);
 
     			attr_dev(p1, "class", p1_class_value = "" + (null_to_empty(/*highlightedPredictedAsGroup*/ ctx[9] == /*bin*/ ctx[39].class
     			? "selected_button"
-    			: "unselected_button") + " svelte-1952o39"));
+    			: "unselected_button") + " svelte-yuemht"));
 
-    			add_location(p1, file, 151, 8, 5293);
+    			add_location(p1, file, 151, 8, 5373);
     			set_style(div1, "height", "6.3%");
     			set_style(div1, "width", "100%");
     			set_style(div1, "margin-top", "15px");
-    			add_location(div1, file, 137, 7, 4601);
+    			add_location(div1, file, 137, 7, 4681);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -2224,13 +2224,13 @@ var app = (function () {
 
     			if (dirty[0] & /*highlightedlabeldAsGroup*/ 256 && p0_class_value !== (p0_class_value = "" + (null_to_empty(/*highlightedlabeldAsGroup*/ ctx[8] == /*bin*/ ctx[39].class
     			? "selected_button"
-    			: "unselected_button") + " svelte-1952o39"))) {
+    			: "unselected_button") + " svelte-yuemht"))) {
     				attr_dev(p0, "class", p0_class_value);
     			}
 
     			if (dirty[0] & /*highlightedPredictedAsGroup*/ 512 && p1_class_value !== (p1_class_value = "" + (null_to_empty(/*highlightedPredictedAsGroup*/ ctx[9] == /*bin*/ ctx[39].class
     			? "selected_button"
-    			: "unselected_button") + " svelte-1952o39"))) {
+    			: "unselected_button") + " svelte-yuemht"))) {
     				attr_dev(p1, "class", p1_class_value);
     			}
     		},
@@ -2278,7 +2278,7 @@ var app = (function () {
     			attr_dev(path, "fill", "none");
     			attr_dev(path, "stroke", "gray");
     			attr_dev(path, "stroke-width", path_stroke_width_value = /*selectedPoint*/ ctx[2] == undefined ? 0 : 1);
-    			add_location(path, file, 194, 7, 6614);
+    			add_location(path, file, 194, 7, 6694);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, path, anchor);
@@ -2298,7 +2298,7 @@ var app = (function () {
     				attr_dev(path, "stroke-width", path_stroke_width_value);
     			}
 
-    			if (dirty[0] & /*verticalSpace, binsByClasses, colorScale, selectedPoint, handleMouseEnter, imgPath*/ 7181) {
+    			if (dirty[0] & /*verticalSpace, binsByClasses, colorScale, selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup, handleMouseEnter, imgPath*/ 7949) {
     				each_value = /*binsByClasses*/ ctx[10];
     				validate_each_argument(each_value);
     				let i;
@@ -2362,20 +2362,20 @@ var app = (function () {
     			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[36].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 251, 11, 10952);
+    			add_location(image, file, 251, 11, 11962);
     			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + (/*z*/ ctx[38] - 40) * 9);
     			attr_dev(rect, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 10);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]));
 
-    			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined
-    			? "highlighted_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id
-    				? "highlighted_box"
-    				: "unhighlighted_box") + " svelte-1952o39"));
+    			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
+    			? "regular_box"
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    				? "highlight_box"
+    				: "unHighlight_box") + " svelte-yuemht"));
 
-    			add_location(rect, file, 252, 11, 11132);
+    			add_location(rect, file, 252, 11, 12142);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2397,11 +2397,11 @@ var app = (function () {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
 
-    			if (dirty[0] & /*selectedPoint*/ 4 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined
-    			? "highlighted_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id
-    				? "highlighted_box"
-    				: "unhighlighted_box") + " svelte-1952o39"))) {
+    			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
+    			? "regular_box"
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    				? "highlight_box"
+    				: "unHighlight_box") + " svelte-yuemht"))) {
     				attr_dev(rect, "class", rect_class_value);
     			}
     		},
@@ -2446,20 +2446,20 @@ var app = (function () {
     			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[36].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 241, 11, 10173);
+    			add_location(image, file, 241, 11, 10997);
     			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + (/*z*/ ctx[38] - 32) * 9);
     			attr_dev(rect, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 18);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]));
 
-    			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined
-    			? "highlighted_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id
-    				? "highlighted_box"
-    				: "unhighlighted_box") + " svelte-1952o39"));
+    			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
+    			? "regular_box"
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    				? "highlight_box"
+    				: "unHighlight_box") + " svelte-yuemht"));
 
-    			add_location(rect, file, 242, 11, 10353);
+    			add_location(rect, file, 242, 11, 11177);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2481,11 +2481,11 @@ var app = (function () {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
 
-    			if (dirty[0] & /*selectedPoint*/ 4 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined
-    			? "highlighted_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id
-    				? "highlighted_box"
-    				: "unhighlighted_box") + " svelte-1952o39"))) {
+    			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
+    			? "regular_box"
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    				? "highlight_box"
+    				: "unHighlight_box") + " svelte-yuemht"))) {
     				attr_dev(rect, "class", rect_class_value);
     			}
     		},
@@ -2530,20 +2530,20 @@ var app = (function () {
     			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[36].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 231, 11, 9378);
+    			add_location(image, file, 231, 11, 10016);
     			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + (/*z*/ ctx[38] - 24) * 9);
     			attr_dev(rect, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 26);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]));
 
-    			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined
-    			? "highlighted_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id
-    				? "highlighted_box"
-    				: "unhighlighted_box") + " svelte-1952o39"));
+    			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
+    			? "regular_box"
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    				? "highlight_box"
+    				: "unHighlight_box") + " svelte-yuemht"));
 
-    			add_location(rect, file, 232, 11, 9558);
+    			add_location(rect, file, 232, 11, 10196);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2565,11 +2565,11 @@ var app = (function () {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
 
-    			if (dirty[0] & /*selectedPoint*/ 4 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined
-    			? "highlighted_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id
-    				? "highlighted_box"
-    				: "unhighlighted_box") + " svelte-1952o39"))) {
+    			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
+    			? "regular_box"
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    				? "highlight_box"
+    				: "unHighlight_box") + " svelte-yuemht"))) {
     				attr_dev(rect, "class", rect_class_value);
     			}
     		},
@@ -2614,20 +2614,20 @@ var app = (function () {
     			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[36].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 221, 11, 8583);
+    			add_location(image, file, 221, 11, 9035);
     			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + (/*z*/ ctx[38] - 16) * 9);
     			attr_dev(rect, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 34);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]));
 
-    			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined
-    			? "highlighted_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id
-    				? "highlighted_box"
-    				: "unhighlighted_box") + " svelte-1952o39"));
+    			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
+    			? "regular_box"
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    				? "highlight_box"
+    				: "unHighlight_box") + " svelte-yuemht"));
 
-    			add_location(rect, file, 222, 11, 8763);
+    			add_location(rect, file, 222, 11, 9215);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2649,11 +2649,11 @@ var app = (function () {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
 
-    			if (dirty[0] & /*selectedPoint*/ 4 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined
-    			? "highlighted_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id
-    				? "highlighted_box"
-    				: "unhighlighted_box") + " svelte-1952o39"))) {
+    			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
+    			? "regular_box"
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    				? "highlight_box"
+    				: "unHighlight_box") + " svelte-yuemht"))) {
     				attr_dev(rect, "class", rect_class_value);
     			}
     		},
@@ -2698,20 +2698,20 @@ var app = (function () {
     			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[36].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 211, 11, 7790);
+    			add_location(image, file, 211, 11, 8056);
     			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + (/*z*/ ctx[38] - 8) * 9);
     			attr_dev(rect, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 42);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]));
 
-    			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined
-    			? "highlighted_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id
-    				? "highlighted_box"
-    				: "unhighlighted_box") + " svelte-1952o39"));
+    			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
+    			? "regular_box"
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    				? "highlight_box"
+    				: "unHighlight_box") + " svelte-yuemht"));
 
-    			add_location(rect, file, 212, 11, 7969);
+    			add_location(rect, file, 212, 11, 8235);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2733,11 +2733,11 @@ var app = (function () {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
 
-    			if (dirty[0] & /*selectedPoint*/ 4 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined
-    			? "highlighted_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id
-    				? "highlighted_box"
-    				: "unhighlighted_box") + " svelte-1952o39"))) {
+    			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
+    			? "regular_box"
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    				? "highlight_box"
+    				: "unHighlight_box") + " svelte-yuemht"))) {
     				attr_dev(rect, "class", rect_class_value);
     			}
     		},
@@ -2782,20 +2782,20 @@ var app = (function () {
     			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[36].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
-    			add_location(image, file, 200, 11, 6992);
+    			add_location(image, file, 200, 11, 7072);
     			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + /*z*/ ctx[38] * 9);
     			attr_dev(rect, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 50);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]));
 
-    			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined
-    			? "highlighted_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id
-    				? "highlighted_box"
-    				: "unhighlighted_box") + " svelte-1952o39"));
+    			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
+    			? "regular_box"
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    				? "highlight_box"
+    				: "unHighlight_box") + " svelte-yuemht"));
 
-    			add_location(rect, file, 201, 11, 7167);
+    			add_location(rect, file, 201, 11, 7247);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2817,11 +2817,11 @@ var app = (function () {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
 
-    			if (dirty[0] & /*selectedPoint*/ 4 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined
-    			? "highlighted_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id
-    				? "highlighted_box"
-    				: "unhighlighted_box") + " svelte-1952o39"))) {
+    			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
+    			? "regular_box"
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    				? "highlight_box"
+    				: "unHighlight_box") + " svelte-yuemht"))) {
     				attr_dev(rect, "class", rect_class_value);
     			}
     		},
@@ -2914,13 +2914,13 @@ var app = (function () {
     			attr_dev(rect0, "width", "1");
     			attr_dev(rect0, "height", "4");
     			attr_dev(rect0, "fill", "black");
-    			add_location(rect0, file, 263, 9, 11747);
+    			add_location(rect0, file, 263, 9, 12943);
     			attr_dev(rect1, "x", 815);
     			attr_dev(rect1, "y", (/*i*/ ctx[32] + 1) * /*verticalSpace*/ ctx[11]);
     			attr_dev(rect1, "width", "1");
     			attr_dev(rect1, "height", "4");
     			attr_dev(rect1, "fill", "black");
-    			add_location(rect1, file, 264, 9, 11850);
+    			add_location(rect1, file, 264, 9, 13046);
     		},
     		m: function mount(target, anchor) {
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -2931,7 +2931,7 @@ var app = (function () {
     			insert_dev(target, rect1, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*binsByClasses, verticalSpace, colorScale, selectedPoint, handleMouseEnter, imgPath*/ 7181) {
+    			if (dirty[0] & /*binsByClasses, verticalSpace, colorScale, selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup, handleMouseEnter, imgPath*/ 7949) {
     				each_value_2 = /*row*/ ctx[30].bins[/*j*/ ctx[35]]["instances"];
     				validate_each_argument(each_value_2);
     				let i;
@@ -2999,7 +2999,7 @@ var app = (function () {
     			attr_dev(rect, "width", "94%");
     			attr_dev(rect, "height", "0.5");
     			attr_dev(rect, "fill", "#565656");
-    			add_location(rect, file, 196, 8, 6774);
+    			add_location(rect, file, 196, 8, 6854);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, rect, anchor);
@@ -3011,7 +3011,7 @@ var app = (function () {
     			insert_dev(target, each_1_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*verticalSpace, binsByClasses, colorScale, selectedPoint, handleMouseEnter, imgPath*/ 7181) {
+    			if (dirty[0] & /*verticalSpace, binsByClasses, colorScale, selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup, handleMouseEnter, imgPath*/ 7949) {
     				each_value_1 = { length: 10 };
     				validate_each_argument(each_value_1);
     				let i;
@@ -3135,69 +3135,69 @@ var app = (function () {
     			if (if_block3) if_block3.c();
     			attr_dev(meta, "charset", "utf-8");
     			add_location(meta, file, 6, 1, 138);
-    			attr_dev(h1, "class", "svelte-1952o39");
+    			attr_dev(h1, "class", "svelte-yuemht");
     			add_location(h1, file, 83, 1, 2385);
-    			attr_dev(div0, "class", "view-title svelte-1952o39");
+    			attr_dev(div0, "class", "view-title svelte-yuemht");
     			add_location(div0, file, 88, 4, 2559);
     			attr_dev(svg0, "id", "scatterplot-container");
-    			attr_dev(svg0, "class", "svelte-1952o39");
+    			attr_dev(svg0, "class", "svelte-yuemht");
     			add_location(svg0, file, 89, 4, 2610);
     			attr_dev(div1, "id", "projection-view");
-    			attr_dev(div1, "class", "view-panel svelte-1952o39");
+    			attr_dev(div1, "class", "view-panel svelte-yuemht");
     			add_location(div1, file, 87, 3, 2508);
-    			attr_dev(div2, "class", "view-title svelte-1952o39");
-    			add_location(div2, file, 116, 4, 3770);
+    			attr_dev(div2, "class", "view-title svelte-yuemht");
+    			add_location(div2, file, 116, 4, 3850);
     			set_style(img, "height", "90px");
     			set_style(img, "width", "90px");
     			set_style(img, "float", "left");
     			if (!src_url_equal(img.src, img_src_value = /*imgPath*/ ctx[3])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "No points selected");
-    			add_location(img, file, 118, 5, 3865);
+    			add_location(img, file, 118, 5, 3945);
     			set_style(div3, "float", "right");
-    			add_location(div3, file, 119, 5, 3962);
+    			add_location(div3, file, 119, 5, 4042);
     			attr_dev(div4, "id", "selected-image-view-content");
-    			attr_dev(div4, "class", "svelte-1952o39");
-    			add_location(div4, file, 117, 4, 3820);
+    			attr_dev(div4, "class", "svelte-yuemht");
+    			add_location(div4, file, 117, 4, 3900);
     			attr_dev(div5, "id", "selected-image-view");
-    			attr_dev(div5, "class", "view-panel svelte-1952o39");
-    			add_location(div5, file, 115, 3, 3715);
+    			attr_dev(div5, "class", "view-panel svelte-yuemht");
+    			add_location(div5, file, 115, 3, 3795);
     			attr_dev(div6, "id", "sidebar");
-    			set_style(div6, "width", "450px");
-    			attr_dev(div6, "class", "svelte-1952o39");
+    			set_style(div6, "width", "440px");
+    			attr_dev(div6, "class", "svelte-yuemht");
     			add_location(div6, file, 86, 2, 2463);
-    			attr_dev(div7, "class", "view-title svelte-1952o39");
-    			add_location(div7, file, 132, 4, 4391);
+    			attr_dev(div7, "class", "view-title svelte-yuemht");
+    			add_location(div7, file, 132, 4, 4471);
     			set_style(div8, "float", "left");
     			set_style(div8, "width", "10%");
     			set_style(div8, "height", "100%");
     			set_style(div8, "padding-top", "25px");
-    			add_location(div8, file, 134, 4, 4453);
+    			add_location(div8, file, 134, 4, 4533);
     			attr_dev(script, "type", "text/javascript");
-    			add_location(script, file, 168, 6, 5864);
+    			add_location(script, file, 168, 6, 5944);
     			attr_dev(div9, "id", "main-axis");
     			set_style(div9, "height", "20px");
     			set_style(div9, "width", "100%");
     			set_style(div9, "padding-left", "20px");
-    			add_location(div9, file, 167, 5, 5785);
+    			add_location(div9, file, 167, 5, 5865);
     			attr_dev(svg1, "id", "container");
     			set_style(svg1, "width", "100%");
     			set_style(svg1, "height", "100%");
-    			attr_dev(svg1, "class", "svelte-1952o39");
-    			add_location(svg1, file, 192, 5, 6513);
+    			attr_dev(svg1, "class", "svelte-yuemht");
+    			add_location(svg1, file, 192, 5, 6593);
     			set_style(div10, "float", "right");
     			set_style(div10, "width", "90%");
     			set_style(div10, "height", "100%");
-    			add_location(div10, file, 166, 4, 5727);
+    			add_location(div10, file, 166, 4, 5807);
     			attr_dev(div11, "id", "score-distributions-view");
-    			attr_dev(div11, "class", "view-panel svelte-1952o39");
+    			attr_dev(div11, "class", "view-panel svelte-yuemht");
     			set_style(div11, "height", "760px");
-    			add_location(div11, file, 131, 3, 4309);
+    			add_location(div11, file, 131, 3, 4389);
     			attr_dev(div12, "id", "main-section");
     			set_style(div12, "width", "1000px");
-    			attr_dev(div12, "class", "svelte-1952o39");
-    			add_location(div12, file, 130, 2, 4258);
+    			attr_dev(div12, "class", "svelte-yuemht");
+    			add_location(div12, file, 130, 2, 4338);
     			attr_dev(div13, "id", "container");
-    			attr_dev(div13, "class", "svelte-1952o39");
+    			attr_dev(div13, "class", "svelte-yuemht");
     			add_location(div13, file, 85, 1, 2439);
     			add_location(main, file, 82, 0, 2376);
     		},

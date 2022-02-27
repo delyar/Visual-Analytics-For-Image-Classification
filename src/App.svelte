@@ -84,17 +84,17 @@
 	<h1>Visual Analytics HW 3 - Delyar Tabatabai</h1>
 
 	<div id="container">
-		<div id="sidebar" style="width: 450px;">
+		<div id="sidebar" style="width: 440px;">
 			<div id="projection-view" class="view-panel">
 				<div class="view-title">Projection View</div>
 				<svg id="scatterplot-container">
 					{#if instances !== undefined}	
-						<g id="scatterplotData" transform="translate({50}, {20})" >
+						<g id="scatterplotData" transform="translate({60}, {20})" >
 							{#each instances as record}
 								<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 								<circle 
 									id="datapoint-{record.id}"
-									class="point {selectedPoint == undefined && record.true_label ==  highlightedlabeldAsGroup? 'regular': (selectedPoint == record.id || record.true_label ==  highlightedlabeldAsGroup? 'regular' : 'unselected-circle')}"
+									class="point {selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular": (selectedPoint == record.id || highlightedlabeldAsGroup==record.true_label || highlightedPredictedAsGroup==record.predicted_label? "highlight": "unHighlight")}"
 									cx={record.projection[0]*4.5 + 100}
 									cy={record.projection[1]*3.5 + 62}
 									r="4"
@@ -199,7 +199,7 @@
 									{#each row.bins[j]["instances"] as binInstance,z}
 										{#if z < 8}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*verticalSpace + 50}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*verticalSpace + 50}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined? "highlighted_box": (selectedPoint == binInstance.id? "highlighted_box" : "unhighlighted_box")}"
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*verticalSpace + 50}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
 											}}
@@ -210,7 +210,7 @@
 											></rect>
 										{:else if z> 7 && z<16}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*verticalSpace + 42}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*verticalSpace + 42}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined? "highlighted_box": (selectedPoint == binInstance.id? "highlighted_box" : "unhighlighted_box")}"
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*verticalSpace + 42}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
 											}}
@@ -220,7 +220,7 @@
 											}}></rect>
 										{:else if z>15 && z<24}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*verticalSpace + 34}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*verticalSpace + 34}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined? "highlighted_box": (selectedPoint == binInstance.id? "highlighted_box" : "unhighlighted_box")}"
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*verticalSpace + 34}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
 											}}
@@ -230,7 +230,7 @@
 											}}></rect>
 										{:else if z>23 && z<32}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*verticalSpace + 26}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*verticalSpace + 26}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined? "highlighted_box": (selectedPoint == binInstance.id? "highlighted_box" : "unhighlighted_box")}"
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*verticalSpace + 26}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
 											}}
@@ -240,7 +240,7 @@
 											}}></rect>
 										{:else if z>31 && z<40}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*verticalSpace + 18}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*verticalSpace + 18}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined? "highlighted_box": (selectedPoint == binInstance.id? "highlighted_box" : "unhighlighted_box")}"
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*verticalSpace + 18}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
 											}}
@@ -250,7 +250,7 @@
 											}}></rect>
 										{:else}
 											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*verticalSpace + 10}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
-											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*verticalSpace + 10}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined? "highlighted_box": (selectedPoint == binInstance.id? "highlighted_box" : "unhighlighted_box")}"
+											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*verticalSpace + 10}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
 											}}
@@ -304,20 +304,32 @@
 	svg {
 		margin: 5px;
 	}
+
+
+	/*POINTS*/
 	circle.regular {
+		stroke-width: 1;
+		fill-opacity: 0.9;
+		stroke-opacity: 1;
+		r: 2
+	}
+
+	circle.highlight {
 		stroke-width: 3;
 		fill-opacity: 0.9;
 		stroke-opacity: 1;
 		r: 6
 	}
 
-	circle.unselected-circle {
+	circle.unHighlight {
 		stroke-width: 1;
 		fill-opacity: 0.3;
 		stroke-opacity: 0.1;
 		r:2
 	}
 
+
+	/* BUTTONS */
 	p.unselected_button {
 		margin:0;
 		font-size: 12px;
@@ -333,12 +345,17 @@
 		text-decoration: underline black;
 	}
 
-	.highlighted_box {
-		opacity: 0.7;
+	/* BOXES */
+	.highlight_box {
+		opacity: 0.8;
 	}
 
-	.unhighlighted_box {
+	.unHighlight_box {
 		opacity: 0.3;
+	}
+
+	.regular_box {
+		opacity: 0.7;
 	}
 
 </style>
