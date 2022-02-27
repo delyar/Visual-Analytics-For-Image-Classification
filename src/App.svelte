@@ -198,7 +198,7 @@
 								{#each {length:10} as _,j}
 									{#each row.bins[j]["instances"] as binInstance,z}
 										{#if z < 8}
-											<image x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*verticalSpace + 50}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*verticalSpace + 50}" href="{"static/images/" + binInstance.filename}"  width="9" height="9" class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"/>
 											<rect x="{15 + ((binInstance.binToBelong/10)*800) + (z*9)}" y="{(i)*verticalSpace + 50}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
@@ -209,7 +209,7 @@
 											}}
 											></rect>
 										{:else if z> 7 && z<16}
-											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*verticalSpace + 42}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*verticalSpace + 42}" href="{"static/images/" + binInstance.filename}"  width="9" height="9" class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"/>
 											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-8)*9)}" y="{(i)*verticalSpace + 42}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
@@ -219,7 +219,7 @@
 												imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
 											}}></rect>
 										{:else if z>15 && z<24}
-											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*verticalSpace + 34}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*verticalSpace + 34}" href="{"static/images/" + binInstance.filename}"  width="9" height="9" class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"/>
 											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-16)*9)}" y="{(i)*verticalSpace + 34}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
@@ -229,7 +229,7 @@
 												imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
 											}}></rect>
 										{:else if z>23 && z<32}
-											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*verticalSpace + 26}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*verticalSpace + 26}" href="{"static/images/" + binInstance.filename}"  width="9" height="9" class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"/>
 											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-24)*9)}" y="{(i)*verticalSpace + 26}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
@@ -239,7 +239,7 @@
 												imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
 											}}></rect>
 										{:else if z>31 && z<40}
-											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*verticalSpace + 18}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*verticalSpace + 18}" href="{"static/images/" + binInstance.filename}"  width="9" height="9" class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"/>
 											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-32)*9)}" y="{(i)*verticalSpace + 18}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
@@ -249,7 +249,7 @@
 												imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
 											}}></rect>
 										{:else}
-											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*verticalSpace + 10}" href="{"static/images/" + binInstance.filename}"  width="9" height="9"/>
+											<image x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*verticalSpace + 10}" href="{"static/images/" + binInstance.filename}"  width="9" height="9" class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"/>
 											<rect x="{15 + ((binInstance.binToBelong/10)*800) + ((z-40)*9)}" y="{(i)*verticalSpace + 10}" width="9" height="9" fill='{colorScale(binInstance["predicted_label"])}' class="{selectedPoint == undefined && highlightedlabeldAsGroup == undefined && highlightedPredictedAsGroup==undefined? "regular_box": (selectedPoint == binInstance.id || highlightedlabeldAsGroup==binInstance.true_label || highlightedPredictedAsGroup==binInstance.predicted_label? "highlight_box": "unHighlight_box")}"
 											on:mouseenter={()=>{
 												handleMouseEnter(binInstance);
@@ -355,7 +355,7 @@
 	}
 
 	.regular_box {
-		opacity: 0.7;
+		opacity: 0.6;
 	}
 
 </style>
