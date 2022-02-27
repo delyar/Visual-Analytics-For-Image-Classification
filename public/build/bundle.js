@@ -1757,38 +1757,38 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[30] = list[i];
-    	child_ctx[32] = i;
+    	child_ctx[32] = list[i];
+    	child_ctx[34] = i;
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[33] = list[i];
-    	child_ctx[35] = i;
+    	child_ctx[35] = list[i];
+    	child_ctx[37] = i;
     	return child_ctx;
     }
 
     function get_each_context_2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[36] = list[i];
-    	child_ctx[38] = i;
+    	child_ctx[38] = list[i];
+    	child_ctx[40] = i;
     	return child_ctx;
     }
 
     function get_each_context_3(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[39] = list[i];
+    	child_ctx[41] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_4(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[42] = list[i];
+    	child_ctx[44] = list[i];
     	return child_ctx;
     }
 
-    // (91:5) {#if instances !== undefined}
+    // (94:5) {#if instances !== undefined}
     function create_if_block_8(ctx) {
     	let g;
     	let each_value_4 = /*instances*/ ctx[1];
@@ -1809,7 +1809,7 @@ var app = (function () {
 
     			attr_dev(g, "id", "scatterplotData");
     			attr_dev(g, "transform", "translate(" + 60 + ", " + 20 + ")");
-    			add_location(g, file, 91, 6, 2687);
+    			add_location(g, file, 94, 6, 2764);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -1819,7 +1819,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*instances, selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup, colorScale, handleMouseEnter, imgPath*/ 4879) {
+    			if (dirty[0] & /*instances, selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup, colorScale, handleMouseEnter, imgPath, default_image*/ 19215) {
     				each_value_4 = /*instances*/ ctx[1];
     				validate_each_argument(each_value_4);
     				let i;
@@ -1853,18 +1853,18 @@ var app = (function () {
     		block,
     		id: create_if_block_8.name,
     		type: "if",
-    		source: "(91:5) {#if instances !== undefined}",
+    		source: "(94:5) {#if instances !== undefined}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (93:7) {#each instances as record}
+    // (96:7) {#each instances as record}
     function create_each_block_4(ctx) {
     	let circle;
     	let title;
-    	let t_value = /*record*/ ctx[42]["true_label"] + "";
+    	let t_value = /*record*/ ctx[44]["true_label"] + "";
     	let t;
     	let circle_id_value;
     	let circle_class_value;
@@ -1874,7 +1874,7 @@ var app = (function () {
     	let dispose;
 
     	function mouseenter_handler() {
-    		return /*mouseenter_handler*/ ctx[13](/*record*/ ctx[42]);
+    		return /*mouseenter_handler*/ ctx[15](/*record*/ ctx[44]);
     	}
 
     	const block = {
@@ -1882,21 +1882,21 @@ var app = (function () {
     			circle = svg_element("circle");
     			title = svg_element("title");
     			t = text(t_value);
-    			add_location(title, file, 108, 10, 3679);
-    			attr_dev(circle, "id", circle_id_value = "datapoint-" + /*record*/ ctx[42].id);
+    			add_location(title, file, 111, 10, 3709);
+    			attr_dev(circle, "id", circle_id_value = "datapoint-" + /*record*/ ctx[44].id);
 
     			attr_dev(circle, "class", circle_class_value = "point " + (/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular"
-    			: /*selectedPoint*/ ctx[2] == /*record*/ ctx[42].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*record*/ ctx[42].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*record*/ ctx[42].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*record*/ ctx[44].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*record*/ ctx[44].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*record*/ ctx[44].predicted_label
     				? "highlight"
     				: "unHighlight") + " svelte-g3vto4");
 
-    			attr_dev(circle, "cx", circle_cx_value = /*record*/ ctx[42].projection[0] * 4.5 + 100);
-    			attr_dev(circle, "cy", circle_cy_value = /*record*/ ctx[42].projection[1] * 3.5 + 62);
+    			attr_dev(circle, "cx", circle_cx_value = /*record*/ ctx[44].projection[0] * 4.5 + 100);
+    			attr_dev(circle, "cy", circle_cy_value = /*record*/ ctx[44].projection[1] * 3.5 + 62);
     			attr_dev(circle, "r", "4");
-    			set_style(circle, "fill", /*colorScale*/ ctx[0](/*record*/ ctx[42]["true_label"]));
-    			set_style(circle, "stroke", /*colorScale*/ ctx[0](/*record*/ ctx[42]["predicted_label"]));
-    			add_location(circle, file, 94, 8, 2858);
+    			set_style(circle, "fill", /*colorScale*/ ctx[0](/*record*/ ctx[44]["true_label"]));
+    			set_style(circle, "stroke", /*colorScale*/ ctx[0](/*record*/ ctx[44]["predicted_label"]));
+    			add_location(circle, file, 97, 8, 2935);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, circle, anchor);
@@ -1906,7 +1906,7 @@ var app = (function () {
     			if (!mounted) {
     				dispose = [
     					listen_dev(circle, "mouseenter", mouseenter_handler, false, false, false),
-    					listen_dev(circle, "mouseleave", /*mouseleave_handler*/ ctx[14], false, false, false)
+    					listen_dev(circle, "mouseleave", /*mouseleave_handler*/ ctx[16], false, false, false)
     				];
 
     				mounted = true;
@@ -1914,34 +1914,34 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if (dirty[0] & /*instances*/ 2 && t_value !== (t_value = /*record*/ ctx[42]["true_label"] + "")) set_data_dev(t, t_value);
+    			if (dirty[0] & /*instances*/ 2 && t_value !== (t_value = /*record*/ ctx[44]["true_label"] + "")) set_data_dev(t, t_value);
 
-    			if (dirty[0] & /*instances*/ 2 && circle_id_value !== (circle_id_value = "datapoint-" + /*record*/ ctx[42].id)) {
+    			if (dirty[0] & /*instances*/ 2 && circle_id_value !== (circle_id_value = "datapoint-" + /*record*/ ctx[44].id)) {
     				attr_dev(circle, "id", circle_id_value);
     			}
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup, instances*/ 774 && circle_class_value !== (circle_class_value = "point " + (/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular"
-    			: /*selectedPoint*/ ctx[2] == /*record*/ ctx[42].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*record*/ ctx[42].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*record*/ ctx[42].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*record*/ ctx[44].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*record*/ ctx[44].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*record*/ ctx[44].predicted_label
     				? "highlight"
     				: "unHighlight") + " svelte-g3vto4")) {
     				attr_dev(circle, "class", circle_class_value);
     			}
 
-    			if (dirty[0] & /*instances*/ 2 && circle_cx_value !== (circle_cx_value = /*record*/ ctx[42].projection[0] * 4.5 + 100)) {
+    			if (dirty[0] & /*instances*/ 2 && circle_cx_value !== (circle_cx_value = /*record*/ ctx[44].projection[0] * 4.5 + 100)) {
     				attr_dev(circle, "cx", circle_cx_value);
     			}
 
-    			if (dirty[0] & /*instances*/ 2 && circle_cy_value !== (circle_cy_value = /*record*/ ctx[42].projection[1] * 3.5 + 62)) {
+    			if (dirty[0] & /*instances*/ 2 && circle_cy_value !== (circle_cy_value = /*record*/ ctx[44].projection[1] * 3.5 + 62)) {
     				attr_dev(circle, "cy", circle_cy_value);
     			}
 
     			if (dirty[0] & /*colorScale, instances*/ 3) {
-    				set_style(circle, "fill", /*colorScale*/ ctx[0](/*record*/ ctx[42]["true_label"]));
+    				set_style(circle, "fill", /*colorScale*/ ctx[0](/*record*/ ctx[44]["true_label"]));
     			}
 
     			if (dirty[0] & /*colorScale, instances*/ 3) {
-    				set_style(circle, "stroke", /*colorScale*/ ctx[0](/*record*/ ctx[42]["predicted_label"]));
+    				set_style(circle, "stroke", /*colorScale*/ ctx[0](/*record*/ ctx[44]["predicted_label"]));
     			}
     		},
     		d: function destroy(detaching) {
@@ -1955,14 +1955,14 @@ var app = (function () {
     		block,
     		id: create_each_block_4.name,
     		type: "each",
-    		source: "(93:7) {#each instances as record}",
+    		source: "(96:7) {#each instances as record}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (121:6) {#if selectedPoint !== undefined}
+    // (124:6) {#if selectedPoint !== undefined}
     function create_if_block_7(ctx) {
     	let p0;
     	let t0;
@@ -1995,9 +1995,9 @@ var app = (function () {
     			t8 = text(" (Confidence: ");
     			t9 = text(/*selectedConfidence*/ ctx[6]);
     			t10 = text(")");
-    			add_location(p0, file, 121, 7, 4118);
-    			add_location(p1, file, 122, 7, 4153);
-    			add_location(p2, file, 123, 7, 4198);
+    			add_location(p0, file, 124, 7, 4148);
+    			add_location(p1, file, 125, 7, 4183);
+    			add_location(p2, file, 126, 7, 4228);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p0, anchor);
@@ -2034,14 +2034,14 @@ var app = (function () {
     		block,
     		id: create_if_block_7.name,
     		type: "if",
-    		source: "(121:6) {#if selectedPoint !== undefined}",
+    		source: "(124:6) {#if selectedPoint !== undefined}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (136:5) {#if instances !== undefined}
+    // (139:5) {#if instances !== undefined}
     function create_if_block_6(ctx) {
     	let each_1_anchor;
     	let each_value_3 = /*binsByClasses*/ ctx[10];
@@ -2102,32 +2102,32 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(136:5) {#if instances !== undefined}",
+    		source: "(139:5) {#if instances !== undefined}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (137:6) {#each binsByClasses as bin}
+    // (140:6) {#each binsByClasses as bin}
     function create_each_block_3(ctx) {
     	let div1;
     	let div0;
     	let b0;
     	let t1;
     	let b1;
-    	let t2_value = /*bin*/ ctx[39].class + "";
+    	let t2_value = /*bin*/ ctx[41].class + "";
     	let t2;
     	let t3;
     	let p0;
     	let t4;
-    	let t5_value = /*bin*/ ctx[39].class + "";
+    	let t5_value = /*bin*/ ctx[41].class + "";
     	let t5;
     	let p0_class_value;
     	let t6;
     	let p1;
     	let t7;
-    	let t8_value = /*bin*/ ctx[39].class + "";
+    	let t8_value = /*bin*/ ctx[41].class + "";
     	let t8;
     	let p1_class_value;
     	let t9;
@@ -2135,11 +2135,11 @@ var app = (function () {
     	let dispose;
 
     	function click_handler() {
-    		return /*click_handler*/ ctx[15](/*bin*/ ctx[39]);
+    		return /*click_handler*/ ctx[17](/*bin*/ ctx[41]);
     	}
 
     	function click_handler_1() {
-    		return /*click_handler_1*/ ctx[16](/*bin*/ ctx[39]);
+    		return /*click_handler_1*/ ctx[18](/*bin*/ ctx[41]);
     	}
 
     	const block = {
@@ -2164,30 +2164,30 @@ var app = (function () {
     			set_style(b0, "float", "left");
     			set_style(b0, "color", "#565656");
     			set_style(b0, "text-align", "right");
-    			add_location(b0, file, 139, 9, 4815);
-    			set_style(b1, "background-color", /*colorScale*/ ctx[0](/*bin*/ ctx[39].class));
+    			add_location(b0, file, 143, 9, 4876);
+    			set_style(b1, "background-color", /*colorScale*/ ctx[0](/*bin*/ ctx[41].class));
     			set_style(b1, "width", "5px");
-    			add_location(b1, file, 140, 9, 4904);
+    			add_location(b1, file, 144, 9, 4965);
     			set_style(div0, "text-align", "right");
     			set_style(div0, "display", "inline");
     			set_style(div0, "float", "right");
-    			add_location(div0, file, 138, 8, 4745);
+    			add_location(div0, file, 142, 8, 4806);
 
-    			attr_dev(p0, "class", p0_class_value = "" + (null_to_empty(/*highlightedlabeldAsGroup*/ ctx[8] == /*bin*/ ctx[39].class
+    			attr_dev(p0, "class", p0_class_value = "" + (null_to_empty(/*highlightedlabeldAsGroup*/ ctx[8] == /*bin*/ ctx[41].class
     			? "selected_button"
     			: "unselected_button") + " svelte-g3vto4"));
 
-    			add_location(p0, file, 142, 8, 5011);
+    			add_location(p0, file, 147, 8, 5108);
 
-    			attr_dev(p1, "class", p1_class_value = "" + (null_to_empty(/*highlightedPredictedAsGroup*/ ctx[9] == /*bin*/ ctx[39].class
+    			attr_dev(p1, "class", p1_class_value = "" + (null_to_empty(/*highlightedPredictedAsGroup*/ ctx[9] == /*bin*/ ctx[41].class
     			? "selected_button"
     			: "unselected_button") + " svelte-g3vto4"));
 
-    			add_location(p1, file, 151, 8, 5373);
+    			add_location(p1, file, 156, 8, 5470);
     			set_style(div1, "height", "6.3%");
     			set_style(div1, "width", "100%");
     			set_style(div1, "margin-top", "15px");
-    			add_location(div1, file, 137, 7, 4681);
+    			add_location(div1, file, 140, 7, 4711);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -2219,16 +2219,16 @@ var app = (function () {
     			ctx = new_ctx;
 
     			if (dirty[0] & /*colorScale*/ 1) {
-    				set_style(b1, "background-color", /*colorScale*/ ctx[0](/*bin*/ ctx[39].class));
+    				set_style(b1, "background-color", /*colorScale*/ ctx[0](/*bin*/ ctx[41].class));
     			}
 
-    			if (dirty[0] & /*highlightedlabeldAsGroup*/ 256 && p0_class_value !== (p0_class_value = "" + (null_to_empty(/*highlightedlabeldAsGroup*/ ctx[8] == /*bin*/ ctx[39].class
+    			if (dirty[0] & /*highlightedlabeldAsGroup*/ 256 && p0_class_value !== (p0_class_value = "" + (null_to_empty(/*highlightedlabeldAsGroup*/ ctx[8] == /*bin*/ ctx[41].class
     			? "selected_button"
     			: "unselected_button") + " svelte-g3vto4"))) {
     				attr_dev(p0, "class", p0_class_value);
     			}
 
-    			if (dirty[0] & /*highlightedPredictedAsGroup*/ 512 && p1_class_value !== (p1_class_value = "" + (null_to_empty(/*highlightedPredictedAsGroup*/ ctx[9] == /*bin*/ ctx[39].class
+    			if (dirty[0] & /*highlightedPredictedAsGroup*/ 512 && p1_class_value !== (p1_class_value = "" + (null_to_empty(/*highlightedPredictedAsGroup*/ ctx[9] == /*bin*/ ctx[41].class
     			? "selected_button"
     			: "unselected_button") + " svelte-g3vto4"))) {
     				attr_dev(p1, "class", p1_class_value);
@@ -2245,14 +2245,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(137:6) {#each binsByClasses as bin}",
+    		source: "(140:6) {#each binsByClasses as bin}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (194:6) {#if instances !== undefined}
+    // (199:6) {#if instances !== undefined}
     function create_if_block(ctx) {
     	let path;
     	let path_stroke_width_value;
@@ -2278,7 +2278,7 @@ var app = (function () {
     			attr_dev(path, "fill", "none");
     			attr_dev(path, "stroke", "gray");
     			attr_dev(path, "stroke-width", path_stroke_width_value = /*selectedPoint*/ ctx[2] == undefined ? 0 : 1);
-    			add_location(path, file, 194, 7, 6694);
+    			add_location(path, file, 199, 7, 6791);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, path, anchor);
@@ -2298,7 +2298,7 @@ var app = (function () {
     				attr_dev(path, "stroke-width", path_stroke_width_value);
     			}
 
-    			if (dirty[0] & /*verticalSpace, binsByClasses, colorScale, selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup, handleMouseEnter, imgPath*/ 7949) {
+    			if (dirty[0] & /*verticalSpace, axisLeftmargin, binsByClasses, colorScale, selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup, handleMouseEnter, imgPath, default_image*/ 32525) {
     				each_value = /*binsByClasses*/ ctx[10];
     				validate_each_argument(each_value);
     				let i;
@@ -2333,14 +2333,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(194:6) {#if instances !== undefined}",
+    		source: "(199:6) {#if instances !== undefined}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (251:10) {:else}
+    // (257:10) {:else}
     function create_else_block(ctx) {
     	let image;
     	let image_class_value;
@@ -2351,39 +2351,39 @@ var app = (function () {
     	let dispose;
 
     	function mouseenter_handler_6() {
-    		return /*mouseenter_handler_6*/ ctx[27](/*binInstance*/ ctx[36]);
+    		return /*mouseenter_handler_6*/ ctx[29](/*binInstance*/ ctx[38]);
     	}
 
     	const block = {
     		c: function create() {
     			image = svg_element("image");
     			rect = svg_element("rect");
-    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + (/*z*/ ctx[38] - 40) * 9);
-    			attr_dev(image, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 10);
-    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[36].filename);
+    			attr_dev(image, "x", /*axisLeftmargin*/ ctx[13] + /*binInstance*/ ctx[38].binToBelong / 10 * 800 + (/*z*/ ctx[40] - 40) * 9);
+    			attr_dev(image, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[12] + 10);
+    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[38].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
 
     			attr_dev(image, "class", image_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(image, file, 251, 11, 13552);
-    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + (/*z*/ ctx[38] - 40) * 9);
-    			attr_dev(rect, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 10);
+    			add_location(image, file, 257, 11, 13579);
+    			attr_dev(rect, "x", /*axisLeftmargin*/ ctx[13] + /*binInstance*/ ctx[38].binToBelong / 10 * 800 + (/*z*/ ctx[40] - 40) * 9);
+    			attr_dev(rect, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[12] + 10);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
-    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]));
+    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]));
 
     			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(rect, file, 252, 11, 14050);
+    			add_location(rect, file, 258, 11, 14089);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2392,7 +2392,7 @@ var app = (function () {
     			if (!mounted) {
     				dispose = [
     					listen_dev(rect, "mouseenter", mouseenter_handler_6, false, false, false),
-    					listen_dev(rect, "mouseleave", /*mouseleave_handler_6*/ ctx[28], false, false, false)
+    					listen_dev(rect, "mouseleave", /*mouseleave_handler_6*/ ctx[30], false, false, false)
     				];
 
     				mounted = true;
@@ -2403,19 +2403,19 @@ var app = (function () {
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && image_class_value !== (image_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"))) {
     				attr_dev(image, "class", image_class_value);
     			}
 
-    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]))) {
+    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"))) {
     				attr_dev(rect, "class", rect_class_value);
@@ -2433,14 +2433,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(251:10) {:else}",
+    		source: "(257:10) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (241:33) 
+    // (247:33) 
     function create_if_block_5(ctx) {
     	let image;
     	let image_class_value;
@@ -2451,39 +2451,39 @@ var app = (function () {
     	let dispose;
 
     	function mouseenter_handler_5() {
-    		return /*mouseenter_handler_5*/ ctx[25](/*binInstance*/ ctx[36]);
+    		return /*mouseenter_handler_5*/ ctx[27](/*binInstance*/ ctx[38]);
     	}
 
     	const block = {
     		c: function create() {
     			image = svg_element("image");
     			rect = svg_element("rect");
-    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + (/*z*/ ctx[38] - 32) * 9);
-    			attr_dev(image, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 18);
-    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[36].filename);
+    			attr_dev(image, "x", /*axisLeftmargin*/ ctx[13] + /*binInstance*/ ctx[38].binToBelong / 10 * 800 + (/*z*/ ctx[40] - 32) * 9);
+    			attr_dev(image, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[12] + 18);
+    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[38].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
 
     			attr_dev(image, "class", image_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(image, file, 241, 11, 12269);
-    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + (/*z*/ ctx[38] - 32) * 9);
-    			attr_dev(rect, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 18);
+    			add_location(image, file, 247, 11, 12319);
+    			attr_dev(rect, "x", /*axisLeftmargin*/ ctx[13] + /*binInstance*/ ctx[38].binToBelong / 10 * 800 + (/*z*/ ctx[40] - 32) * 9);
+    			attr_dev(rect, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[12] + 18);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
-    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]));
+    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]));
 
     			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(rect, file, 242, 11, 12767);
+    			add_location(rect, file, 248, 11, 12829);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2492,7 +2492,7 @@ var app = (function () {
     			if (!mounted) {
     				dispose = [
     					listen_dev(rect, "mouseenter", mouseenter_handler_5, false, false, false),
-    					listen_dev(rect, "mouseleave", /*mouseleave_handler_5*/ ctx[26], false, false, false)
+    					listen_dev(rect, "mouseleave", /*mouseleave_handler_5*/ ctx[28], false, false, false)
     				];
 
     				mounted = true;
@@ -2503,19 +2503,19 @@ var app = (function () {
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && image_class_value !== (image_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"))) {
     				attr_dev(image, "class", image_class_value);
     			}
 
-    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]))) {
+    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"))) {
     				attr_dev(rect, "class", rect_class_value);
@@ -2533,14 +2533,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(241:33) ",
+    		source: "(247:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (231:33) 
+    // (237:33) 
     function create_if_block_4(ctx) {
     	let image;
     	let image_class_value;
@@ -2551,39 +2551,39 @@ var app = (function () {
     	let dispose;
 
     	function mouseenter_handler_4() {
-    		return /*mouseenter_handler_4*/ ctx[23](/*binInstance*/ ctx[36]);
+    		return /*mouseenter_handler_4*/ ctx[25](/*binInstance*/ ctx[38]);
     	}
 
     	const block = {
     		c: function create() {
     			image = svg_element("image");
     			rect = svg_element("rect");
-    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + (/*z*/ ctx[38] - 24) * 9);
-    			attr_dev(image, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 26);
-    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[36].filename);
+    			attr_dev(image, "x", /*axisLeftmargin*/ ctx[13] + /*binInstance*/ ctx[38].binToBelong / 10 * 800 + (/*z*/ ctx[40] - 24) * 9);
+    			attr_dev(image, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[12] + 26);
+    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[38].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
 
     			attr_dev(image, "class", image_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(image, file, 231, 11, 10970);
-    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + (/*z*/ ctx[38] - 24) * 9);
-    			attr_dev(rect, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 26);
+    			add_location(image, file, 237, 11, 11043);
+    			attr_dev(rect, "x", /*axisLeftmargin*/ ctx[13] + /*binInstance*/ ctx[38].binToBelong / 10 * 800 + (/*z*/ ctx[40] - 24) * 9);
+    			attr_dev(rect, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[12] + 26);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
-    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]));
+    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]));
 
     			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(rect, file, 232, 11, 11468);
+    			add_location(rect, file, 238, 11, 11553);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2592,7 +2592,7 @@ var app = (function () {
     			if (!mounted) {
     				dispose = [
     					listen_dev(rect, "mouseenter", mouseenter_handler_4, false, false, false),
-    					listen_dev(rect, "mouseleave", /*mouseleave_handler_4*/ ctx[24], false, false, false)
+    					listen_dev(rect, "mouseleave", /*mouseleave_handler_4*/ ctx[26], false, false, false)
     				];
 
     				mounted = true;
@@ -2603,19 +2603,19 @@ var app = (function () {
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && image_class_value !== (image_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"))) {
     				attr_dev(image, "class", image_class_value);
     			}
 
-    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]))) {
+    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"))) {
     				attr_dev(rect, "class", rect_class_value);
@@ -2633,14 +2633,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(231:33) ",
+    		source: "(237:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (221:33) 
+    // (227:33) 
     function create_if_block_3(ctx) {
     	let image;
     	let image_class_value;
@@ -2651,39 +2651,39 @@ var app = (function () {
     	let dispose;
 
     	function mouseenter_handler_3() {
-    		return /*mouseenter_handler_3*/ ctx[21](/*binInstance*/ ctx[36]);
+    		return /*mouseenter_handler_3*/ ctx[23](/*binInstance*/ ctx[38]);
     	}
 
     	const block = {
     		c: function create() {
     			image = svg_element("image");
     			rect = svg_element("rect");
-    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + (/*z*/ ctx[38] - 16) * 9);
-    			attr_dev(image, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 34);
-    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[36].filename);
+    			attr_dev(image, "x", /*axisLeftmargin*/ ctx[13] + /*binInstance*/ ctx[38].binToBelong / 10 * 800 + (/*z*/ ctx[40] - 16) * 9);
+    			attr_dev(image, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[12] + 34);
+    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[38].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
 
     			attr_dev(image, "class", image_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(image, file, 221, 11, 9671);
-    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + (/*z*/ ctx[38] - 16) * 9);
-    			attr_dev(rect, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 34);
+    			add_location(image, file, 227, 11, 9767);
+    			attr_dev(rect, "x", /*axisLeftmargin*/ ctx[13] + /*binInstance*/ ctx[38].binToBelong / 10 * 800 + (/*z*/ ctx[40] - 16) * 9);
+    			attr_dev(rect, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[12] + 34);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
-    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]));
+    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]));
 
     			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(rect, file, 222, 11, 10169);
+    			add_location(rect, file, 228, 11, 10277);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2692,7 +2692,7 @@ var app = (function () {
     			if (!mounted) {
     				dispose = [
     					listen_dev(rect, "mouseenter", mouseenter_handler_3, false, false, false),
-    					listen_dev(rect, "mouseleave", /*mouseleave_handler_3*/ ctx[22], false, false, false)
+    					listen_dev(rect, "mouseleave", /*mouseleave_handler_3*/ ctx[24], false, false, false)
     				];
 
     				mounted = true;
@@ -2703,19 +2703,19 @@ var app = (function () {
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && image_class_value !== (image_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"))) {
     				attr_dev(image, "class", image_class_value);
     			}
 
-    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]))) {
+    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"))) {
     				attr_dev(rect, "class", rect_class_value);
@@ -2733,14 +2733,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(221:33) ",
+    		source: "(227:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (211:33) 
+    // (217:33) 
     function create_if_block_2(ctx) {
     	let image;
     	let image_class_value;
@@ -2751,39 +2751,39 @@ var app = (function () {
     	let dispose;
 
     	function mouseenter_handler_2() {
-    		return /*mouseenter_handler_2*/ ctx[19](/*binInstance*/ ctx[36]);
+    		return /*mouseenter_handler_2*/ ctx[21](/*binInstance*/ ctx[38]);
     	}
 
     	const block = {
     		c: function create() {
     			image = svg_element("image");
     			rect = svg_element("rect");
-    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + (/*z*/ ctx[38] - 8) * 9);
-    			attr_dev(image, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 42);
-    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[36].filename);
+    			attr_dev(image, "x", /*axisLeftmargin*/ ctx[13] + /*binInstance*/ ctx[38].binToBelong / 10 * 800 + (/*z*/ ctx[40] - 8) * 9);
+    			attr_dev(image, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[12] + 42);
+    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[38].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
 
     			attr_dev(image, "class", image_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(image, file, 211, 11, 8374);
-    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + (/*z*/ ctx[38] - 8) * 9);
-    			attr_dev(rect, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 42);
+    			add_location(image, file, 217, 11, 8493);
+    			attr_dev(rect, "x", /*axisLeftmargin*/ ctx[13] + /*binInstance*/ ctx[38].binToBelong / 10 * 800 + (/*z*/ ctx[40] - 8) * 9);
+    			attr_dev(rect, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[12] + 42);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
-    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]));
+    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]));
 
     			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(rect, file, 212, 11, 8871);
+    			add_location(rect, file, 218, 11, 9002);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2792,7 +2792,7 @@ var app = (function () {
     			if (!mounted) {
     				dispose = [
     					listen_dev(rect, "mouseenter", mouseenter_handler_2, false, false, false),
-    					listen_dev(rect, "mouseleave", /*mouseleave_handler_2*/ ctx[20], false, false, false)
+    					listen_dev(rect, "mouseleave", /*mouseleave_handler_2*/ ctx[22], false, false, false)
     				];
 
     				mounted = true;
@@ -2803,19 +2803,19 @@ var app = (function () {
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && image_class_value !== (image_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"))) {
     				attr_dev(image, "class", image_class_value);
     			}
 
-    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]))) {
+    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"))) {
     				attr_dev(rect, "class", rect_class_value);
@@ -2833,14 +2833,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(211:33) ",
+    		source: "(217:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (200:10) {#if z < 8}
+    // (206:10) {#if z < 8}
     function create_if_block_1(ctx) {
     	let image;
     	let image_class_value;
@@ -2851,39 +2851,39 @@ var app = (function () {
     	let dispose;
 
     	function mouseenter_handler_1() {
-    		return /*mouseenter_handler_1*/ ctx[17](/*binInstance*/ ctx[36]);
+    		return /*mouseenter_handler_1*/ ctx[19](/*binInstance*/ ctx[38]);
     	}
 
     	const block = {
     		c: function create() {
     			image = svg_element("image");
     			rect = svg_element("rect");
-    			attr_dev(image, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + /*z*/ ctx[38] * 9);
-    			attr_dev(image, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 50);
-    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[36].filename);
+    			attr_dev(image, "x", /*axisLeftmargin*/ ctx[13] + /*binInstance*/ ctx[38].binToBelong / 10 * 800 + /*z*/ ctx[40] * 9);
+    			attr_dev(image, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[12] + 50);
+    			attr_dev(image, "href", "static/images/" + /*binInstance*/ ctx[38].filename);
     			attr_dev(image, "width", "9");
     			attr_dev(image, "height", "9");
 
     			attr_dev(image, "class", image_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(image, file, 200, 11, 7072);
-    			attr_dev(rect, "x", 15 + /*binInstance*/ ctx[36].binToBelong / 10 * 800 + /*z*/ ctx[38] * 9);
-    			attr_dev(rect, "y", /*i*/ ctx[32] * /*verticalSpace*/ ctx[11] + 50);
+    			add_location(image, file, 206, 11, 7214);
+    			attr_dev(rect, "x", /*axisLeftmargin*/ ctx[13] + /*binInstance*/ ctx[38].binToBelong / 10 * 800 + /*z*/ ctx[40] * 9);
+    			attr_dev(rect, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[12] + 50);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
-    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]));
+    			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]));
 
     			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(rect, file, 201, 11, 7565);
+    			add_location(rect, file, 207, 11, 7719);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2892,7 +2892,7 @@ var app = (function () {
     			if (!mounted) {
     				dispose = [
     					listen_dev(rect, "mouseenter", mouseenter_handler_1, false, false, false),
-    					listen_dev(rect, "mouseleave", /*mouseleave_handler_1*/ ctx[18], false, false, false)
+    					listen_dev(rect, "mouseleave", /*mouseleave_handler_1*/ ctx[20], false, false, false)
     				];
 
     				mounted = true;
@@ -2903,19 +2903,19 @@ var app = (function () {
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && image_class_value !== (image_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"))) {
     				attr_dev(image, "class", image_class_value);
     			}
 
-    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[36]["predicted_label"]))) {
+    			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
     			}
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
-    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[36].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[36].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[36].predicted_label
+    			: /*selectedPoint*/ ctx[2] == /*binInstance*/ ctx[38].id || /*highlightedlabeldAsGroup*/ ctx[8] == /*binInstance*/ ctx[38].true_label || /*highlightedPredictedAsGroup*/ ctx[9] == /*binInstance*/ ctx[38].predicted_label
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"))) {
     				attr_dev(rect, "class", rect_class_value);
@@ -2933,23 +2933,23 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(200:10) {#if z < 8}",
+    		source: "(206:10) {#if z < 8}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (199:9) {#each row.bins[j]["instances"] as binInstance,z}
+    // (205:9) {#each row.bins[j]["instances"] as binInstance,z}
     function create_each_block_2(ctx) {
     	let if_block_anchor;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*z*/ ctx[38] < 8) return create_if_block_1;
-    		if (/*z*/ ctx[38] > 7 && /*z*/ ctx[38] < 16) return create_if_block_2;
-    		if (/*z*/ ctx[38] > 15 && /*z*/ ctx[38] < 24) return create_if_block_3;
-    		if (/*z*/ ctx[38] > 23 && /*z*/ ctx[38] < 32) return create_if_block_4;
-    		if (/*z*/ ctx[38] > 31 && /*z*/ ctx[38] < 40) return create_if_block_5;
+    		if (/*z*/ ctx[40] < 8) return create_if_block_1;
+    		if (/*z*/ ctx[40] > 7 && /*z*/ ctx[40] < 16) return create_if_block_2;
+    		if (/*z*/ ctx[40] > 15 && /*z*/ ctx[40] < 24) return create_if_block_3;
+    		if (/*z*/ ctx[40] > 23 && /*z*/ ctx[40] < 32) return create_if_block_4;
+    		if (/*z*/ ctx[40] > 31 && /*z*/ ctx[40] < 40) return create_if_block_5;
     		return create_else_block;
     	}
 
@@ -2978,18 +2978,18 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(199:9) {#each row.bins[j][\\\"instances\\\"] as binInstance,z}",
+    		source: "(205:9) {#each row.bins[j][\\\"instances\\\"] as binInstance,z}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (198:8) {#each {length:10} as _,j}
+    // (203:8) {#each {length:10} as _,j}
     function create_each_block_1(ctx) {
     	let rect0;
     	let rect1;
-    	let each_value_2 = /*row*/ ctx[30].bins[/*j*/ ctx[35]]["instances"];
+    	let each_value_2 = /*row*/ ctx[32].bins[/*j*/ ctx[37]]["instances"];
     	validate_each_argument(each_value_2);
     	let each_blocks = [];
 
@@ -3005,18 +3005,18 @@ var app = (function () {
 
     			rect0 = svg_element("rect");
     			rect1 = svg_element("rect");
-    			attr_dev(rect0, "x", 15 + /*j*/ ctx[35] * 80);
-    			attr_dev(rect0, "y", (/*i*/ ctx[32] + 1) * /*verticalSpace*/ ctx[11]);
+    			attr_dev(rect0, "x", /*axisLeftmargin*/ ctx[13] + /*j*/ ctx[37] * 80);
+    			attr_dev(rect0, "y", (/*i*/ ctx[34] + 1) * /*verticalSpace*/ ctx[12]);
     			attr_dev(rect0, "width", "1");
     			attr_dev(rect0, "height", "4");
     			attr_dev(rect0, "fill", "black");
-    			add_location(rect0, file, 263, 9, 14851);
+    			add_location(rect0, file, 269, 9, 14898);
     			attr_dev(rect1, "x", 815);
-    			attr_dev(rect1, "y", (/*i*/ ctx[32] + 1) * /*verticalSpace*/ ctx[11]);
+    			attr_dev(rect1, "y", (/*i*/ ctx[34] + 1) * /*verticalSpace*/ ctx[12]);
     			attr_dev(rect1, "width", "1");
     			attr_dev(rect1, "height", "4");
     			attr_dev(rect1, "fill", "black");
-    			add_location(rect1, file, 264, 9, 14954);
+    			add_location(rect1, file, 270, 9, 15013);
     		},
     		m: function mount(target, anchor) {
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -3027,8 +3027,8 @@ var app = (function () {
     			insert_dev(target, rect1, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*binsByClasses, verticalSpace, colorScale, selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup, handleMouseEnter, imgPath*/ 7949) {
-    				each_value_2 = /*row*/ ctx[30].bins[/*j*/ ctx[35]]["instances"];
+    			if (dirty[0] & /*axisLeftmargin, binsByClasses, verticalSpace, colorScale, selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup, handleMouseEnter, imgPath, default_image*/ 32525) {
+    				each_value_2 = /*row*/ ctx[32].bins[/*j*/ ctx[37]]["instances"];
     				validate_each_argument(each_value_2);
     				let i;
 
@@ -3062,14 +3062,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(198:8) {#each {length:10} as _,j}",
+    		source: "(203:8) {#each {length:10} as _,j}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (196:7) {#each binsByClasses as row,i}
+    // (201:7) {#each binsByClasses as row,i}
     function create_each_block(ctx) {
     	let rect;
     	let each_1_anchor;
@@ -3091,11 +3091,11 @@ var app = (function () {
 
     			each_1_anchor = empty();
     			attr_dev(rect, "x", "15");
-    			attr_dev(rect, "y", (/*i*/ ctx[32] + 1) * /*verticalSpace*/ ctx[11]);
+    			attr_dev(rect, "y", (/*i*/ ctx[34] + 1) * /*verticalSpace*/ ctx[12]);
     			attr_dev(rect, "width", "94%");
     			attr_dev(rect, "height", "0.5");
     			attr_dev(rect, "fill", "#565656");
-    			add_location(rect, file, 196, 8, 6854);
+    			add_location(rect, file, 201, 8, 6951);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, rect, anchor);
@@ -3107,7 +3107,7 @@ var app = (function () {
     			insert_dev(target, each_1_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*verticalSpace, binsByClasses, colorScale, selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup, handleMouseEnter, imgPath*/ 7949) {
+    			if (dirty[0] & /*verticalSpace, axisLeftmargin, binsByClasses, colorScale, selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup, handleMouseEnter, imgPath, default_image*/ 32525) {
     				each_value_1 = { length: 10 };
     				validate_each_argument(each_value_1);
     				let i;
@@ -3142,7 +3142,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(196:7) {#each binsByClasses as row,i}",
+    		source: "(201:7) {#each binsByClasses as row,i}",
     		ctx
     	});
 
@@ -3232,70 +3232,70 @@ var app = (function () {
     			attr_dev(meta, "charset", "utf-8");
     			add_location(meta, file, 6, 1, 138);
     			attr_dev(h1, "class", "svelte-g3vto4");
-    			add_location(h1, file, 83, 1, 2385);
+    			add_location(h1, file, 86, 1, 2462);
     			attr_dev(div0, "class", "view-title svelte-g3vto4");
-    			add_location(div0, file, 88, 4, 2559);
+    			add_location(div0, file, 91, 4, 2636);
     			attr_dev(svg0, "id", "scatterplot-container");
     			attr_dev(svg0, "class", "svelte-g3vto4");
-    			add_location(svg0, file, 89, 4, 2610);
+    			add_location(svg0, file, 92, 4, 2687);
     			attr_dev(div1, "id", "projection-view");
     			attr_dev(div1, "class", "view-panel svelte-g3vto4");
-    			add_location(div1, file, 87, 3, 2508);
+    			add_location(div1, file, 90, 3, 2585);
     			attr_dev(div2, "class", "view-title svelte-g3vto4");
-    			add_location(div2, file, 116, 4, 3850);
+    			add_location(div2, file, 119, 4, 3880);
     			set_style(img, "height", "90px");
     			set_style(img, "width", "90px");
     			set_style(img, "float", "left");
     			if (!src_url_equal(img.src, img_src_value = /*imgPath*/ ctx[3])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "No points selected");
-    			add_location(img, file, 118, 5, 3945);
+    			add_location(img, file, 121, 5, 3975);
     			set_style(div3, "float", "right");
-    			add_location(div3, file, 119, 5, 4042);
+    			add_location(div3, file, 122, 5, 4072);
     			attr_dev(div4, "id", "selected-image-view-content");
     			attr_dev(div4, "class", "svelte-g3vto4");
-    			add_location(div4, file, 117, 4, 3900);
+    			add_location(div4, file, 120, 4, 3930);
     			attr_dev(div5, "id", "selected-image-view");
     			attr_dev(div5, "class", "view-panel svelte-g3vto4");
-    			add_location(div5, file, 115, 3, 3795);
+    			add_location(div5, file, 118, 3, 3825);
     			attr_dev(div6, "id", "sidebar");
     			set_style(div6, "width", "440px");
     			attr_dev(div6, "class", "svelte-g3vto4");
-    			add_location(div6, file, 86, 2, 2463);
+    			add_location(div6, file, 89, 2, 2540);
     			attr_dev(div7, "class", "view-title svelte-g3vto4");
-    			add_location(div7, file, 132, 4, 4471);
+    			add_location(div7, file, 135, 4, 4501);
     			set_style(div8, "float", "left");
     			set_style(div8, "width", "10%");
     			set_style(div8, "height", "100%");
     			set_style(div8, "padding-top", "25px");
-    			add_location(div8, file, 134, 4, 4533);
+    			add_location(div8, file, 137, 4, 4563);
     			attr_dev(script, "type", "text/javascript");
-    			add_location(script, file, 168, 6, 5944);
+    			add_location(script, file, 173, 6, 6041);
     			attr_dev(div9, "id", "main-axis");
     			set_style(div9, "height", "20px");
     			set_style(div9, "width", "100%");
     			set_style(div9, "padding-left", "20px");
-    			add_location(div9, file, 167, 5, 5865);
+    			add_location(div9, file, 172, 5, 5962);
     			attr_dev(svg1, "id", "container");
     			set_style(svg1, "width", "100%");
     			set_style(svg1, "height", "100%");
     			attr_dev(svg1, "class", "svelte-g3vto4");
-    			add_location(svg1, file, 192, 5, 6593);
+    			add_location(svg1, file, 197, 5, 6690);
     			set_style(div10, "float", "right");
     			set_style(div10, "width", "90%");
     			set_style(div10, "height", "100%");
-    			add_location(div10, file, 166, 4, 5807);
+    			add_location(div10, file, 171, 4, 5904);
     			attr_dev(div11, "id", "score-distributions-view");
     			attr_dev(div11, "class", "view-panel svelte-g3vto4");
     			set_style(div11, "height", "760px");
-    			add_location(div11, file, 131, 3, 4389);
+    			add_location(div11, file, 134, 3, 4419);
     			attr_dev(div12, "id", "main-section");
     			set_style(div12, "width", "1000px");
     			attr_dev(div12, "class", "svelte-g3vto4");
-    			add_location(div12, file, 130, 2, 4338);
+    			add_location(div12, file, 133, 2, 4368);
     			attr_dev(div13, "id", "container");
     			attr_dev(div13, "class", "svelte-g3vto4");
-    			add_location(div13, file, 85, 1, 2439);
-    			add_location(main, file, 82, 0, 2376);
+    			add_location(div13, file, 88, 1, 2516);
+    			add_location(main, file, 85, 0, 2453);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3428,7 +3428,8 @@ var app = (function () {
     	let instances;
     	let binsByClasses = [];
     	let selectedPoint;
-    	let imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+    	let default_image = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+    	let imgPath = default_image;
     	let selectedTrueLabel = "";
     	let selectedPrediction = "";
     	let selectedConfidence = 0;
@@ -3437,6 +3438,7 @@ var app = (function () {
     	let svgDistributionPath;
     	let highlightedlabeldAsGroup;
     	let highlightedPredictedAsGroup;
+    	let axisLeftmargin = 15;
 
     	function handleMouseEnter(record) {
     		$$invalidate(2, selectedPoint = record["id"]);
@@ -3447,7 +3449,7 @@ var app = (function () {
     		$$invalidate(7, svgDistributionPath = "M");
 
     		record.predicted_scores.forEach(function (score, i) {
-    			$$invalidate(7, svgDistributionPath += (score * axisWidth + 15).toString() + "," + ((i + 1) * verticalSpace).toString() + (i !== 9 ? "L" : ""));
+    			$$invalidate(7, svgDistributionPath += (score * axisWidth + axisLeftmargin).toString() + "," + ((i + 1) * verticalSpace).toString() + (i !== 9 ? "L" : ""));
     		});
     	}
 
@@ -3500,7 +3502,7 @@ var app = (function () {
 
     	const mouseleave_handler = () => {
     		$$invalidate(2, selectedPoint = undefined);
-    		$$invalidate(3, imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=");
+    		$$invalidate(3, imgPath = default_image);
     	};
 
     	const click_handler = bin => {
@@ -3525,7 +3527,7 @@ var app = (function () {
 
     	const mouseleave_handler_1 = () => {
     		$$invalidate(2, selectedPoint = undefined);
-    		$$invalidate(3, imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=");
+    		$$invalidate(3, imgPath = default_image);
     	};
 
     	const mouseenter_handler_2 = binInstance => {
@@ -3534,7 +3536,7 @@ var app = (function () {
 
     	const mouseleave_handler_2 = () => {
     		$$invalidate(2, selectedPoint = undefined);
-    		$$invalidate(3, imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=");
+    		$$invalidate(3, imgPath = default_image);
     	};
 
     	const mouseenter_handler_3 = binInstance => {
@@ -3543,7 +3545,7 @@ var app = (function () {
 
     	const mouseleave_handler_3 = () => {
     		$$invalidate(2, selectedPoint = undefined);
-    		$$invalidate(3, imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=");
+    		$$invalidate(3, imgPath = default_image);
     	};
 
     	const mouseenter_handler_4 = binInstance => {
@@ -3552,7 +3554,7 @@ var app = (function () {
 
     	const mouseleave_handler_4 = () => {
     		$$invalidate(2, selectedPoint = undefined);
-    		$$invalidate(3, imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=");
+    		$$invalidate(3, imgPath = default_image);
     	};
 
     	const mouseenter_handler_5 = binInstance => {
@@ -3561,7 +3563,7 @@ var app = (function () {
 
     	const mouseleave_handler_5 = () => {
     		$$invalidate(2, selectedPoint = undefined);
-    		$$invalidate(3, imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=");
+    		$$invalidate(3, imgPath = default_image);
     	};
 
     	const mouseenter_handler_6 = binInstance => {
@@ -3570,7 +3572,7 @@ var app = (function () {
 
     	const mouseleave_handler_6 = () => {
     		$$invalidate(2, selectedPoint = undefined);
-    		$$invalidate(3, imgPath = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=");
+    		$$invalidate(3, imgPath = default_image);
     	};
 
     	$$self.$capture_state = () => ({
@@ -3584,6 +3586,7 @@ var app = (function () {
     		numBins,
     		binsByClasses,
     		selectedPoint,
+    		default_image,
     		imgPath,
     		selectedTrueLabel,
     		selectedPrediction,
@@ -3593,6 +3596,7 @@ var app = (function () {
     		svgDistributionPath,
     		highlightedlabeldAsGroup,
     		highlightedPredictedAsGroup,
+    		axisLeftmargin,
     		handleMouseEnter
     	});
 
@@ -3601,15 +3605,17 @@ var app = (function () {
     		if ('instances' in $$props) $$invalidate(1, instances = $$props.instances);
     		if ('binsByClasses' in $$props) $$invalidate(10, binsByClasses = $$props.binsByClasses);
     		if ('selectedPoint' in $$props) $$invalidate(2, selectedPoint = $$props.selectedPoint);
+    		if ('default_image' in $$props) $$invalidate(11, default_image = $$props.default_image);
     		if ('imgPath' in $$props) $$invalidate(3, imgPath = $$props.imgPath);
     		if ('selectedTrueLabel' in $$props) $$invalidate(4, selectedTrueLabel = $$props.selectedTrueLabel);
     		if ('selectedPrediction' in $$props) $$invalidate(5, selectedPrediction = $$props.selectedPrediction);
     		if ('selectedConfidence' in $$props) $$invalidate(6, selectedConfidence = $$props.selectedConfidence);
     		if ('axisWidth' in $$props) axisWidth = $$props.axisWidth;
-    		if ('verticalSpace' in $$props) $$invalidate(11, verticalSpace = $$props.verticalSpace);
+    		if ('verticalSpace' in $$props) $$invalidate(12, verticalSpace = $$props.verticalSpace);
     		if ('svgDistributionPath' in $$props) $$invalidate(7, svgDistributionPath = $$props.svgDistributionPath);
     		if ('highlightedlabeldAsGroup' in $$props) $$invalidate(8, highlightedlabeldAsGroup = $$props.highlightedlabeldAsGroup);
     		if ('highlightedPredictedAsGroup' in $$props) $$invalidate(9, highlightedPredictedAsGroup = $$props.highlightedPredictedAsGroup);
+    		if ('axisLeftmargin' in $$props) $$invalidate(13, axisLeftmargin = $$props.axisLeftmargin);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -3628,7 +3634,9 @@ var app = (function () {
     		highlightedlabeldAsGroup,
     		highlightedPredictedAsGroup,
     		binsByClasses,
+    		default_image,
     		verticalSpace,
+    		axisLeftmargin,
     		handleMouseEnter,
     		mouseenter_handler,
     		mouseleave_handler,
