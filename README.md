@@ -5,7 +5,7 @@ You must fill out the following form. Please see Canvas for detailed instruction
 
 ---
 - Name: Delyar Tabatabai
-- URL to video demo: https://..........
+- URL to video demo: https://youtu.be/vs_h48PYwTM
 - URL to deployed webpage: https://interactive-gilt.vercel.app/
 - Optional comment: __________
 
