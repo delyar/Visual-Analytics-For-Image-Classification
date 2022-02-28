@@ -7,7 +7,7 @@ You must fill out the following form. Please see Canvas for detailed instruction
 - Name: Delyar Tabatabai
 - URL to video demo: https://youtu.be/cCzlMj-rjzI
 - URL to deployed webpage: https://interactive-gilt.vercel.app/ 
-- Optional comment: Got the idea of lines 65 to 69 of the App.svelte file from the previous projects.
+- Optional comment: Got the idea of lines 65 to 69 of the App.svelte file, from the previous projects.
 
 ---
 
