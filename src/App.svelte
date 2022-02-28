@@ -61,7 +61,7 @@
 		colorScale = scaleOrdinal(schemeCategory10).domain(instances.map(row => row["true_label"]));
 		
 		instances.forEach(instance => {
-			instance.predicted_score = instance.predicted_scores[instance.predicted_label];
+			instance.predicted_score = instance.predicted_scores[instance.true_label];
 				var bin_no = Math.floor(instance.predicted_score * numBins);
 				if (bin_no >= numBins) {
 					bin_no = numBins - 1;
