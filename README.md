@@ -7,7 +7,7 @@ You must fill out the following form. Please see Canvas for detailed instruction
 - Name: Delyar Tabatabai
 - URL to video demo: https://youtu.be/cCzlMj-rjzI
 - URL to deployed webpage: https://interactive-gilt.vercel.app/ 
-- Optional comment: Got the idea of lines 65 to 69 of the App.svelte file from the previous projects. I creted the top axis part with d3.js. however, when I am using vercel for deployment, the d3 axis is not showing. In order to see that it is working the project should be ran with npm run dev command locally.
+- Optional comment: Got the idea of lines 65 to 69 of the App.svelte file from the previous projects.
 
 ---
 
