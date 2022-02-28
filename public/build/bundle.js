@@ -2346,6 +2346,7 @@ var app = (function () {
     	let image_class_value;
     	let rect;
     	let rect_fill_value;
+    	let rect_stroke_value;
     	let rect_class_value;
     	let mounted;
     	let dispose;
@@ -2370,12 +2371,16 @@ var app = (function () {
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(image, file, 257, 11, 13654);
+    			add_location(image, file, 257, 11, 14199);
     			attr_dev(rect, "x", /*axisLeftmargin*/ ctx[14] + /*binInstance*/ ctx[38].binToBelong / numBins * /*axisWidth*/ ctx[12] + (/*z*/ ctx[40] - 40) * 9);
     			attr_dev(rect, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[13] + 10);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["true_label"]));
+    			attr_dev(rect, "fill-opacity", "0.9");
+    			attr_dev(rect, "stroke-opacity", "1");
+    			attr_dev(rect, "stroke", rect_stroke_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]));
+    			attr_dev(rect, "stroke-width", "1");
 
     			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
@@ -2383,7 +2388,7 @@ var app = (function () {
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(rect, file, 258, 11, 14175);
+    			add_location(rect, file, 258, 11, 14720);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2411,6 +2416,10 @@ var app = (function () {
 
     			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["true_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
+    			}
+
+    			if (dirty[0] & /*colorScale*/ 1 && rect_stroke_value !== (rect_stroke_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]))) {
+    				attr_dev(rect, "stroke", rect_stroke_value);
     			}
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
@@ -2446,6 +2455,7 @@ var app = (function () {
     	let image_class_value;
     	let rect;
     	let rect_fill_value;
+    	let rect_stroke_value;
     	let rect_class_value;
     	let mounted;
     	let dispose;
@@ -2470,12 +2480,16 @@ var app = (function () {
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(image, file, 247, 11, 12377);
+    			add_location(image, file, 247, 11, 12813);
     			attr_dev(rect, "x", /*axisLeftmargin*/ ctx[14] + /*binInstance*/ ctx[38].binToBelong / numBins * /*axisWidth*/ ctx[12] + (/*z*/ ctx[40] - 32) * 9);
     			attr_dev(rect, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[13] + 18);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["true_label"]));
+    			attr_dev(rect, "fill-opacity", "0.9");
+    			attr_dev(rect, "stroke-opacity", "1");
+    			attr_dev(rect, "stroke", rect_stroke_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]));
+    			attr_dev(rect, "stroke-width", "1");
 
     			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
@@ -2483,7 +2497,7 @@ var app = (function () {
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(rect, file, 248, 11, 12898);
+    			add_location(rect, file, 248, 11, 13334);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2511,6 +2525,10 @@ var app = (function () {
 
     			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["true_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
+    			}
+
+    			if (dirty[0] & /*colorScale*/ 1 && rect_stroke_value !== (rect_stroke_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]))) {
+    				attr_dev(rect, "stroke", rect_stroke_value);
     			}
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
@@ -2546,6 +2564,7 @@ var app = (function () {
     	let image_class_value;
     	let rect;
     	let rect_fill_value;
+    	let rect_stroke_value;
     	let rect_class_value;
     	let mounted;
     	let dispose;
@@ -2570,12 +2589,16 @@ var app = (function () {
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(image, file, 237, 11, 11084);
+    			add_location(image, file, 237, 11, 11411);
     			attr_dev(rect, "x", /*axisLeftmargin*/ ctx[14] + /*binInstance*/ ctx[38].binToBelong / numBins * /*axisWidth*/ ctx[12] + (/*z*/ ctx[40] - 24) * 9);
     			attr_dev(rect, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[13] + 26);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["true_label"]));
+    			attr_dev(rect, "fill-opacity", "0.9");
+    			attr_dev(rect, "stroke-opacity", "1");
+    			attr_dev(rect, "stroke", rect_stroke_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]));
+    			attr_dev(rect, "stroke-width", "1");
 
     			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
@@ -2583,7 +2606,7 @@ var app = (function () {
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(rect, file, 238, 11, 11605);
+    			add_location(rect, file, 238, 11, 11932);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2611,6 +2634,10 @@ var app = (function () {
 
     			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["true_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
+    			}
+
+    			if (dirty[0] & /*colorScale*/ 1 && rect_stroke_value !== (rect_stroke_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]))) {
+    				attr_dev(rect, "stroke", rect_stroke_value);
     			}
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
@@ -2646,6 +2673,7 @@ var app = (function () {
     	let image_class_value;
     	let rect;
     	let rect_fill_value;
+    	let rect_stroke_value;
     	let rect_class_value;
     	let mounted;
     	let dispose;
@@ -2670,12 +2698,16 @@ var app = (function () {
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(image, file, 227, 11, 9791);
+    			add_location(image, file, 227, 11, 10009);
     			attr_dev(rect, "x", /*axisLeftmargin*/ ctx[14] + /*binInstance*/ ctx[38].binToBelong / numBins * /*axisWidth*/ ctx[12] + (/*z*/ ctx[40] - 16) * 9);
     			attr_dev(rect, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[13] + 34);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["true_label"]));
+    			attr_dev(rect, "fill-opacity", "0.9");
+    			attr_dev(rect, "stroke-opacity", "1");
+    			attr_dev(rect, "stroke", rect_stroke_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]));
+    			attr_dev(rect, "stroke-width", "1");
 
     			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
@@ -2683,7 +2715,7 @@ var app = (function () {
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(rect, file, 228, 11, 10312);
+    			add_location(rect, file, 228, 11, 10530);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2711,6 +2743,10 @@ var app = (function () {
 
     			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["true_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
+    			}
+
+    			if (dirty[0] & /*colorScale*/ 1 && rect_stroke_value !== (rect_stroke_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]))) {
+    				attr_dev(rect, "stroke", rect_stroke_value);
     			}
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
@@ -2746,6 +2782,7 @@ var app = (function () {
     	let image_class_value;
     	let rect;
     	let rect_fill_value;
+    	let rect_stroke_value;
     	let rect_class_value;
     	let mounted;
     	let dispose;
@@ -2770,12 +2807,16 @@ var app = (function () {
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(image, file, 217, 11, 8500);
+    			add_location(image, file, 217, 11, 8609);
     			attr_dev(rect, "x", /*axisLeftmargin*/ ctx[14] + /*binInstance*/ ctx[38].binToBelong / numBins * /*axisWidth*/ ctx[12] + (/*z*/ ctx[40] - 8) * 9);
     			attr_dev(rect, "y", /*i*/ ctx[34] * /*verticalSpace*/ ctx[13] + 42);
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["true_label"]));
+    			attr_dev(rect, "fill-opacity", "0.9");
+    			attr_dev(rect, "stroke-opacity", "1");
+    			attr_dev(rect, "stroke", rect_stroke_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]));
+    			attr_dev(rect, "stroke-width", "1");
 
     			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
@@ -2783,7 +2824,7 @@ var app = (function () {
     				? "highlight_box"
     				: "unHighlight_box") + " svelte-g3vto4"));
 
-    			add_location(rect, file, 218, 11, 9020);
+    			add_location(rect, file, 218, 11, 9129);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, image, anchor);
@@ -2811,6 +2852,10 @@ var app = (function () {
 
     			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["true_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
+    			}
+
+    			if (dirty[0] & /*colorScale*/ 1 && rect_stroke_value !== (rect_stroke_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]))) {
+    				attr_dev(rect, "stroke", rect_stroke_value);
     			}
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
@@ -2846,6 +2891,7 @@ var app = (function () {
     	let image_class_value;
     	let rect;
     	let rect_fill_value;
+    	let rect_stroke_value;
     	let rect_class_value;
     	let mounted;
     	let dispose;
@@ -2876,6 +2922,10 @@ var app = (function () {
     			attr_dev(rect, "width", "9");
     			attr_dev(rect, "height", "9");
     			attr_dev(rect, "fill", rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["true_label"]));
+    			attr_dev(rect, "fill-opacity", "0.9");
+    			attr_dev(rect, "stroke-opacity", "1");
+    			attr_dev(rect, "stroke", rect_stroke_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]));
+    			attr_dev(rect, "stroke-width", "1");
 
     			attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
     			? "regular_box"
@@ -2911,6 +2961,10 @@ var app = (function () {
 
     			if (dirty[0] & /*colorScale*/ 1 && rect_fill_value !== (rect_fill_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["true_label"]))) {
     				attr_dev(rect, "fill", rect_fill_value);
+    			}
+
+    			if (dirty[0] & /*colorScale*/ 1 && rect_stroke_value !== (rect_stroke_value = /*colorScale*/ ctx[0](/*binInstance*/ ctx[38]["predicted_label"]))) {
+    				attr_dev(rect, "stroke", rect_stroke_value);
     			}
 
     			if (dirty[0] & /*selectedPoint, highlightedlabeldAsGroup, highlightedPredictedAsGroup*/ 772 && rect_class_value !== (rect_class_value = "" + (null_to_empty(/*selectedPoint*/ ctx[2] == undefined && /*highlightedlabeldAsGroup*/ ctx[8] == undefined && /*highlightedPredictedAsGroup*/ ctx[9] == undefined
@@ -3010,13 +3064,13 @@ var app = (function () {
     			attr_dev(rect0, "width", "1");
     			attr_dev(rect0, "height", "4");
     			attr_dev(rect0, "fill", "black");
-    			add_location(rect0, file, 269, 9, 14990);
+    			add_location(rect0, file, 269, 9, 15644);
     			attr_dev(rect1, "x", 815);
     			attr_dev(rect1, "y", (/*i*/ ctx[34] + 1) * /*verticalSpace*/ ctx[13]);
     			attr_dev(rect1, "width", "1");
     			attr_dev(rect1, "height", "4");
     			attr_dev(rect1, "fill", "black");
-    			add_location(rect1, file, 270, 9, 15105);
+    			add_location(rect1, file, 270, 9, 15759);
     		},
     		m: function mount(target, anchor) {
     			for (let i = 0; i < each_blocks.length; i += 1) {
