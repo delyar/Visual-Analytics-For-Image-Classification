@@ -1,8 +1,4 @@
 # CS 499/549 Visual Analytics HW 3
-
-
-You must fill out the following form. Please see Canvas for detailed instructions.
-
 ---
 - Name: Delyar Tabatabai
 - URL to video demo: https://youtu.be/cCzlMj-rjzI
@@ -14,5 +10,12 @@ You must fill out the following form. Please see Canvas for detailed instruction
 This repository (https://github.com/div-classroom/visualanalytics-hw3-skeleton) contains the skeleton code used in the Visual Analytics course at Oregon State University taught by Prof. Minsuk Kahng (https://minsuk.com).
 
 The digits dataset is from https://archive.ics.uci.edu/ml/datasets/Optical+Recognition+of+Handwritten+Digits through scikit-learn.
+
+---
+
+How to run?
+1- cd to project
+2- npm install
+3- npm run dev
 
 
